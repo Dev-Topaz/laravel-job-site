@@ -20,18 +20,18 @@
             <form action={{ route('search') }} method="get" id="nameForm">
               @csrf
               <select name="category" id="category" class="w-full border-none rounded-md my-3" style="box-shadow: 0 0 3px 0 #999999">
-                <option value="Any"><label class="text-xs md:text-sm"  for="category">Categories</label></option>
+                <option value=""><label class="text-xs md:text-sm"  for="category">Categories</label></option>
                 @foreach ($categories as $category)
-                  @if ($category->category_name == $selectedCategory)
-                    <option value={{ $category->category_name }} selected> <label class="text-xs md:text-sm" for='category'>{{ $category->category_name }}</label> </option>
+                  @if ($category->id == $selectedCategory)
+                    <option value={{ $category->id }} selected> <label class="text-xs md:text-sm" for='category'>{{ $category->category_name }}</label> </option>
                   @else
-                    <option value={{ $category->category_name }}> <label class="text-xs md:text-sm" for='category'>{{ $category->category_name }}</label> </option>
+                    <option value={{ $category->id }}> <label class="text-xs md:text-sm" for='category'>{{ $category->category_name }}</label> </option>
                   @endif
                 @endforeach
               </select>
 
               <select name="country" id="country" class="w-full border-none rounded-md my-2 text-black" style="box-shadow: 0 0 3px 0 #999999">
-                <option value="Any"><label class="text-xs md:text-sm" for="location">Location</label></option>
+                <option value=""><label class="text-xs md:text-sm" for="location">Location</label></option>
                 @foreach ($countries as $country)
                   @if ($country->name == $selectedLocation)
                     <option value={{ $country->name }} selected> <label class="text-xs md:text-sm" for='location'>{{ $country->name }}</label> </option>
@@ -42,8 +42,18 @@
               </select>
 
                 <input type="text" name="name" id="name" style="border: 1px solid lightgray" class="block w-full mx-auto rounded text-gray-700 font-semibold my-2 h-10 shadow-inner @error('name') is-invalid @enderror" placeholder="Name" value={{$selectedName}} >
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                @enderror
 
                 <input type="text" name="keyword" id="keyword" style="border: 1px solid lightgray" class="block w-full mx-auto rounded text-gray-700 font-semibold my-2 h-10 shadow-inner" placeholder="keyword"  value = {{$selectedKeyword}}>
+                @error('keyword')
+                <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                @enderror
 
                 <button type="submit" class="font-semibold block w-1/3 mx-auto rounded-lg py-2 text-white mt-2" style="background: linear-gradient(to right, #47afbe, #4addc4)"  id="category_search_btn">Search</button>
             </form>
@@ -80,42 +90,41 @@
           @else
           @foreach ($accounts as $account)
           <div>
-              <a href={{ route('profile', ['username' => $account->username]) }}>
+              <a href={{ route('profile', ['username' => $account->user->username]) }}>
                 <div class="w-full float-left rounded-lg py-2" style="box-shadow: 0 0 3px 3px #eee">
                   <div class="w-11/12 mx-auto relative">
                     <div class="w-8/12 mx-auto rounded-full px-1 py-1 mt-3" style="background: linear-gradient(to right, #06ebbe, #1277d3)" >
-                      <img class="rounded-full w-full" src="{{ url('/storage/profile-image/').'/'.$account->avatar.'.jpg' }}" alt="$account->avatar" style="border:solid 2px white">
+                      <img class="rounded-full w-full" src="{{ url('/storage/profile-image/').'/'.$account->accountInfo->avatar.'.jpg' }}" alt="$account->avatar" style="border:solid 2px white">
                     </div>
                   </div>
                   <div class="mt-2">
-                      <h3 class="text-center text-sm md:text-md font-bold text-gray-700">{{ $account->name }}</h3>
-                      <p class="text-center text-xs md:text-sm text-gray-500">{{ '@'.$account->username }}</p>
-                      <p class="text-center text-xs md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->state.', '.$account->country }}</p>
+                      <h3 class="text-center text-sm md:text-md font-bold text-gray-700">{{ $account->user->name }}</h3>
+                      <p class="text-center text-xs md:text-sm text-gray-500">{{ '@'.$account->user->username }}</p>
+                      <p class="text-center text-xs md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->accountInfo->state.', '.$account->accountInfo->country }}</p>
                   </div>
                   <div class="mt-1 w-full">
                     <div class="text-xs md:text-sm flex justify-center">
-                      <span class="px-2 bg-yellow-400 rounded text-white mr-1" style="line-height:20px;">{{ number_format($account->rating, 1) }}</span>
+                      <span class="px-2 bg-yellow-400 rounded text-white mr-1" style="line-height:20px;">{{ number_format($account->accountInfo->rating, 1) }}</span>
                       <span style="line-height:20px;">
                         @for ($i = 0; $i < 5; $i++)
-                          @if ($account->rating > $i)
+                          @if ($account->accountInfo->rating > $i)
                             <i class="fas fa-star text-yellow-400"></i>
                           @else
                             <i class="fas fa-star text-gray-400"></i>
                           @endif
                         @endfor
                       </span>
-                      <span class="ml-1 text-gray-700 font-bold" style="line-height: 20px;">({{ $account->reviews }})</span>
+                      <span class="ml-1 text-gray-700 font-bold" style="line-height: 20px;">({{ $account->accountInfo->reviews }})</span>
                     </div>
                   </div>
                   <div class="mt-2 w-full">
                     <div class="text-xs md:text-sm flex justify-center">
                       @if (count($account->category) > 0)
-                      <div class="w-1/3 text-center py-1 rounded mx-1" style="background: #{{$account->category[0]->back_color}};color:#{{$account->category[0]->text_color}};">
-                        <p>{{ $account->category[0]->category_name }}</p>
-                      </div>
-                      <div class="w-1/3 text-center py-1 rounded mx-1" style="background: #{{$account->category[1]->back_color}};color:#{{$account->category[1]->text_color}}">
-                        <p>{{ $account->category[1]->category_name }}</p>
-                      </div>
+                          @foreach($account->category as $category)
+                              <div class="w-1/3 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
+                                <p>{{ $category->category_name }}</p>
+                              </div>
+                            @endforeach
                       @else
                       <div style="height: 24px;"></div>
                       @endif
@@ -126,7 +135,7 @@
                       <div class="w-1/3 text-center">
                         <p><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></p>
                         <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                          @switch($account->instagram_follows)
+                          @switch($account->profile->instagram_follows)
                               @case(11)
                                   1k-10k
                                   @break
@@ -145,7 +154,7 @@
                       <div class="w-1/3 text-center" style="border-right: 1px solid lightgray; border-left:1px solid lightgray">
                         <p><i class="fab fa-youtube text-red-400"></i></p>
                         <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                          @switch($account->youtube_follows)
+                          @switch($account->profile->youtube_follows)
                               @case(11)
                                   1k-10k
                                   @break
@@ -164,7 +173,7 @@
                       <div class="w-1/3 text-center">
                         <p><i class="fab fa-tiktok text-gray-700"></i></p>
                         <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                          @switch($account->tiktok_follows)
+                          @switch($account->profile->tiktok_follows)
                               @case(11)
                                   1k-10k
                                   @break
@@ -196,42 +205,41 @@
                 <p class="text-center text-sm md:text-md text-gray-500">No matching accounts.</p>
             @else
             @foreach ($accounts as $account)
-            <a href={{ route('profile', ['username' => $account->username]) }}>
+            <a href={{ route('profile', ['username' => $account->user->username]) }}>
               <div class="w-10/12 md:max-w-7xl mx-auto rounded-lg py-6 mb-5" style="box-shadow: 0 0 3px 3px #eee">
                 <div class="w-11/12 mx-auto relative">
                   <div class="w-8/12 mx-auto rounded-full px-1 py-1 mt-3" style="background: linear-gradient(to right, #06ebbe, #1277d3)" >
-                    <img class="rounded-full w-full" src="{{ url('/storage/profile-image/').'/'.$account->avatar.'.jpg' }}" alt="$account->avatar" style="border:solid 2px white">
+                    <img class="rounded-full w-full" src="{{ url('/storage/profile-image/').'/'.$account->accountInfo->avatar.'.jpg' }}" alt="$account->avatar" style="border:solid 2px white">
                   </div>
                 </div>
                 <div class="mt-2">
-                    <h3 class="text-center text-md md:text-lg font-bold text-gray-700">{{ $account->name }}</h3>
-                    <p class="text-center text-sm md:text-sm text-gray-500">{{ '@'.$account->username }}</p>
-                    <p class="text-center text-sm md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->state.', '.$account->country }}</p>
+                    <h3 class="text-center text-md md:text-lg font-bold text-gray-700">{{ $account->user->name }}</h3>
+                    <p class="text-center text-sm md:text-sm text-gray-500">{{ '@'.$account->user->username }}</p>
+                    <p class="text-center text-sm md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->accountInfo->state.', '.$account->accountInfo->country }}</p>
                 </div>
                 <div class="mt-1 w-full">
                   <div class="text-xs md:text-sm flex justify-center">
                     <span class="px-2 bg-yellow-400 rounded text-white mr-1" style="line-height:20px;">{{ number_format($account->rating, 1) }}</span>
                     <span style="line-height:20px;">
                       @for ($i = 0; $i < 5; $i++)
-                        @if ($account->rating > $i)
+                        @if ($account->accountInfo->rating > $i)
                           <i class="fas fa-star text-yellow-400"></i>
                         @else
                           <i class="fas fa-star text-gray-400"></i>
                         @endif
                       @endfor
                     </span>
-                    <span class="ml-1 text-gray-700" style="line-height: 20px;">({{ $account->reviews }})</span>
+                    <span class="ml-1 text-gray-700" style="line-height: 20px;">({{ $account->accountInfo->reviews }})</span>
                   </div>
                 </div>
                 <div class="mt-2 w-full">
                   <div class="text-xs md:text-sm flex justify-center">
                     @if (count($account->category) > 0)
-                    <div class="w-1/3 text-center py-1 rounded mx-1" style="background: #{{$account->category[0]->back_color}};color:#{{$account->category[0]->text_color}};">
-                      <p>{{ $account->category[0]->category_name }}</p>
-                    </div>
-                    <div class="w-1/3 text-center py-1 rounded mx-1" style="background: #{{$account->category[1]->back_color}};color:#{{$account->category[1]->text_color}};">
-                      <p>{{ $account->category[1]->category_name }}</p>
-                    </div>
+                        @foreach($account->category as $category)
+                            <div class="w-1/3 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
+                              <p>{{ $category->category_name }}</p>
+                            </div>
+                          @endforeach
                     @else
                     <div style="height: 24px;"></div>
                     @endif
@@ -242,7 +250,7 @@
                     <div class="w-1/3 text-center">
                       <p><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->instagram_follows)
+                        @switch($account->profile->instagram_follows)
                             @case(11)
                                 1k-10k
                                 @break
@@ -261,7 +269,7 @@
                     <div class="w-1/3 text-center" style="border-right: 1px solid lightgray; border-left:1px solid lightgray">
                       <p><i class="fab fa-youtube text-red-400"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->youtube_follows)
+                        @switch($account->profile->youtube_follows)
                             @case(11)
                                 1k-10k
                                 @break
@@ -280,7 +288,7 @@
                     <div class="w-1/3 text-center">
                       <p><i class="fab fa-tiktok text-gray-700"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->tiktok_follows)
+                        @switch($account->profile->tiktok_follows)
                             @case(11)
                                 1k-10k
                                 @break

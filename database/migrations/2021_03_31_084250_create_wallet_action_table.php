@@ -19,6 +19,8 @@ class CreateWalletActionTable extends Migration
             $table->string('action')->default('');
             $table->string('currency')->default('usd');
             $table->string('aaa');
+            $table->tinyInteger('status')->default(0);
+            $table->string(trans_id);
             $table->timestamps();
 
             $table->foreign('wallet_id')->references('id')->on('wallet')->onDelete('cascade');

@@ -103,4 +103,9 @@ function checkSession(){console.log('checkSession');if(sessionStorage.getItem('t
 console.log("trigger");registerToggle('brand')}
 sessionStorage.clear()}
 </script>
+@if(old('accountType'))
+    <script>
+        $("a#{{ old('accountType') }}").trigger('click');
+    </script>
+@endif
 @endsection

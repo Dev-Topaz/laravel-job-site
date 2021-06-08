@@ -97,20 +97,29 @@ class TaskController extends Controller
 
     public function search(Request $request) {
         $input = $request->all();
-        $rule = [];
+        $rule = [
+            'name' => 'nullable|string|max:50|regex:/(^([a-zA-Z ]+)?$)/',
+            'keyword' => 'nullable|string|max:30|regex:/(^([a-zA-Z ]+)?$)/',
+        ];
 
-        $message = [];
+        $message = [
+            'name.nullable' => '123',
+            'name.string' => '123333',
+            'name.max' => 'adf',
+            'name.regex' => 'Name can contains only letters and space',
+            'keyword.regex' => 'Name can contains only letters and space',
+        ];
 
         $validator = Validator::make($input, $rule, $message);
 
         if($validator->fails()) {
-            return redirect('search')
+            return redirect()->route('search')
                 ->withErrors($validator)
                 ->withInput($input);
         }
 
-        $category = (isset($input['category'])) ? $input['category'] : 'Any';
-        $location = (isset($input['country'])) ? $input['country'] : 'Any';
+        $category = (isset($input['category'])) ? $input['category'] : '';
+        $location = (isset($input['country'])) ? $input['country'] : '';
         $name = (isset($input['name'])) ? $input['name'] : '';
         $keyword = (isset($input['keyword'])) ? $input['keyword'] : '';
         $perpage = (isset($input['perpage'])) ? $input['perpage'] : 10;
@@ -123,17 +132,33 @@ class TaskController extends Controller
 
         // Get countries
         $countries = Countries::all();
+        $unread = $request->get('unread');
+
+        if($category == '' && $location == '' && $name =='' && $keyword == '')
+        {
+            $foundAccounts = [];
+            return view('search', [
+                'unread' => $unread,
+                'selectedCategory' => $category,
+                'selectedLocation' => $location,
+                'selectedName' => $name,
+                'selectedKeyword' => $keyword,
+                'page' => 4,
+                'accountInfo' => $accountInfo,
+                'categories' => $allCategories,
+                'countries' => $countries,
+                'accounts' => $foundAccounts,
+            ]);
+        }
 
         // search influencers
         if($accountInfo->accountType == 'brand') {
             $influencers = new Influencers();
-            $foundAccounts = $influencers->findInfluencers($category, $location, $name, $keyword, $perpage);
+            $foundAccounts = $influencers->getUsers($name, $category, $location, $keyword, $perpage);
         } else {
             $brands = new Brands();
-            $foundAccounts = $brands->findBrands($category, $location, $name, $keyword, $perpage);
+            $foundAccounts = $brands->getUsers($name, $category, $location, $keyword, $perpage);
         }
-
-        $unread = $request->get('unread');
 
         return view('search', [
             'unread' => $unread,

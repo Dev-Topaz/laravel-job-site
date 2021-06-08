@@ -49,6 +49,8 @@ class PaymentController extends Controller
         $walletAction->action = 'deposit funds';
         $walletAction->currency = $currency;
         $walletAction->aaa = '+';
+        $walletAction->status = 0;
+        $walletAction->trans_id = $paymentIntent->charges->data[0]->balance_transaction;
         $walletAction->save();
 
         $wallet = Wallet::find($wallet_id);

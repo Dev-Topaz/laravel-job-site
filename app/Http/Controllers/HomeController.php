@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         if(!isset($account_info->details_submitted) || !$account_info->details_submitted) {
             if($accountInfo[0]->accountType == 'influencer')
-                $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=" . env('APP_URL') ."https://www.fluee123.host/home&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=".Auth::user()->email;
+                $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=".Auth::user()->email;
         } else {
             $url = '';
         }
