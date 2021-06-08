@@ -5,3 +5,4 @@ storage/task-image
 storage/upload-image
 resources/js
 vendor
+#.env

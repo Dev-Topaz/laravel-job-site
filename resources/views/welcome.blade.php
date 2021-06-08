@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/css/all.css') }}">
 
 <style>
-        .active,.dot:hover{background-color:#717171}#wel_btn{width:200px;position:absolute;bottom:150px;left:50vw;margin-left:-100px}#hire_btn{border:none;border-radius:10px;background:linear-gradient(to right,RGB(5,235,189),RGB(19,120,212))}#join_btn{border:solid 1px #fff;background:transparent}#back_img{position:relative}#avatar_img{position:absolute}.clearfix{display:table;content:'';clear:both}div#main_btn a:hover,div#main_btn a:active,div#main_btn a:visited,{background:none}#how-it-works #gradient-icon i{background:-moz-linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));background:-webkit-linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));background:linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));-webkit-background-clip:text;-moz-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}#how-it-works #gradient-icon{text-align:center;width:40px;height:40px;padding:7px;top:50%;transform:translateY(-50%);left:5px;border:1px solid gray}.clearfix{display:table;content:'';clear:both}#featured_img{position:absolute;top:0;right:-50%}.carousel-indicators li{width:5px!important;height:5px!important;opacity:1!important;border-radius:50%;border:none;margin-bottom:5px;background:#119dab}.carousel-indicators{margin-bottom:0;line-height:1}.carousel-indicators li.active{box-shadow:0 0 0 2px #95c3c7}
+        .active,.dot:hover{background-color:#717171}#wel_btn{width:200px;position:absolute;bottom:150px;left:50vw;margin-left:-100px}#hire_btn{border:none;border-radius:10px;background:linear-gradient(to right,RGB(5,235,189),RGB(19,120,212))}#join_btn{border:solid 1px #fff;background:transparent}#back_img{position:relative}#avatar_img{position:absolute}.clearfix{display:table;content:'';clear:both}div#main_btn a:hover,div#main_btn a:active,div#main_btn a:visited{background:none}#how-it-works #gradient-icon i{background:-moz-linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));background:-webkit-linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));background:linear-gradient(to right,RGB(5,235,189),RGB(19,120,212));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}#how-it-works #gradient-icon{text-align:center;width:40px;height:40px;padding:7px;top:50%;transform:translateY(-50%);left:5px;border:1px solid gray}.clearfix{display:table;content:'';clear:both}#featured_img{position:absolute;top:0;right:-50%}.carousel-indicators li{width:5px!important;height:5px!important;opacity:1!important;border-radius:50%;border:none;margin-bottom:5px;background:#119dab}.carousel-indicators{margin-bottom:0;line-height:1}.carousel-indicators li.active{box-shadow:0 0 0 2px #95c3c7}
     </style>
 </head>
 
@@ -161,9 +161,9 @@
                 <!-- Featured influencers slide -->
                 <div id="featured_slide" class="w-full relative overflow-hidden">
                     @if(count($featuredInfluencers) > 0)
-                    <div style="width: 50%; visibility: hidden; padding:10px;">
-                        <div class="card">
-                            <img src="{{url('/storage/profile-image/'.$featuredInfluencers[0]->top_img.'.jpg')}}" alt="hidden image" style="width: 100%;">
+                    <div style="width: 50%; visibility: hidden !important; padding:10px;">
+                        <div class="card invisible">
+                            <img src="{{url('/storage/profile-image/'.$featuredInfluencers[0]->top_img.'.jpg')}}" alt="hidden_image" style="width: 100%;" class="invisible">
                             <p class="text-sm my-2">Location here.</p>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                             <a class="w-3/12 float-left px-2" href="{{ route('profile', ['username' => $influencer->username]) }}">
                                 <div class="rounded-2xl px-1 py-1 " style="box-shadow: 0 0 3px 3px #ccc">
                                     <div class="relative">
-                                        <img src="{{url('/storage/profile-image/'.$influencer->top_img.'.jpg')}}" alt="hidden image" style="width: 100%;" class="rounded-t-2xl">
+                                        <img src="{{url('/storage/profile-image/'.$influencer->top_img.'.jpg')}}" alt="hidden_image" style="width: 100%;" class="rounded-t-2xl">
                                         <div class="bg-black bg-opacity-80 absolute bottom-0 w-full px-1 py-1">
                                             <p class="mb-0 text-xs text-white font-semibold">{{ strtoupper($influencer->name) }}</p>
                                             <p class="mb-0" style="font-size: 9px; color:#0ac2c8">{{ '@'.$influencer->username }}
