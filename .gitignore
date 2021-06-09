@@ -1,8 +1,4 @@
 node_modules
-storage/partnership-image
-storage/profile-image
-storage/task-image
-storage/upload-image
 resources/js
 vendor
-.env
+#.env
