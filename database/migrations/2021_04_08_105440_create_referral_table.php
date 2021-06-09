@@ -17,7 +17,7 @@ class CreateReferralTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('referral_user_id');
-            $table->unsignedTinyInteger(active)->default(1);
+            $table->unsignedTinyInteger('active')->default(1);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
