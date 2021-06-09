@@ -557,6 +557,7 @@ class PaymentController extends Controller
     $walletAction->currency = $requestInfo->unit;
     $walletAction->aaa = '-';
     $walletAction->status = 1;
+    $walletAction->trans_id = '1111111111';
     $walletAction->save();
 
     $wallet = Wallet::find($wallet_id);
