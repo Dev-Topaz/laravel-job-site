@@ -119,13 +119,13 @@
             </div>
             <div id="social_links" style="position: absolute; bottom: 43px;right: 10%; width:150px;">
               <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok"></i></a>
+                <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
               </div>
               <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube"></i></a>
+                <a href="{{ 'https://'.$profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
               </div>
               <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></a>
+                <a href="{{ 'https://'.$profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
               </div>
               <div class="clearfix"></div>
             </div>

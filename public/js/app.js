@@ -2740,6 +2740,7 @@ var DisputeChatComponent = /*#__PURE__*/function (_Component) {
       accountInfo: {},
       requestID: 0
     };
+    _this.sendMessage = _this.sendMessage.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2837,8 +2838,8 @@ var DisputeChatComponent = /*#__PURE__*/function (_Component) {
         console.log(data);
         var this1 = _this2;
 
-        if (data.trigger === 'disputeChat') {
-          if (this1.state.accountInfo.id === data.disputeChat.send_id && this1.state.contactInfo.id === data.disputeChat.receive_id || this1.state.accountInfo.id === data.disputeChat.receive_id && this1.state.contactInfo.id === data.disputeChat.send_id) {
+        if (data.trigger == 'disputeChat') {
+          if (this1.state.accountInfo.id == data.disputeChat.send_id && this1.state.contactInfo.id == data.disputeChat.receive_id || this1.state.accountInfo.id == data.disputeChat.receive_id && this1.state.contactInfo.id == data.disputeChat.send_id) {
             var chat = this1.state.chats;
             chat.push(data.disputeChat);
             this1.setState({
@@ -2847,8 +2848,8 @@ var DisputeChatComponent = /*#__PURE__*/function (_Component) {
           }
         }
 
-        if (data.trigger === 'request_status') {
-          if (data.request_id === this1.state.requestInfo.request_id) {
+        if (data.trigger == 'request_status') {
+          if (data.request_id == this1.state.requestInfo.request_id) {
             var requestInfos = this1.state.requestInfo;
             requestInfos.status = data.status;
             this1.setState({
@@ -5054,10 +5055,25 @@ var ChatTopComponent = function ChatTopComponent(props) {
             margin: '10px 0',
             marginLeft: '28px'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-            src: _const__WEBPACK_IMPORTED_MODULE_0__.default.baseURL + 'storage/profile-image/' + props.contactInfo.avatar + '.jpg',
-            alt: props.contactInfo.avatar,
-            className: "rounded-full"
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "float-left flex-shrink-0 rounded-full",
+            style: {
+              width: '50px',
+              height: '50px',
+              padding: '2px',
+              background: 'linear-gradient(to right, #06ebbe, #1277d3)'
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "w-full bg-white rounded-full",
+              style: {
+                padding: '2px'
+              },
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                src: _const__WEBPACK_IMPORTED_MODULE_0__.default.baseURL + 'storage/profile-image/' + props.contactInfo.avatar + '.jpg',
+                alt: props.contactInfo.avatar,
+                className: "rounded-full"
+              })
+            })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
           className: "float-left overflow-hidden",
@@ -5297,8 +5313,23 @@ var MessageComponent = function MessageComponent(props) {
     calculateTime();
   }, []);
 
+  var showImage = function showImage(src) {
+    $("div#imageModal img").attr("src", src);
+    $("div#imageModal").fadeIn(200);
+  };
+
   var calculateTime = function calculateTime() {
+    var time, datetime, timezone;
     var created_at = chat.created_at;
+
+    var moment = __webpack_require__(/*! moment-timezone */ "./node_modules/moment-timezone/index.js");
+
+    console.log("created_at");
+    console.log(created_at);
+    console.log(new Date(created_at).toUTCString());
+    timezone = moment.tz.guess();
+    console.log(timezone);
+    var aaa = new Date(created_at);
 
     if (created_at[created_at.length - 1] == 'Z') {
       created_at = created_at.slice(0, -8).replace(/:|T|-/g, ',');
@@ -5306,12 +5337,13 @@ var MessageComponent = function MessageComponent(props) {
       created_at = created_at.replace(/:| |-/g, ',');
     }
 
-    var datetime = created_at.split(',');
+    console.log(created_at);
+    datetime = created_at.split(',');
 
     if (datetime[3] >= 12) {
-      var time = datetime[3] - 12 + ":" + datetime[4] + " PM";
+      time = datetime[3] - 12 + ":" + datetime[4] + " PM";
     } else {
-      var time = datetime[3] + ":" + datetime[4] + " AM";
+      time = datetime[3] + ":" + datetime[4] + " AM";
     }
 
     var month = _const__WEBPACK_IMPORTED_MODULE_1__.default.month[parseInt(datetime[1])];
@@ -5321,7 +5353,8 @@ var MessageComponent = function MessageComponent(props) {
   };
 
   var divStyle = {
-    "float": chat.send_id == userID ? 'right' : 'left'
+    "float": chat.send_id == userID ? 'right' : 'left',
+    background: chat.send_id == userID ? 'transparent' : 'white'
   };
   var userDatetimeStyle = {
     left: 0
@@ -5333,11 +5366,16 @@ var MessageComponent = function MessageComponent(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       style: divStyle,
       children: [chat.upload == 'none' ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          className: "rounded-xl w-1/2",
-          src: _const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL + 'storage/upload-image/' + chat.upload + '.jpg',
-          alt: chat.upload,
-          style: divStyle
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          onClick: function onClick() {
+            showImage("".concat(_const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL, "storage/upload-image/").concat(chat.upload, ".jpg"));
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            className: "rounded-xl w-1/2",
+            src: _const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL + 'storage/upload-image/' + chat.upload + '.jpg',
+            alt: chat.upload,
+            style: divStyle
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "clearfix"
         })]
@@ -5347,7 +5385,7 @@ var MessageComponent = function MessageComponent(props) {
           style: divStyle,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
             style: {
-              border: '1px solid #999'
+              border: chat.send_id == userID ? '1px solid #aaa' : 'none'
             },
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
               className: "text-sm px-4 py-2 text-gray-700",
@@ -5364,6 +5402,37 @@ var MessageComponent = function MessageComponent(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "clearfix"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      id: "imageModal",
+      className: "h-screen w-screen bg-black bg-opacity-70 fixed top-0 z-50 hidden",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "w-11/12 bg-white absolute rounded-xl",
+        style: {
+          top: '50%',
+          marginTop: '-6rem',
+          left: '50%',
+          marginLeft: '-45.83333%',
+          transform: 'translateY(-25%)'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "relative",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "absolute w-5 h-5 top-2 right-2 rounded-full bg-red-400 text-white text-xs text-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              onClick: function onClick() {
+                $("div#imageModal").fadeOut(200);
+              },
+              className: "leading-5",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                className: "fas fa-times"
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: "",
+            className: "w-full"
+          })]
+        })
+      })
     })]
   });
 };
@@ -5910,9 +5979,23 @@ var RequestChat = function RequestChat(props) {
     setIsUser(chat.send_id == accountInfo.id);
   }, []);
 
+  var showImage = function showImage(src) {
+    $("div#imageModal img").attr("src", src);
+    $("div#imageModal").fadeIn(200);
+  };
+
   var calculateTime = function calculateTime() {
+    var time, datetime, timezone;
     var created_at = chat.created_at;
+
+    var moment = __webpack_require__(/*! moment-timezone */ "./node_modules/moment-timezone/index.js");
+
+    console.log("created_at");
     console.log(created_at);
+    console.log(new Date(created_at).toUTCString());
+    timezone = moment.tz.guess();
+    console.log(timezone);
+    var aaa = new Date(created_at);
 
     if (created_at[created_at.length - 1] == 'Z') {
       created_at = created_at.slice(0, -8).replace(/:|T|-/g, ',');
@@ -5920,13 +6003,13 @@ var RequestChat = function RequestChat(props) {
       created_at = created_at.replace(/:| |-/g, ',');
     }
 
-    var datetime = created_at.split(',');
-    console.log(datetime);
+    console.log(created_at);
+    datetime = created_at.split(',');
 
     if (datetime[3] >= 12) {
-      var time = datetime[3] - 12 + ":" + datetime[4] + " PM";
+      time = datetime[3] - 12 + ":" + datetime[4] + " PM";
     } else {
-      var time = datetime[3] + ":" + datetime[4] + " AM";
+      time = datetime[3] + ":" + datetime[4] + " AM";
     }
 
     var month = _const__WEBPACK_IMPORTED_MODULE_1__.default.month[parseInt(datetime[1])];
@@ -5936,7 +6019,8 @@ var RequestChat = function RequestChat(props) {
   };
 
   var divStyle = {
-    "float": isUser ? 'right' : 'left'
+    "float": isUser ? 'right' : 'left',
+    background: isUser ? 'transparent' : 'white'
   };
   var userDatetimeStyle = {
     left: 0
@@ -5948,11 +6032,16 @@ var RequestChat = function RequestChat(props) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       style: divStyle,
       children: [chat.upload == 'none' ? null : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-          className: "rounded-xl w-1/2",
-          src: _const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL + 'storage/upload-image/' + chat.upload + '.jpg',
-          alt: chat.upload,
-          style: divStyle
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+          onClick: function onClick() {
+            showImage("".concat(_const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL, "storage/upload-image/").concat(chat.upload, ".jpg"));
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            className: "rounded-xl w-1/2",
+            src: _const__WEBPACK_IMPORTED_MODULE_1__.default.baseURL + 'storage/upload-image/' + chat.upload + '.jpg',
+            alt: chat.upload,
+            style: divStyle
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "clearfix"
         })]
@@ -5979,6 +6068,37 @@ var RequestChat = function RequestChat(props) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "clearfix"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      id: "imageModal",
+      className: "h-screen w-screen bg-black bg-opacity-70 fixed top-0 z-50 hidden",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "w-11/12 bg-white absolute rounded-xl",
+        style: {
+          top: '50%',
+          marginTop: '-6rem',
+          left: '50%',
+          marginLeft: '-45.83333%',
+          transform: 'translateY(-25%)'
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "relative",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "absolute w-5 h-5 top-2 right-2 rounded-full bg-red-400 text-white text-xs text-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+              onClick: function onClick() {
+                $("div#imageModal").fadeOut(200);
+              },
+              className: "leading-5",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+                className: "fas fa-times"
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            src: "",
+            className: "w-full"
+          })]
+        })
+      })
     })]
   });
 };

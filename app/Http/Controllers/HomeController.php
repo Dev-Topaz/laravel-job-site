@@ -85,7 +85,7 @@ class HomeController extends Controller
             }
         }
 
-        $newsFeeds = NewsFeed::all()->get();
+        $newsFeeds = NewsFeed::all();
 
         $unread = $request->get('unread');
 
