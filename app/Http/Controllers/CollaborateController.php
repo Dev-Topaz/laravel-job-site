@@ -210,7 +210,7 @@ class CollaborateController extends Controller
         $request_info = new RequestInfo;
         $request_info->request_id = $request->id;
         $request_info->title = "Request from " . $accountInfo->name;
-        $request_info->content = $accountInfo->name . " want to work with you";
+        $request_info->content = $accountInfo->name . " wants to work with you";
         $request_info->amount = 0;
         $request_info->unit = "gbp";
         $request_info->gift = 0;

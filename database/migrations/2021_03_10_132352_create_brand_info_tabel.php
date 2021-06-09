@@ -18,10 +18,11 @@ class CreateBrandInfoTabel extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->string('country')->default('unknown');
             $table->string('state')->default('unknown');
+            $table->string('currency')->default('USD');
             $table->integer('posts')->default(0);
             $table->string('avatar')->default('default_round');
             $table->string('back_img')->default('default_back');
-            $table->integer('rating')->default(0);
+            $table->float('rating')->default(5.0);
             $table->integer('reviews')->default(0);
             $table->timestamps();
 

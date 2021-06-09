@@ -213,23 +213,23 @@
                         <div class="modal-body">
                             <ul class="w-11/12 mx-auto">
                                 <li class="my-4"><a href={{ route('profile', ['username' => Auth::user()->username]) }}>
-                                <li class="fas fa-user inline-block w-7"></li>
+                                <i class="fas fa-user inline-block w-7"></i>
                                 View Profile</a></li>
                                 <li class="my-4"><a
                                         href={{ route('editProfile', ['username' => Auth::user()->username]) }}>
-                                <li class="fas fa-user-edit inline-block w-7"></li>
+                                <i class="fas fa-user-edit inline-block w-7"></i>
                                 Edit Profile</a></li>
                                 <li class="my-4"><a href={{ route('balance') }}>
-                                <li class="fas fa-wallet inline-block w-7"></li>
+                                <i class="fas fa-wallet inline-block w-7"></i>
                                 Balance</a></li>
                                 <li class="my-4"><a href={{ route('referrals') }}>
-                                <li class="fas fa-sync-alt inline-block w-7"></li>
+                                <i class="fas fa-sync-alt inline-block w-7"></i>
                                 Referrals</a></li>
                                 <li class="my-4"><a href={{ route('saved') }}>
-                                <li class="fas fa-heart inline-block w-7"></li>
+                                <i class="fas fa-heart inline-block w-7"></i>
                                 Saved</a></li>
                                 <li class="my-4"><a href="{{ route('accountSetting') }}">
-                                <li class="fas fa-cog inline-block w-7"></li>
+                                <i class="fas fa-cog inline-block w-7"></i>
                                 Account Settings</a></li>
                             </ul>
                         </div>
@@ -252,8 +252,10 @@
     @yield('content')
 </div>
 <script>
-    var qualityCount=0;var comCount=0;var experCount=0;var professCount=0;var againCount=0
-    var page = {{ $page ?? 0 }};
+  let qualityCount = 0;var comCount=0;var experCount=0;var professCount=0;var againCount=0
+    const page = {{ $page ?? 0 }};
+    const currency = '{{ $currency ?? '' }}';
+
     function showProfileModal(){"none"==$("div#profileModal").css("display")?$("div#profileModal").show():$("div#profileModal").hide()}$(document).ready(function(){var e=$("#mobile-menu a").eq(page-1);console.log("loaded"),console.log(e),e.addClass("menu_selected"),$("#lg_tabMenu a").eq(page-1).addClass("active"),$("#user-menu-content").css("display","none"),$("#user-menu").click(function(){"block"==$("#user-menu-content").css("display")?$("#user-menu-content").css("display","none"):$("#user-menu-content").css("display","block")}),0===page&&checkSession(),$("#searchTab a").click(function(){console.log($(this).attr("href")),$("#searchTab a.active").removeClass("active"),$(this).addClass("active");var e=$(this).attr("id");$("div.full-view").hide(),$("div.grid-view").hide(),$("div."+e).show()}),$("#gallery .delete").click(function(){console.log("ok"),$(this).parent().remove()}),$("a.payMethod").click(function(){$("a.payMethod.active").removeClass("active"),$(this).addClass("active"),"gift"==$(this).attr("id")?($("div#budgetColumn").hide(),$("select#price").val(""),$("input#price").val(""),$("input#giftInput").val(1)):($("input#giftInput").val(""),$("div#budgetColumn").show())}),$("#star-rating a").click(function(){$(this).attr("class").search("text-gray-400")&&$(this).removeClass("text-gray-400").addClass("text-yellow-400");var e=$(this).attr("class").split("star-")[1][0];switch($(this).parent().attr("id")){case"Quality":qualityCount=e;break;case"Communication":comCount=e;break;case"Expertise":experCount=e;break;case"Professionalism":professCount=e;break;case"Would":againCount=e}$(this).prevAll().removeClass("text-gray-400").addClass("text-yellow-400"),$(this).nextAll().removeClass("text-yellow-400").addClass("text-gray-400"),console.log(qualityCount,comCount,experCount,professCount,againCount);var t=(parseInt(qualityCount)+parseInt(comCount)+parseInt(experCount)+parseInt(professCount)+parseInt(againCount))/5;$("input#rating").val(t)})}),Pusher.logToConsole=!0;var pusher=new Pusher("da7cd3b12e18c9e2e461",{cluster:"eu"});
 </script>
 
@@ -273,6 +275,10 @@
                 if (unreadRequest > 0) {
                     $("a#requests div#requestNotif").show();
                 }
+            }
+            if (page == 5 && currency != '') {
+              console.log(currency);
+              $("select#balance_currency").val(currency.toLowerCase()).trigger('change');
             }
         });
         var channel = pusher.subscribe('fluenser-channel');

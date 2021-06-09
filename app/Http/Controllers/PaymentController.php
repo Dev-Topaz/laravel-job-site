@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Countries;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\RequestInfo;
@@ -882,8 +883,15 @@ class PaymentController extends Controller
 
     $wallet = Wallet::find($wallet_id);
 
+    $user = new User();
+    $accountInfo = $user->getAccountInfoByUserID(Auth::user()->id);
+    $currency = $accountInfo[0]->currency;
+    $countries = Countries::all();
+
     return view('wallet', [
       'page' => 5,
+      'countries' => $countries,
+      'currency' => $currency,
       'unread' => $request->get('unread'),
       'wallet' => $wallet,
       'walletActions' => $walletAction,

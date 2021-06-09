@@ -137,28 +137,13 @@
               <p class="text-lg md:text-xl">BALANCE</p>
               <span class="text-2xl md:text-3xl font-bold my-3" id="balance">{{ number_format($wallet->usd_balance, 2) }}</span>
               <select id="balance_currency" class="text-2xl md:text-3xl font-bold my-3" style="background-color: transparent; border:none; outline:none" onchange="showBalance()">
-                <option class="text-black" value="usd">USD</option>
-                <option class="text-black" value="aed">AED</option>
-                <option class="text-black" value="aud">AUD</option>
-                <option class="text-black" value="bgn">BGN</option>
-                <option class="text-black" value="brl">BRL</option>
-                <option class="text-black" value="cad">CAD</option>
-                <option class="text-black" value="chf">CHF</option>
-                <option class="text-black" value="czk">CZK</option>
-                <option class="text-black" value="dkk">DKK</option>
-                <option class="text-black" value="eur">EUR</option>
-                <option class="text-black" value="gbp">GBP</option>
-                <option class="text-black" value="hkd">HKD</option>
-                <option class="text-black" value="huf">HUF</option>
-                <option class="text-black" value="inr">INR</option>
-                <option class="text-black" value="jpy">JPY</option>
-                <option class="text-black" value="mxn">MXN</option>
-                <option class="text-black" value="myr">MYR</option>
-                <option class="text-black" value="nok">NOK</option>
-                <option class="text-black" value="pln">PLN</option>
-                <option class="text-black" value="ron">RON</option>
-                <option class="text-black" value="sek">SEK</option>
-                <option class="text-black" value="sgd">SGD</option>
+                @foreach($countries as $country)
+                  @if($country->currency == $currency)
+                    <option value="{{ strtolower($country->currency) }}" selected>{{ $country->currency }}</option>
+                  @else
+                    <option value="{{ strtolower($country->currency) }}">{{ $country->currency }}</option>
+                  @endif
+                @endforeach
               </select>
             </div>
           </div>
@@ -208,6 +193,7 @@
     </div>
   </main>
 <script>
+
   function showBalance() {
     console.log("changed");
     const currency = $("select#balance_currency").val();

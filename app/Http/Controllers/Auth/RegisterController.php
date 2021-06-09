@@ -108,7 +108,6 @@ class RegisterController extends Controller
                 $influencer = new Influencers;
                 $influencer->user_id = $user->id;
                 $influencer->save();
-
                 $influencerInfo = new InfluencerInfo;
                 $influencerInfo->influencer_id = $influencer->id;
                 $influencerInfo->save();

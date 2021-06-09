@@ -361,6 +361,7 @@ class ProfileController extends Controller
             if($input['country'] != '') {
                 $country = Countries::find($input['country']);
                 $influencerInfo->country = strtolower($country->name);
+                $influencerInfo->currency = strtoupper($country->currency);
             }
             $influencerInfo->save();
         } else {
@@ -374,6 +375,7 @@ class ProfileController extends Controller
             if($input['country'] != '') {
                 $country = Countries::find($input['country']);
                 $brandInfo->country = strtolower($country->name);
+                $brandInfo->currency = strtoupper($country->currency);
             }
             $brandInfo->save();
         }

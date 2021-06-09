@@ -18,6 +18,7 @@ class CreateInfluencersInfoTable extends Migration
             $table->unsignedBigInteger('influencer_id');
             $table->string('country')->default('unknown');
             $table->string('state')->default('unknown');
+            $table->string('currency')->default('USD');
             $table->integer('follows')->default(0);
             $table->integer('followings')->default(0);
             $table->integer('posts')->default(0);
@@ -28,7 +29,7 @@ class CreateInfluencersInfoTable extends Migration
             $table->integer('tm_rate')->default(0);
             $table->integer('m_rate')->default(0);
             $table->integer('reviews')->default(0);
-            $table->float('rating')->default(0.0);
+            $table->float('rating')->default(5.0);
             $table->timestamps();
 
             $table->foreign('influencer_id')->references('id')->on('influencers')->onDelete('cascade');

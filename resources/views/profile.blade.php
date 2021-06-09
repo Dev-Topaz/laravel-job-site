@@ -97,7 +97,7 @@
                       @endfor
                     </span>
                   @if ($accountInfo->reviews != 0)
-                    <span class="text-sm ml-1 text-gray-700" style="line-height: 20px;"><span>(</span>{{ $accountInfo->reviews != 0 }}<span>)</span></span>
+                    <span class="text-sm ml-1 text-gray-700 font-bold" style="line-height: 20px;"><span>(</span>{{ $accountInfo->reviews }}<span>)</span></span>
                   @endif
                   </div>
                   <p class="text-sm md:text-md text-gray-700 mt-1" style="font-weight: 400;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ $accountInfo->state.', '.$accountInfo->country }}</p>
