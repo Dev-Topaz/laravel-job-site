@@ -31,23 +31,22 @@
   </header>
 
 	<main class="w-full md:max-w-7xl mx-auto pb-20">
-		<!--@foreach ($portfolios as $portfolio)-->
-		<!--		<div class="w-11/12 mx-auto rounded-xl mt-3 pb-3" style="box-shadow: 0 0 10px 0 #999">-->
-		<!--			<img class="w-full rounded-t-xl" src="{{ url('/storage/profile-image/'.$portfolio->slide_img.'.jpg') }}" alt={{ $portfolio->slide_img }}>-->
-		<!--			<div class="w-full rounded-b-xl mt-3">-->
-		<!--				<p class="text-md md:text-lg font-bold pl-3">There are many variations of passages</p>-->
-		<!--				<div class="mt-2 w-11/12 mx-auto">-->
-		<!--					<div class="float-left w-14 h-14">-->
-		<!--						<img class="w-full rounded-full" src="{{ url('/storage/profile-image/'.$accountInfo->avatar.'.jpg') }}" alt={{ $accountInfo->avatar }}>-->
-		<!--					</div>-->
-		<!--					<div class="float-left h-14 py-1 pl-3">-->
-		<!--						<p class="text-sm:md:text-md leading-6 font-bold">{{ $accountInfo->name }}</p>-->
-		<!--						<p class="text-xs:md:text-sm leading-6">{{ '@'.$accountInfo->username }}</p>-->
-		<!--					</div>-->
-		<!--					<div class="clearfix"></div>-->
-		<!--				</div>-->
-		<!--			</div>-->
-		<!--		</div>-->
-		<!--@endforeach-->
+		@foreach ($newsFeeds as $newsFeed)
+				<div class="w-11/12 mx-auto rounded-xl mt-3 pb-3" style="box-shadow: 0 0 10px 0 #999">
+					<img class="w-full rounded-t-xl" src="{{ url('/storage/news-image/'.$newsFeed->back_img.'.jpg') }}" alt={{ $newsFeed->back_img }}>
+					<div class="w-full rounded-b-xl mt-3">
+						<p class="text-md md:text-lg font-bold pl-3">{{ $newsFeed->project_title }}</p>
+						<div class="mt-2 w-11/12 mx-auto">
+							<div class="float-left w-14 h-14">
+								<img class="w-full rounded-full" src="{{ url('/storage/news-image/'.$newsFeed->logo_img.'.jpg') }}" alt={{ $accountInfo->avatar }}>
+							</div>
+							<div class="float-left h-14 py-1 pl-3">
+								<p class="text-sm:md:text-md leading-6 font-bold">{{ $newsFeed->full_name }}</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+		@endforeach
 	</main>
 @endsection

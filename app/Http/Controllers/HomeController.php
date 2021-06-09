@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\NewsFeed;
 
 class HomeController extends Controller
 {
@@ -84,9 +85,12 @@ class HomeController extends Controller
             }
         }
 
+        $newsFeeds = NewsFeed::all()->get();
+
         $unread = $request->get('unread');
 
         return view('home', [
+            'newsFeeds' => $newsFeeds,
             'unread' => $unread,
             'portfolios' => $portfolios,
             'accountType' => $accountInfo[0]->accountType,
