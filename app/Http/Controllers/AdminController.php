@@ -79,11 +79,11 @@ class AdminController extends Controller
         ];
 
         $rule = [
-            'full_name' => ['required|string|max:255|regex:/(^([a-zA-Z ]+)?$)/'],
-            'title' => ['required|string|max:255|regex:/(^([a-zA-Z0-9 ]+)?$)/'],
-            'description' => ['required|string'],
-            'back_img' => ['required'],
-            'logo_img' => ['required']
+            'full_name' => 'required|string|max:255|regex:/(^([a-zA-Z ]+)?$)/',
+            'title' => 'required|string|max:255|regex:/(^([a-zA-Z0-9 ]+)?$)/',
+            'description' => 'required|string',
+            'back_img' => 'required',
+            'logo_img' => 'required'
         ];
 
         $validator = Validator::make($input, $rule, $message);

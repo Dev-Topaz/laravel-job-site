@@ -100,7 +100,7 @@
                     <span class="text-sm ml-1 text-gray-700 font-bold" style="line-height: 20px;"><span>(</span>{{ $accountInfo->reviews }}<span>)</span></span>
                   @endif
                   </div>
-                  <p class="text-sm md:text-md text-gray-700 mt-1" style="font-weight: 400;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ $accountInfo->state.', '.$accountInfo->country }}</p>
+                  <p class="text-sm md:text-md text-gray-700 mt-1" style="font-weight: 400;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ ucfirst($accountInfo->state).', '.ucfirst($accountInfo->country) }}</p>
                 </div>
                 <div class="relative float-right w-3/12 pr-2 pt-3" style="font-family: 'Poppins', sans-serif;">
                   @if(count($categories) > 0)

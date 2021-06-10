@@ -37,7 +37,11 @@
     						<p class="text-md md:text-lg font-bold pl-3">{{ $newsFeed->project_title }}</p>
     						<div class="mt-2 w-11/12 mx-auto">
     							<div class="float-left w-14 h-14">
-    								<img class="w-full rounded-full" src="{{ url('/storage/news-image/'.$newsFeed->logo_img.'.jpg') }}" alt={{ $accountInfo->avatar }}>
+                    <div class="rounded-full px-1 py-1" style="background: linear-gradient(to right, #15ecc2, #1278d3)">
+                      <div class="rounded-full px-0.5 py-0.5 bg-white">
+        								<img class="w-full rounded-full" src="{{ url('/storage/news-image/'.$newsFeed->logo_img.'.jpg') }}" alt={{ $accountInfo->avatar }}>
+                      </div>
+                    </div>
     							</div>
     							<div class="float-left h-14 py-1 pl-3">
     								<p class="text-sm:md:text-md leading-6 font-bold">{{ $newsFeed->full_name }}</p>

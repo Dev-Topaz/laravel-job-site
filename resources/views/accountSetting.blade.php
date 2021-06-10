@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+    input, select {
+        border: 1px solid lightgray;
+    }
+</style>
 <div id="deleteConfirm" class="h-screen w-screen bg-black bg-opacity-70 fixed top-0 z-50 hidden">
     <div class="w-11/12 bg-white absolute rounded-xl" style="top:50%; margin-top:-6rem; left:50%; margin-left:-45.83333%; border-top:3px solid red" id="modalBody">
       <div class="w-10/12 mx-auto h-26 mt-4">
@@ -99,7 +104,6 @@
                 </div>
             </form>
         </div>
-
     </div>
     <div class="w-full bg-red-100 text-center mt-5 py-2">
       <a onclick="$('div#deleteConfirm').fadeIn(200);" class="text-red-700" style="cursor: pointer;">Delete Account</a>
