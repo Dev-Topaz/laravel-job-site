@@ -5,6 +5,9 @@
     pointer-events: none;
     background: gray !important;
   }
+  input, select {
+    border: 1px solid lightgray;
+  }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <main>

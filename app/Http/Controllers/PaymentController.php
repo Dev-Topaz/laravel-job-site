@@ -400,6 +400,13 @@ class PaymentController extends Controller
     $wallet = Wallet::find($wallet_id);
     $price = $requestInfo->amount;
     $currency = $requestInfo->unit;
+
+    if(strpos($price, '-') !== false) {
+      return response()->json([
+        'data' => 'set correct price',
+      ]);
+    }
+
     $check = true;
     switch ($currency) {
       case 'usd':
