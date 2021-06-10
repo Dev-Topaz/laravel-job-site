@@ -129,19 +129,19 @@
                 </div>
                 <div class="w-full" id="budgetColumn">
                   <label for="price" class="block text-sm font-medium text-gray-500">Budget</label>
-                  <div class="mt-1 relative rounded-md shadow-sm" id="budget">
+                  <div class="mt-1 relative rounded-md shadow-sm flex" id="budget">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     </div>
-                    <select onchange="onClickCustom()" name="price" id="price" class="block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md @error('price') is-invalid @enderror" placeholder="0.00" style="height: 38px" value="{{ old('price') }}">
+                    <select onchange="onClickCustom()" name="price" id="price" class="block w-full pl-3 pr-12 sm:text-sm border-gray-300 rounded-md @error('price') is-invalid @enderror" placeholder="0.00" style="height: 38px; -webkit-appearance: menulist" value="{{ old('price') }}">
                       <option value="10-30">10-30</option>
                       <option value="30-50">30-250</option>
                       <option value="250-750">250-750</option>
                       <option value="750-1500">750-1500</option>
                       <option id="custom" value="custom">Customise</option>
                     </select>
-                    <div class="absolute inset-y-0 right-0 flex items-center">
+                    <div class="flex items-center">
                       <label for="currency" class="sr-only">Currency</label>
-                      <select id="currency" name="currency" class="h-full py-0 pl-2 pr-7 border-transparent text-black sm:text-sm rounded-r-md bg-gray-100" style="height: 34px; margin-right:2px;">
+                      <select id="currency" name="currency" class="h-full py-0 pl-2 pr-7 border-transparent text-black sm:text-sm rounded-r-md bg-gray-100" style="height: 34px; margin-right:2px;-webkit-appearance: menulist">
                         <option value="gbp">GBP</option>
                         <option value="usd">USD</option>
                         <option value="aed">AED</option>

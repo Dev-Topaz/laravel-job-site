@@ -134,7 +134,7 @@
                             </ul>
                         </div>
                         <div class="col-span-1">
-                            <p class="text-sm md:text-lg">Would hire again?</p>
+                            <p class="text-sm md:text-lg">Would collaborate with again?</p>
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="would_hire_again" class="rating" value=0>

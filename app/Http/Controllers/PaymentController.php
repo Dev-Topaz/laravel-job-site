@@ -894,10 +894,21 @@ class PaymentController extends Controller
     $accountInfo = $user->getAccountInfoByUserID(Auth::user()->id);
     $currency = $accountInfo[0]->currency;
     $countries = Countries::all();
+    $currencies = [];
+    foreach($countries as $country)
+      array_push($currencies, $country->currency);
+    sort($currencies);
+    $cu = [$currencies[0]];
+    for($i=1; $i<count($currencies); $i ++)
+      if($currencies[$i] != $currencies[$i-1])
+        array_push($cu, $currencies[$i]);
+
+    foreach($countries as $cou)
 
     return view('wallet', [
       'page' => 5,
       'countries' => $countries,
+      'currencies' => $cu,
       'currency' => $currency,
       'unread' => $request->get('unread'),
       'wallet' => $wallet,

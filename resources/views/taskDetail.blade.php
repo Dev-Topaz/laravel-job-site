@@ -22,7 +22,7 @@
         <div class="text-center">
           <div class="w-1/3 px-1 py-1 mx-auto rounded-full my-3" style="background: linear-gradient(to right, #15ecc2, #1278d3)">
             <div class="w-full bg-white rounded-full" style="padding: 2px;">
-              <img class="w-full mx-auto rounded-full" src="{{ url('/storage/profile-image/'.$accountInfo->avatar.'.jpg') }}" alt={{$accountInfo->avatar}}>              
+              <img class="w-full mx-auto rounded-full" src="{{ url('/storage/profile-image/'.$accountInfo->avatar.'.jpg') }}" alt={{$accountInfo->avatar}}>
             </div>
           </div>
           <div class="mt-3 mb-4">
@@ -37,7 +37,7 @@
         </div>
           @if ($requests->gift == 1)
             <div class="w-full">
-              <div class="w-8/12 mx-auto text-center rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999">
+              <div class="w-5/12 mx-auto text-center rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999">
                 @if ($requests->status < 3)
                   <p class="text-md md:text-lg font-bold">Gifted</p>
                   <p class="text-xs md:text-sm">in progress</p>

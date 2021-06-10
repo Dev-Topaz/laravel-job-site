@@ -74,7 +74,7 @@
             <div class="col-span-1">
               <label for="price" class="block text-xs md:text-sm font-medium text-gray-700 mt-4">Currency<sup style="color:red">*</sup>
               </label>
-              <select name='currency' id="currency" class="w-full rounded-lg text-xs md:text-sm bg-gray-200 text-gray-500 border-none">
+              <select name='currency' id="currency" class="w-full rounded-lg text-xs md:text-sm bg-gray-200 text-gray-500 border-none" style="-webkit-appearance: menulist">
                 <option value="usd">USD</option>
                 <option value="aed">AED</option>
                 <option value="aud">AUD</option>
@@ -137,11 +137,11 @@
               <p class="text-lg md:text-xl">BALANCE</p>
               <span class="text-2xl md:text-3xl font-bold my-3" id="balance">{{ number_format($wallet->usd_balance, 2) }}</span>
               <select id="balance_currency" class="text-2xl md:text-3xl font-bold my-3" style="background-color: transparent; border:none; outline:none" onchange="showBalance()">
-                @foreach($countries as $country)
-                  @if($country->currency == $currency)
-                    <option value="{{ strtolower($country->currency) }}" selected>{{ $country->currency }}</option>
+                @foreach($currencies as $cu)
+                  @if($cu == $currency)
+                    <option value="{{ strtolower($cu) }}" selected>{{ $cu }}</option>
                   @else
-                    <option value="{{ strtolower($country->currency) }}">{{ $country->currency }}</option>
+                    <option value="{{ strtolower($cu) }}">{{ $cu }}</option>
                   @endif
                 @endforeach
               </select>

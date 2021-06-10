@@ -113,7 +113,7 @@
         </div>
         <div class="row-span-1 w-full justify-between">
           <div class="float-left">
-            <p class="text-sm md:text-md">Would hire again?</p>
+            <p class="text-sm md:text-md">Would collaborate with again?</p>
           </div>
           <div class="stars float-right" id="Would">
             <a class="mx-1 star-1 text-gray-400"><i class="fas fa-star"></i></a>
