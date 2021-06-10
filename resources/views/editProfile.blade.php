@@ -2,6 +2,11 @@
 @section('content')
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
+    <style type="text/css">
+        input, select, textarea {
+            border: 1px solid lightgrey;
+        }
+    </style>
     <header class="bg-white">
         <div class="w-full md:max-w-7xl mx-auto py-1 px-3 sm:px-6 lg:px-8 bg-gray-800 h-10">
             <p class="italic text-lg md:text-xl text-white font-bold leading-8"
