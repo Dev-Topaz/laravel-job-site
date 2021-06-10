@@ -278,7 +278,8 @@
             }
             if (page == 5 && currency != '') {
               console.log(currency);
-              $("select#balance_currency").val(currency.toLowerCase()).trigger('change');
+              $("select#balance_currency").val(currency.toLowerCase());
+              showBalance();
             }
         });
         var channel = pusher.subscribe('fluenser-channel');
