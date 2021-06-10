@@ -4,7 +4,7 @@
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
     <style type="text/css">
         input, select, textarea {
-            border: 1px solid lightgrey;
+            border: 1px solid lightgrey !important;
         }
     </style>
     <header class="bg-white">
