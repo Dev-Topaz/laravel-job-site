@@ -341,6 +341,10 @@ if("newInboxChat"==data.trigger&&"{{Auth::user()->id}}"==data.inboxInfo.receive_
             }
         });
 
+window.addEventListener('onbeforeunload', function(e) {
+    arrive();
+}, false);
+
         function arrive(){var o="{{ url('/') }}/api/userLogOut?api_token=";o+=$("meta[name=api-token]").attr("content"),$.ajax({url:o,type:"GET",headers:{Accept:"application/json"},success:function(o){console.log(o)},error:function(o,t,n){console.log(o,t,n)}})}function logout(){var o="{{ url('/') }}/api/userLogOut?api_token=";o+=$("meta[name=api-token]").attr("content"),$.ajax({url:o,type:"GET",headers:{Accept:"application/json"},success:function(o){console.log(o)},error:function(o,t,n){console.log(o,t,n)}}),$("form#logout-form").submit()}
 
     </script>
