@@ -258,11 +258,8 @@ class AdminController extends Controller
         $reviewCount = 0;
         if(count($reviews) > 0) {
             $reviewCount = count($reviews);
-            foreach($reviews as $review){
-                echo $review->star;
-                echo ', ';
+            foreach($reviews as $review)
                 $totalRating += $review->star;
-            }
         }
 
         $influencer_id = Influencers::where('user_id', '=', $influencer)->first()->id;
@@ -273,9 +270,6 @@ class AdminController extends Controller
         if (
             $influencerInfo->save()
         ) {
-            echo $totalRating;
-            die;
-
             return redirect()->route('extras')->with('msg', "New review saved successfully!");
         }
         else
