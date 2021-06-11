@@ -3,29 +3,7 @@
   <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
   <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet"/>
   <style type="text/css">
-    input, select, textarea {
-      border: 1px solid lightgrey !important;
-    }
-
-    #social-media-links input[type=checkbox] {
-      display: none;
-    }
-
-    #social-media-links input[type=checkbox] + label {
-      background-image: url("{{ asset('img/checkbox_checked.png') }}");
-      background-size: cover;
-      height: 16px;
-      width: 16px;
-      margin: 0;
-    }
-
-    #social-media-links input[type=checkbox]:checked + label {
-      background-image: url("{{ asset('img/checkbox.png') }}");
-      background-size: cover;
-      height: 16px;
-      width: 16px;
-      margin: 0;
-    }
+    input,select,textarea{border:1px solid #d3d3d3!important}#social-media-links input[type=checkbox]{display:none}#social-media-links input[type=checkbox]+label{background-image:url("{{ asset('img/checkbox_checked.png') }}");background-size:cover;height:16px;width:16px;margin:0}#social-media-links input[type=checkbox]:checked+label{background-image:url("{{ asset('img/checkbox.png') }}");background-size:cover;height:16px;width:16px;margin:0}
   </style>
   <header class="bg-white">
     <div class="w-full md:max-w-7xl mx-auto py-1 px-3 sm:px-6 lg:px-8 bg-gray-800 h-10">

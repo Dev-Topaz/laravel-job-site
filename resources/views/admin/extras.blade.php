@@ -21,7 +21,7 @@
     </div>
     <div class="h-screen overflow-auto">
         <form action="{{ route('submitAdminReview') }}" method="get" id="submitForm">
-        <div>
+        <div class="pb-20">
             <div class="hidden md:block float-left md:w-3/4 lg:w-4/5 xl:w-5/6 pl-5 pt-4">
                 <h2 class="text-4xl font-semibold" style="color: #0bc2c8;">{{ __('Extras') }}</h2>
             </div>

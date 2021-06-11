@@ -251,17 +251,33 @@ class AdminController extends Controller
         $review->user_id = $influencer;
         $review->review = $input['review'];
         $review->star = $input['totalRating'];
+        $review->save();
+
+        $reviews = Review::where('user_id', '=', $influencer)->get();
+        $totalRating = 0;
+        $reviewCount = 0;
+        if(count($reviews) > 0) {
+            $reviewCount = count($reviews);
+            foreach($reviews as $review){
+                echo $review->star;
+                echo ', ';
+                $totalRating += $review->star;
+            }
+        }
 
         $influencer_id = Influencers::where('user_id', '=', $influencer)->first()->id;
         $influencerInfo = InfluencerInfo::where('influencer_id', '=', $influencer_id)->first();
-        $influencerInfo->reviews += 1;
-        $influencerInfo->rating = ($influencerInfo->rating + $input['totalRating']) / $influencerInfo->reviews;
+        $influencerInfo->reviews = $reviewCount;
+        $influencerInfo->rating = $totalRating / $reviewCount;
 
         if (
-            $influencerInfo->save() &&
-            $review->save()
-        )
+            $influencerInfo->save()
+        ) {
+            echo $totalRating;
+            die;
+
             return redirect()->route('extras')->with('msg', "New review saved successfully!");
+        }
         else
             return redirect()->route('extras')->with('msg', "DB error, please try again");
     }
