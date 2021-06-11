@@ -111,20 +111,22 @@ class MessageController extends Controller
 
                 $temp = new RequestInfo();
                 $requestContent = $temp->getRequestInfoByID($requestInfo->id);
-                if($requestContent->status == 1) {
-                    $requestsInfo[$i]->requestContent = $requestContent;
-                    $requestsInfo[$i]->contactID = $contact_id;
+                if($requestContent != null) {
+                    if($requestContent->status == 1) {
+                        $requestsInfo[$i]->requestContent = $requestContent;
+                        $requestsInfo[$i]->contactID = $contact_id;
 
-                    $userRequest = UserRequest::where('request_id', '=', $requestInfo->id)
-                            ->where('user_id', '=', Auth::user()->id)
-                            ->get();
-                    if(count($userRequest) > 0)
-                        $requestsInfo[$i]->unread = true;
-                    else
-                        $requestsInfo[$i]->unread = false;
+                        $userRequest = UserRequest::where('request_id', '=', $requestInfo->id)
+                                ->where('user_id', '=', Auth::user()->id)
+                                ->get();
+                        if(count($userRequest) > 0)
+                            $requestsInfo[$i]->unread = true;
+                        else
+                            $requestsInfo[$i]->unread = false;
 
-                    array_push($requestsInfos, $requestsInfo[$i]);
-                    $i ++;
+                        array_push($requestsInfos, $requestsInfo[$i]);
+                        $i ++;
+                    }                    
                 }
             }
         }

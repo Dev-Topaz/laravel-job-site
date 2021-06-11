@@ -273,7 +273,7 @@
         @if(count($featuredInfluencers) > 0)
           <div style="width: 50%; visibility: hidden !important; padding:10px;">
             <div class="card invisible">
-              <img src="{{url('/storage/profile-image/'.$featuredInfluencers[0]->top_img.'.jpg')}}" alt="hidden_image"
+              <img src="{{url('/storage/profile-image/'.$featuredInfluencers[0]->user->profile->top_img.'.jpg')}}" alt="hidden_image"
                    style="width: 100%;" class="invisible">
               <p class="text-sm my-2">Location here.</p>
             </div>
@@ -281,17 +281,17 @@
         @endif
         <div id="featured_img" style="width: 200%;" class="px-1 py-1">
           @foreach ($featuredInfluencers as $influencer)
-            <a class="w-3/12 float-left px-2" href="{{ route('profile', ['username' => $influencer->username]) }}">
+            <a class="w-3/12 float-left px-2" href="{{ route('profile', ['username' => $influencer->user->username]) }}">
               <div class="rounded-2xl px-1 py-1 " style="box-shadow: 0 0 3px 3px #ccc">
                 <div class="relative">
-                  <img src="{{url('/storage/profile-image/'.$influencer->top_img.'.jpg')}}" alt="hidden_image"
+                  <img src="{{url('/storage/profile-image/'.$influencer->user->profile->top_img.'.jpg')}}" alt="hidden_image"
                        style="width: 100%;" class="rounded-t-2xl">
                   <div class="bg-black bg-opacity-80 absolute bottom-0 w-full px-1 py-1">
-                    <p class="mb-0 text-xs text-white font-semibold">{{ strtoupper($influencer->name) }}</p>
-                    <p class="mb-0" style="font-size: 9px; color:#0ac2c8">{{ '@'.$influencer->username }}
+                    <p class="mb-0 text-xs text-white font-semibold">{{ strtoupper($influencer->user->name) }}</p>
+                    <p class="mb-0" style="font-size: 9px; color:#0ac2c8">{{ '@'.$influencer->user->username }}
                       <span class="float-right">
                                                     @for ($i = 0; $i < 5; $i++)
-                          @if ($i < $influencer->rating)
+                          @if ($i < $influencer->user->influencersInfo->rating)
                             <i class="fas fa-star" style="color: #ffcd33"></i>
                           @else
                             <i class="fas fa-star" style="color:white"></i>
@@ -302,7 +302,7 @@
                   </div>
                 </div>
                 <p class="text-sm my-2 text-center"><i class="fas fa-map-marker-alt" style="color: #0ac2c8"></i><span
-                    style="font-size: 11px"> {{ $influencer->state.', '.$influencer->country }}</span></p>
+                    style="font-size: 11px"> {{ $influencer->user->influencersInfo->state.', '.$influencer->user->influencersInfo->country }}</span></p>
               </div>
             </a>
           @endforeach

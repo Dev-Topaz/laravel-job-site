@@ -33,6 +33,8 @@ class RequestInfo extends Model
         $requestInfo = DB::table('request_info')
                 ->where('request_id', '=', $request_id)
                 ->get();
+        if(count($requestInfo) == 0)
+            return null;
         $images = DB::table('request_images')
                 ->where('request_id', $request_id)
                 ->orderBy('created_at')

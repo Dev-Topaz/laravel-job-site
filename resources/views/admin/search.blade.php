@@ -194,7 +194,20 @@
                     <div class="w-full grid grid-cols-2 lg:grid-cols-4 gap-3 px-3">
                         @foreach($users as $user)
                             <div class="col-span-1">
-                                <div class="w-full rounded-lg shadow-md px-2 py-3 bg-white">
+                                <div class="relative w-full rounded-lg shadow-md px-2 py-3 bg-white">
+                                    <div id="user-edit" class="absolute top-3 right-3">
+                                        <a onclick="$(this).parent().siblings('div#edit-modal').toggle();">
+                                            <li class="fas fa-pencil-alt text-sm"></li>                                            
+                                        </a>
+                                    </div>
+                                    <div id="edit-modal" class="absolute top-10 right-5 hidden bg-white rounded-md px-2 py-2 text-xs">
+                                        <ul>
+                                            <li><a onclick="verifyUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Verify</a></li>
+                                            <li><a onclick="featureUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Feature</a></li>
+                                            <li><a onclick="blockUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Block</a></li>
+                                            <li><a onclick="deleteUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Delete</a></li>
+                                        </ul>
+                                    </div>
                                     <div class="w-1/2 mx-auto rounded-full px-1 py-1"
                                          style="background: linear-gradient(to right, #47afbe, #4addc4)">
                                         <div class="w-full px-0.5 py-0.5 rounded-full bg-white">
@@ -277,16 +290,16 @@
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
                                                     @switch($user->profile->tiktok_follows)
                                                         @case(11)
-                                                        1k-10k
+                                                            1k-10k
                                                         @break
                                                         @case(60)
-                                                        10k-50k
+                                                            10k-50k
                                                         @break
                                                         @case(600)
-                                                        100k-500k
+                                                            100k-500k
                                                         @break
                                                         @default
-                                                        unknown
+                                                            unknown
                                                         @break
                                                     @endswitch
                                                 </p>
@@ -306,7 +319,96 @@
             <div class="clearfix"></div>
         </div>
     </div>
+    <div id="verifyModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('verifyUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="userId" id="userId">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to verify this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" style="button" onclick="$('#verifyModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="featureModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('featureUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="userId" id="userId">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to feature this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" style="button" onclick="$('#featureModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="deleteModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('deleteUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="userId" id="userId">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to delete this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" style="button" onclick="$('#deleteModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="blockModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('blockUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="userId" id="userId">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to block this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" style="button" onclick="$('#blockModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="fixed top-5 right-5 px-5 py-3 bg-red-600 text-white rounded-lg shadow-md hidden" id="alert">
+        <h3></h3>
+    </div>
     <script>
+        function showAlert(text) {
+            console.log(text);
+            $("div#alert h3").text(text);
+            $("div#alert").fadeIn(200).delay(3000).fadeOut(200);
+        }
+
         $("a.searchInfluencer").on('click', function () {
             $("a.searchBrand").removeClass('active');
             $(this).remove('active').addClass('active');
@@ -317,5 +419,29 @@
             $(this).removeClass('active').addClass('active');
             $("input.accountType").val('brand');
         })
+
+        function verifyUser(userId) {
+            $("#verifyModal input#userId").val(userId);
+            $("#verifyModal").fadeIn(200);
+        }
+
+        function featureUser(userId) {
+            $("#featureModal input#userId").val(userId);
+            $("#featureModal").fadeIn(200);
+        }
+
+        function deleteUser(userId) {
+            $("#deleteModal input#userId").val(userId);
+            $("#deleteModal").fadeIn(200);
+        }
+
+        function blockUser(userId) {
+            $("#blockModal input#userId").val(userId);
+            $("#blockModal").fadeIn(200);
+        }
     </script>
+
+    @if(session('msg'))
+        <script>showAlert("{{ session('msg') }}");</script>
+    @endif
 @endsection

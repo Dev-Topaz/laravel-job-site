@@ -55,6 +55,10 @@ class User extends Authenticatable
         echo $this->get();
     }
 
+    public function featured() {
+        return $this->hasOne(Featured::class, 'user_id', 'id');
+    }
+
     public function getAccountInfoByUserID($user_id) {
         $accountInfo = DB::table('users')
                     ->where('users.id', $user_id)

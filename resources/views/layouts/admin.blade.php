@@ -47,7 +47,7 @@
     <a class="absolute bottom-1 left-2 text-2xl" onclick="$('div#mobile-menu').toggle()">
       <i class="fas fa-bars"></i>
     </a>
-    <div id="mobile-menu" class="absolute top-10 w-full text-white text-md hidden"
+    <div id="mobile-menu" class="absolute top-10 w-full text-white text-md hidden z-50"
          style="background-color: #1f2f46">
       <ul class="list-none">
         <li>

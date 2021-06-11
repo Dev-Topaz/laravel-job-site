@@ -17,6 +17,7 @@ use App\Models\Requests;
 use App\Models\RequestInfo;
 use App\Models\Referral;
 use App\Models\Profile;
+use App\Models\Featured;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -239,13 +240,14 @@ class AdminController extends Controller
         else
             return redirect()->route('extras')->with('msg', "Brand not exists.");
 
-        $request = new Request;
-        $request->send_id = $brand;
-        $request->receive_id = $influencer;
-        $request->created_at = $input['date'];
+        $requests = new Requests;
+        $requests->send_id = $brand;
+        $requests->receive_id = $influencer;
+        $requests->created_at = $input['date'];
+        $requests->save();
 
         $review = new Review;
-        $review->request_id = $request->id;
+        $review->request_id = $requests->id;
         $review->user_id = $influencer;
         $review->review = $input['review'];
         $review->star = $input['totalRating'];
@@ -257,11 +259,54 @@ class AdminController extends Controller
 
         if (
             $influencerInfo->save() &&
-            $request->save() &&
             $review->save()
         )
             return redirect()->route('extras')->with('msg', "New review saved successfully!");
         else
             return redirect()->route('extras')->with('msg', "DB error, please try again");
+    }
+
+    function verifyUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['userId'];
+
+        return redirect()->route('users')->with('msg', 'now in DEV');
+    }
+
+    function featureUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['userId'];
+
+        $featured = Featured::where('user_id', '=', $user_id)->first();
+        if($featured) {
+            return redirect()->route('users')->with('msg', 'Already Featured');
+        }
+
+        $featured = new Featured;
+        $featured->user_id = $user_id;
+        
+        if($featured->save()) {
+            return redirect()->route('users')->with('msg', 'Successful');
+        } else {
+            return redirect()->route('users')->with('msg', 'DB error');
+        }
+    }
+
+    function deleteUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['userId'];
+        
+        $user = User::find($user_id);
+        if($user->delete()) {
+            return redirect()->route('users')->with('msg', 'Successful');
+        } else {
+            return redirect()->route('users')->with('msg', 'DB error');
+        }
+    }
+
+    function blockUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['userId'];
+        
     }
 }

@@ -20,7 +20,7 @@
            style="font-family: 'Josefin Sans', sans-serif;">{{ __('News Feed') }}</p>
     </div>
     <div class="h-screen overflow-auto">
-        <form action="{{ route("submitAdminReview") }}" method="get" id="submitForm">
+        <form action="{{ route('submitAdminReview') }}" method="get" id="submitForm">
         <div>
             <div class="hidden md:block float-left md:w-3/4 lg:w-4/5 xl:w-5/6 pl-5 pt-4">
                 <h2 class="text-4xl font-semibold" style="color: #0bc2c8;">{{ __('Extras') }}</h2>
@@ -66,16 +66,16 @@
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="quality" class="rating" value=0>
-                            <ul id="quality" class="text-sm md:text-md lg:text-lg">
-                                <li class="float-left"><a class="block w-8 md:w-12" id="1"><i
+                            <ul id="quality" class="flex justify-content-between text-sm md:text-md lg:text-lg">
+                                <li class="float-left"><a class="block w-6 md:w-12" id="1"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="2"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="2"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="3"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="3"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="4"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="4"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="5"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="5"><i
                                             class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
@@ -84,16 +84,16 @@
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="communication" class="rating" value=0>
-                            <ul id="communication" class="text-sm md:text-md lg:text-lg">
-                                <li class="float-left"><a class="block w-8 md:w-12" id="1"><i
+                            <ul id="communication" class="flex justify-content-between text-sm md:text-md lg:text-lg">
+                                <li class="float-left"><a class="block w-6 md:w-12" id="1"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="2"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="2"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="3"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="3"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="4"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="4"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="5"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="5"><i
                                             class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
@@ -102,16 +102,16 @@
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="expertise" class="rating" value=0>
-                            <ul id="expertise" class="text-sm md:text-md lg:text-lg">
-                                <li class="float-left"><a class="block w-8 md:w-12" id="1"><i
+                            <ul id="expertise" class="flex justify-content-between text-sm md:text-md lg:text-lg">
+                                <li class="float-left"><a class="block w-6 md:w-12" id="1"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="2"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="2"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="3"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="3"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="4"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="4"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="5"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="5"><i
                                             class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
@@ -120,16 +120,16 @@
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="professionalism" class="rating" value=0>
-                            <ul id="professionalism" class="text-sm md:text-md lg:text-lg">
-                                <li class="float-left"><a class="block w-8 md:w-12" id="1"><i
+                            <ul id="professionalism" class="flex justify-content-between text-sm md:text-md lg:text-lg">
+                                <li class="float-left"><a class="block w-6 md:w-12" id="1"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="2"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="2"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="3"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="3"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="4"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="4"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="5"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="5"><i
                                             class="fas fa-star"></i></a></li>
                             </ul>
                         </div>
@@ -138,16 +138,16 @@
                         </div>
                         <div class="col-span-1">
                             <input type="hidden" id="would_hire_again" class="rating" value=0>
-                            <ul id="would_hire_again" class="text-sm md:text-md lg:text-lg">
-                                <li class="float-left"><a class="block w-8 md:w-12" id="1"><i
+                            <ul id="would_hire_again" class="flex justify-content-between text-sm md:text-md lg:text-lg">
+                                <li class="float-left"><a class="block w-6 md:w-12" id="1"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="2"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="2"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="3"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="3"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="4"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="4"><i
                                             class="fas fa-star"></i></a></li>
-                                <li class="float-left"><a class="block w-8 md:w-12" id="5"><i
+                                <li class="float-left"><a class="block w-6 md:w-12" id="5"><i
                                             class="fas fa-star"></i></a></li>
                             </ul>
                         </div>

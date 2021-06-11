@@ -99,5 +99,13 @@ Route::middleware(['auth', 'checkAdmin'])->group(function () {
         Route::get('/extras', [App\Http\Controllers\AdminController::class, 'extras'])->name('extras');
 
         Route::get('/submitAdminReview', [App\Http\Controllers\AdminController::class, 'submitAdminReview'])->name('submitAdminReview');
+
+        Route::get('/verifyUser', [App\Http\Controllers\AdminController::class, 'verifyUser'])->name('verifyUser');
+
+        Route::get('/featureUser', [App\Http\Controllers\AdminController::class, 'featureUser'])->name('featureUser');
+
+        Route::get('/deleteUser', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
+
+        Route::get('/blockUser', [App\Http\Controllers\AdminController::class, 'blockUser'])->name('blockUser');
     });
 });
