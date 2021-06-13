@@ -37,8 +37,8 @@
         <div class="w-11/12 mx-auto rounded-xl mt-3 relative" style="box-shadow: 0 0 10px 0 #999">
           <a href="{{ route("blog", ['news_id' => $newsFeed->id]) }}">
             <div>
-              <div class=" inline-block rounded-t-xl" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0,0,0,0))">
-                <img class="w-full rounded-t-xl relative" style="z-index: -1" src="{{ url('/storage/news-image/'.$newsFeed->back_img.'.jpg') }}"
+              <div class=" inline-block rounded-t-xl" style="background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0,0,0,0)); width: 100%;">
+                <img class="w-full rounded-t-xl relative" style="z-index: -1; width: 100%;" src="{{ url('/storage/news-image/'.$newsFeed->back_img.'.jpg') }}"
                      alt={{ $newsFeed->back_img }} >
               </div>
               <div class="w-full rounded-b-xl h-14 flex align-items-center">
