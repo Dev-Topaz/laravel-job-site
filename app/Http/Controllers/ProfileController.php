@@ -377,7 +377,7 @@ class ProfileController extends Controller
 
     // website
     if ($input['website-link'] != '')
-      $profile[0]->website = $input['website'];
+      $profile[0]->website = $input['website-link'];
 
     if (isset($input['website_check']) && $input['website_check']) {
       $checked = $input['website_check'];
