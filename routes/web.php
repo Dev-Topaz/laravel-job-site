@@ -72,6 +72,8 @@ Route::middleware(['auth', 'CheckUnread'])->group(function () {
     Route::post('updateProfile/{user_id}', [App\Http\Controllers\ProfileController::class, 'updateProfile'])->name('updateProfile');
 
     Route::get('leaveReview/{request_id}', [App\Http\Controllers\CollaborateController::class, 'leaveReview'])->name('leaveReview');
+
+    Route::get('blog/{news_id}', [App\Http\Controllers\HomeController::class, 'blog'])->name('blog');
 });
 
 Route::middleware(['CheckUnread'])->group(function () {

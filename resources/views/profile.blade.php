@@ -120,17 +120,27 @@
                 <div class="clearfix"></div>
               </div>
             </div>
-            <div id="social_links" style="position: absolute; bottom: 43px;right: 10%; width:150px;">
-              <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
+            <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 43px;right: 10%; width:150px;">
+              @if($profile->instagram_check == 1)
+              <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
               </div>
-              <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
+              @endif
+              @if($profile->youtube_check == 1)
+              <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
               </div>
-              <div class="w-10 h-10 rounded-full float-right mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
+              @endif
+              @if($profile->tiktok_check == 1)
+              <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
               </div>
-              <div class="clearfix"></div>
+              @endif
+              @if($profile->website_check == 1)
+              <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
+                <a href="{{ 'https://'.$profile->website }}" class="text-center leading-10"><i class="fas fa-globe" style="color: #333;"></i></a>
+              </div>
+              @endif
             </div>
           </div>
           <div class="h-8 rounded-t-2xl bg-white w-full absolute -bottom-1"></div>

@@ -140,8 +140,7 @@
                       <option id="custom" value="custom">Customise</option>
                     </select>
                     <div class="flex items-center">
-                      <label for="currency" class="sr-only">Currency</label>
-                      <select id="currency" name="currency" class="h-full py-0 pl-2 pr-7 border-transparent text-black sm:text-sm rounded-r-md bg-gray-100" style="height: 34px; margin-right:2px;-webkit-appearance: menulist">
+                      <select id="currency" name="currency" class="h-full py-0 pl-2 pr-7 border-transparent text-black sm:text-sm rounded-r-md bg-gray-100" style="-webkit-appearance: menulist">
                         <option value="gbp">GBP</option>
                         <option value="usd">USD</option>
                         <option value="aed">AED</option>

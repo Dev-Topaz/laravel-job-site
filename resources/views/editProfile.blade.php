@@ -14,7 +14,7 @@
   <main>
     <input type="file" name="image" id="hidden-input" hidden>
     <div class="w-full md:max-w-7xl mx-auto mb-12">
-      <form method="post" action={{route('updateProfile', ['user_id' => $accountInfo->id])}}>
+      <form method="post" action="{{route('updateProfile', ['user_id' => $accountInfo->id])}}">
       {{ csrf_field() }}
       <!-- Replace with your content -->
         <div class="bg-white">
@@ -156,8 +156,7 @@
                           style="width: 65px; box-shadow:0 0 5px #333">
                         <a
                           class="block absolute w-5 h-5 text-center rounded-full bg-red-600 text-white text-xs -top-2 -right-2"
-                          onclick="removeImage($(this), 'partnership')"><span
-                            class="leading-5">X</span></a>
+                          onclick="removeImage($(this), 'partnership')"><span class="leading-5">X</span></a>
                       </div>
                     @endforeach
                   </div>
@@ -206,12 +205,12 @@
                 </div>
               </div>
 
-              <label for="categories" class="text-gray-500 text-sm md:text-md">Add your social media
-                links</label>
+              <label for="categories" class="text-gray-500 text-sm md:text-md">Add 3 social media
+                links to your profile</label>
               <div id="social-media-links"
                    class="bg-gray-100 block w-full border-none rounded text-gray-500 font-semibold shadow-inner px-2 py-1 relative pt-3 mb-3">
                 <div class="w-11/12 flex align-items-center mb-3 mx-auto">
-                  <input type="checkbox" name="instagram_check[]" id="instagram_check" value="checked" @if($profile->instagram_check == 1) checked @endif />
+                  <input type="checkbox" name="instagram_check[]" id="instagram_check" value="checked" onclick="checkSocialLink($(this))" @if($profile->instagram_check == 1) checked @endif />
                   <label for="instagram_check"></label>
                   <button type="button"
                           class="block py-1 w-10/12 mx-auto rounded-xl text-sm bg-white"
@@ -245,7 +244,7 @@
                   </div>
                 </div>
                 <div class="w-11/12 flex align-items-center mb-3 mx-auto">
-                  <input type="checkbox" name="youtube_check[]" id="youtube_check" value="checked" @if($profile->youtube_check == 1) checked @endif>
+                  <input type="checkbox" name="youtube_check[]" id="youtube_check" value="checked" onclick="checkSocialLink($(this))" @if($profile->youtube_check == 1) checked @endif>
                   <label for="youtube_check"></label>
                   <button type="button"
                           class="block py-1 w-10/12 mx-auto rounded-xl text-sm bg-white"
@@ -276,7 +275,7 @@
                   </div>
                 </div>
                 <div class="w-11/12 flex align-items-center mb-3 mx-auto">
-                  <input type="checkbox" name="tiktok_check[]" id="tiktok_check" value="checked" @if($profile->tiktok_check == 1) checked @endif>
+                  <input type="checkbox" name="tiktok_check[]" id="tiktok_check" value="checked" onclick="checkSocialLink($(this))" @if($profile->tiktok_check == 1) checked @endif>
                   <label for="tiktok_check"></label>
                   <button type="button"
                           class="block py-1 w-10/12 rounded-xl text-sm bg-white mx-auto"
@@ -307,12 +306,12 @@
                   </div>
                 </div>
                 <div class="w-11/12 flex align-items-center mb-3 mx-auto">
-                  <input type="checkbox" name="website_check[]" id="website_check" value="checked" @if($profile->website_check == 1) checked @endif>
+                  <input type="checkbox" name="website_check[]" id="website_check" value="checked" onclick="checkSocialLink($(this))" @if($profile->website_check == 1) checked @endif>
                   <label for="website_check"></label>
                   <button type="button"
                           class="block py-1 mx-auto rounded-xl text-sm bg-white w-10/12"
                           style="box-shadow: 0 0 8px 0 #999" onclick="$('div#website_block').toggle();">
-                    <i class="fas fa-share-alt"></i>&nbsp;&nbsp;&nbsp;Add Website
+                    <i class="fas fa-globe"></i>&nbsp;&nbsp;&nbsp;Add Website
                   </button>
                 </div>
                 <div class="w-11/12 mx-auto grid grid-cols-12 mb-2 hidden" id="website_block">
@@ -369,6 +368,18 @@
   <script>
     let cropper, filesValue, width, height, position, $modal = $("#modal"),
       image = document.getElementById("image"), api_token = $("meta[name=api-token]").attr("content");
+
+    function checkSocialLink(elem) {
+      let count = 0;
+      for(let i = 0 ; i < 4 ; i ++) {
+        if($("#social-media-links input:checkbox").eq(i).is(':checked'))
+          count ++;
+      }
+      console.log(count);
+      if(count > 3) {
+        $(elem).prop('checked', false);
+      }
+    }
 
     function categoryToggle() {
       const e = $("div#categories_box");

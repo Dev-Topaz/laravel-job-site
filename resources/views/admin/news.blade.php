@@ -188,8 +188,8 @@
             let ratio;
             switch (position) {
                 case 'back_img':
-                    ratio = 0.8;
-                    width = 528;
+                    ratio = 1.0;
+                    width = 660;
                     height = 660;
                     break;
                 case 'logo_img':
