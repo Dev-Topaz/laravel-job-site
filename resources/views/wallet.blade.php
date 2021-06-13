@@ -136,7 +136,7 @@
             <div class="balance text-white">
               <p class="text-lg md:text-xl">BALANCE</p>
               <span class="text-2xl md:text-3xl font-bold my-3" id="balance">{{ number_format($wallet->usd_balance, 2) }}</span>
-              <select id="balance_currency" class="text-2xl md:text-3xl font-bold my-3" style="background-color: transparent; border:none; outline:none" onchange="showBalance()">
+              <select id="balance_currency" class="text-2xl md:text-3xl font-bold my-3" style="background-color: transparent; border:none; outline:none; -webkit-appearance: menulist;" onchange="showBalance()">
                 @foreach($currencies as $cu)
                   @if($cu == $currency)
                     <option value="{{ strtolower($cu) }}" selected>{{ $cu }}</option>
