@@ -220,8 +220,10 @@
                                 <i class="fas fa-user-edit inline-block w-7"></i>
                                 Edit Profile</a></li>
                                 <li class="my-4"><a href={{ route('balance') }}>
+                                @if(Auth::user()->accountType == 'influencer')
                                 <i class="fas fa-wallet inline-block w-7"></i>
                                 Balance</a></li>
+                                @endif
                                 <li class="my-4"><a href={{ route('referrals') }}>
                                 <i class="fas fa-sync-alt inline-block w-7"></i>
                                 Referrals</a></li>

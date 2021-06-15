@@ -14,12 +14,13 @@ class CreateWalletUserTable extends Migration
     public function up()
     {
         Schema::create('wallet_user', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('wallet_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-//            $table->foreign('wallet_id')->references('id')->on('wallet')->onDelete('cascade');
+            $table->foreign('wallet_id')->references('id')->on('wallet')->onDelete('cascade');
         });
     }
 

@@ -51,12 +51,13 @@ class HomeController extends Controller
     }
     $url = '';
 
-    if (!isset($account_info->details_submitted) || !$account_info->details_submitted) {
-      if ($accountInfo[0]->accountType == 'influencer')
-        $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
-    } else {
-      $url = '';
-    }
+        if (isset($account_info->details_submitted) && $account_info->details_submitted
+            && isset($account_info->charges_enabled) && $account_info->charges_enabled) {
+          $url = '';
+        } else {
+          if ($accountInfo[0]->accountType == 'influencer')
+            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
+        }
 
     if (isset($_GET['code'])) {
       $authorization_code = $_GET['code'];
@@ -76,11 +77,14 @@ class HomeController extends Controller
           []
         );
 
-        if (!isset($account_info->details_submitted) || !$account_info->details_submitted) {
+//        echo $account_info;
+
+        if (isset($account_info->details_submitted) && $account_info->details_submitted
+            && isset($account_info->charges_enabled) && $account_info->charges_enabled) {
+          $url = '';
+        } else {
           if ($accountInfo[0]->accountType == 'influencer')
             $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
-        } else {
-          $url = '';
         }
       }
     }

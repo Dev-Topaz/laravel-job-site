@@ -89,6 +89,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $status = session('status', 'default');
+        $accountType = (isset($data['accountType'])) ? $data['accountType'] : 'influencer';
 
         $token = Str::random(60);
         $user = new User;
@@ -99,9 +100,9 @@ class RegisterController extends Controller
         $user->username = $data['username'];
         $user->loggedIn = true;
         $user->stripe_id = '';
+        $user->accountType = $accountType;
         $user->save();
 
-        $accountType = (isset($data['accountType'])) ? $data['accountType'] : 'influencer';
 
         if($user->id != NULL) {
             if($accountType == 'influencer'){

@@ -126,7 +126,7 @@ class MessageController extends Controller
 
                         array_push($requestsInfos, $requestsInfo[$i]);
                         $i ++;
-                    }                    
+                    }
                 }
             }
         }
@@ -170,7 +170,7 @@ class MessageController extends Controller
 
     public function acceptRequest($request_id) {
         $requestInfo = RequestInfo::where('request_id', '=', $request_id)->first();
-        $requestInfo->status = 2;
+        $requestInfo->status = 3;
         $requestInfo->save();
 
         $request = Requests::find($request_id);
@@ -196,19 +196,30 @@ class MessageController extends Controller
         $pusher->trigger('fluenser-channel', 'fluenser-event', [
             'trigger' => 'request_status',
             'request_id' => $request_id,
-            'status' => 2,
+            'status' => 3,
         ]);
 
 
         $requestChats = RequestChat::where('request_id', '=', $request_id)->get();
-        foreach ($requestChats as $requestChat) {
-          $chatInfo = new InboxInfo;
-          $chatInfo->inbox_id = $chat->id;
-          $chatInfo->send_id = $requestChat->send_id;
-          $chatInfo->receive_id = $requestChat->receive_id;
-          $chatInfo->content = $requestChat->content;
-          $chatInfo->upload = $requestChat->upload;
-          $chatInfo->save();
+        if(count($requestChats) > 0) {
+          foreach ($requestChats as $requestChat) {
+            $chatInfo = new InboxInfo;
+            $chatInfo->inbox_id = $chat->id;
+            $chatInfo->send_id = $requestChat->send_id;
+            $chatInfo->receive_id = $requestChat->receive_id;
+            $chatInfo->content = $requestChat->content;
+            $chatInfo->upload = $requestChat->upload;
+            $chatInfo->save();
+            $requestChat->delete();
+          }
+        } else {
+            $chatInfo = new InboxInfo;
+            $chatInfo->inbox_id = $chat->id;
+            $chatInfo->send_id = Auth::user()->id;
+            $chatInfo->receive_id = $user_id;
+            $chatInfo->content = "Hello";
+            $chatInfo->upload = "";
+            $chatInfo->save();
         }
 
         $userTask = new UserTask;

@@ -74,4 +74,6 @@ Route::middleware('auth:api')->group(function() {
     Route::get('/userLogOut', [App\Http\Controllers\HomeController::class, 'logOut'])->name('userLogOut');
 
     Route::get('/influencerRequest/{user_id}',[App\Http\Controllers\CollaborateController::class, 'influencerRequest'])->name('influencerRequest');
+
+    Route::get('/makePayment/{paymentMethod}/{request_id}',[App\Http\Controllers\PaymentController::class, 'makePayment'])->name('makePayment');
 });

@@ -25,12 +25,12 @@ class CheckUnread
             $unread = UserInbox::where('user_id', '=', Auth::user()->id)
                     ->get();
             $unread->inbox = count($unread);
-            
+
             $unreadrequests = UserRequest::where('user_id', '=', Auth::user()->id)
                     ->get();
             $unread->requests = count($unreadrequests);
-    
-            $unreadTask = UserTask::where('user_id', '=', Auth::user()->id)                ->get();
+
+            $unreadTask = UserTask::where('user_id', '=', Auth::user()->id)->get();
             $unread->task = count($unreadTask);
             $user = User::find(Auth::user()->id);
             $user->loggedIn = true;

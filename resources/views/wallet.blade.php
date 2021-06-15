@@ -149,16 +149,16 @@
           </div>
         </div>
       </div>
-      <div class="w-full bg-gray-200 px-2 py-3 mt-3">
-        <div class="flex justify-center md:justify-around">
-          <div class="mx-2">
-            <button class="w-full rounded-lg py-2 px-3 text-white" style="background: #119dab;font-size:12px;" onclick="$('div#depositModal').show();">Deposit Funds</button>
-          </div>
-          <div class="mx-2">
-            <button class="w-full rounded-lg text-white px-3 py-2 bg-gray-500" style="font-size: 12px;" onclick="$('div#withdrawModal').show();">Withdraw Money</button>
-          </div>
-        </div>
-      </div>
+{{--      <div class="w-full bg-gray-200 px-2 py-3 mt-3">--}}
+{{--        <div class="flex justify-center md:justify-around">--}}
+{{--          <div class="mx-2">--}}
+{{--            <button class="w-full rounded-lg py-2 px-3 text-white" style="background: #119dab;font-size:12px;" onclick="$('div#depositModal').show();">Deposit Funds</button>--}}
+{{--          </div>--}}
+{{--          <div class="mx-2">--}}
+{{--            <button class="w-full rounded-lg text-white px-3 py-2 bg-gray-500" style="font-size: 12px;" onclick="$('div#withdrawModal').show();">Withdraw Money</button>--}}
+{{--          </div>--}}
+{{--        </div>--}}
+{{--      </div>--}}
       <div class="w-11/12 mx-auto">
         <div class="h-10 mt-3">
           <p class="text-md md:text-lg leading-10 font-bold">Transactions</p>

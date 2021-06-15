@@ -58,9 +58,9 @@ class ProfileController extends Controller
       }
       if ($interval->format('%h') == 0 && $interval->format('%m') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") > 0) {
         if ($interval->format('%m') == '1')
-          $accountInfo[0]->interval = $interval->format('%sa second');
+          $accountInfo[0]->interval = $interval->format('%s second');
         else
-          $accountInfo[0]->interval = $interval->format('%sa seconds');
+          $accountInfo[0]->interval = $interval->format('%s seconds');
       }
     } else {
       $accountInfo[0]->interval = '0';

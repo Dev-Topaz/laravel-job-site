@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
                         ->default(null);
             $table->tinyInteger('loggedIn');
             $table->string('stripe_id');
+            $table->string('accountType');
             $table->rememberToken();
             $table->timestamps();
 

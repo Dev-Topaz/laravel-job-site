@@ -14,6 +14,7 @@ class CreateWalletActionTable extends Migration
     public function up()
     {
         Schema::create('wallet_action', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('wallet_id');
             $table->float('amount')->default(0.0);
             $table->string('action')->default('');
