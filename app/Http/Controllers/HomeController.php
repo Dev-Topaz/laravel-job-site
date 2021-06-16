@@ -33,10 +33,6 @@ class HomeController extends Controller
     $account = new User();
     $accountInfo = $account->getAccountInfoByUserID(Auth::user()->id);
 
-    $user = User::find(Auth::user()->id);
-    $user->loggedIn = 1;
-    $user->save();
-
     $profile = new Profile();
     $portfolios = $profile->getPortfolios(Auth::user()->id);
 
@@ -47,7 +43,7 @@ class HomeController extends Controller
         Auth::user()->stripe_id,
         []
       );
-      // echo $account_info;
+//       echo $account_info;
     }
     $url = '';
 

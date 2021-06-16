@@ -98,7 +98,7 @@ class RegisterController extends Controller
         $user->password = Hash::make($data['password']);
         $user->api_token = hash('sha256', $token);
         $user->username = $data['username'];
-        $user->loggedIn = true;
+        $user->loggedIn = 1;
         $user->stripe_id = '';
         $user->accountType = $accountType;
         $user->save();

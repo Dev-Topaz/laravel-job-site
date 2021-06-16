@@ -10,7 +10,7 @@
       <driver-properties>
         <property name="serverTimezone" value="UTC" />
       </driver-properties>
-      <time-zone>UTC</time-zone>
+      <time-zone>GMT</time-zone>
     </data-source>
   </component>
 </project>

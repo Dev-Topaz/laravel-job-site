@@ -32,9 +32,6 @@ class CheckUnread
 
             $unreadTask = UserTask::where('user_id', '=', Auth::user()->id)->get();
             $unread->task = count($unreadTask);
-            $user = User::find(Auth::user()->id);
-            $user->loggedIn = true;
-            $user->save();
         } else {
             $unread = UserInbox::where('user_id', '=', 1)
                     ->get();

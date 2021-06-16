@@ -135,7 +135,7 @@ class PaymentController extends Controller
     $wallet_action->wallet_id = $wallet_id;
     $wallet_action->amount = $requestInfo->amount * 85 / 100;
     $wallet_action->currency = $requestInfo->unit;
-    $wallet_action->action = "Get paid";
+    $wallet_action->action = "get paid";
     $wallet_action->aaa = "+";
     $wallet_action->status = 1;
     $wallet_action->trans_id = $transfer_influencer->balance_transaction;
@@ -231,7 +231,7 @@ class PaymentController extends Controller
       $wallet_action->wallet_id = $wallet_id;
       $wallet_action->amount = $requestInfo->amount * 10 / 100;
       $wallet_action->currency = $requestInfo->unit;
-      $wallet_action->action = "Get paid";
+      $wallet_action->action = "get referral paid";
       $wallet_action->aaa = "+";
       $wallet_action->status = 1;
       $wallet_action->trans_id = $transfer_referral->balance_transaction;

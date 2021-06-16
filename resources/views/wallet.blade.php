@@ -170,7 +170,7 @@
                       <div class="flex justify-between">
                         <div>
                           <p class="text-xs md:text-sm leading-6">{{ date_create($action->created_at)->format('Y-m-d h:i') }}</p>
-                          @if($action->status == 0 && $action->action == 'get payed' || $action->$action == 'withdraw funds')
+                          @if($action->status == 0 && $action->action == 'get paid' || $action->action == 'withdraw funds' || $action->action=='get referral paid')
                             <p class="text-sm md:text-md leading-8">Pending</p>
                           @endif
                         </div>
