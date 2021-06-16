@@ -4,9 +4,9 @@
   use Stripe\Stripe;
 
   $servername = env('DB_HOST', 'localhost');
-  $username = env('DB_USERNAME', 'root');
-  $password = env('DB_PASSWORD', '');
-  $dbname = env('DB_DATABASE', 'fluensen');
+  $username = env('DB_USERNAME', 'flueqdmm_fluenser');
+  $password = env('DB_PASSWORD', 'o5BY9zL%V3ER');
+  $dbname = env('DB_DATABASE', 'flueqdmm_fluenser');
 
   // Create connection
   $conn = new mysqli($servername, $username, $password, $dbname);
