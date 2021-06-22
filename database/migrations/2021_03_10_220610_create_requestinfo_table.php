@@ -17,7 +17,7 @@ class CreateRequestinfoTable extends Migration
             $table->id();
             $table->unsignedBigInteger('request_id');
             $table->string('title')->default('');
-            $table->text('content')->default('Please complete your profile.');
+            $table->text('content');
             $table->string('amount')->default(0);
             $table->string('unit')->default('usd');
             $table->tinyInteger('gift')->default(0);
