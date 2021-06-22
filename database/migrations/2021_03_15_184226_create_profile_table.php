@@ -16,7 +16,7 @@ class CreateProfileTable extends Migration
         Schema::create('profile', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->text('introduction')->default('Hi.');
+            $table->text('introduction');
             $table->string('top_img')->default('default_top');
             $table->string('round_img')->default('default_round');
             $table->string('instagram')->default('none');

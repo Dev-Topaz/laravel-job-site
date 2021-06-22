@@ -17,7 +17,7 @@ class CreateReviewsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('request_id');
-            $table->text('review')->default('');
+            $table->text('review');
             $table->float('star')->default('0.0');
             $table->timestamps();
 

@@ -18,7 +18,7 @@ class CreateInboxInfoTable extends Migration
             $table->unsignedBigInteger('inbox_id');
             $table->unsignedBigInteger('send_id');
             $table->unsignedBigInteger('receive_id');
-            $table->text('content')->default('');
+            $table->text('content');
             $table->string('upload')->default('none');
             $table->timestamps();
 
