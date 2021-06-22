@@ -18,7 +18,7 @@ class CreateRequestChatTable extends Migration
             $table->unsignedBigInteger('request_id');
             $table->unsignedBigInteger('send_id');
             $table->unsignedBigInteger('receive_id');
-            $table->text('content')->default('');
+            $table->text('content');
             $table->string('upload')->default('none');
             $table->timestamps();
 
