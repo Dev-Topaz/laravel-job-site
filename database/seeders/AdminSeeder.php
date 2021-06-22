@@ -25,6 +25,7 @@ class AdminSeeder extends Seeder
             'username' => 'admin',
             'loggedIn' => true,
             'stripe_id' => '',
+            'accountType' => '',
         ]);
     }
 }
