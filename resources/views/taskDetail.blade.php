@@ -38,35 +38,14 @@
           @if ($requests->gift == 1)
             <div class="w-full">
               <div class="w-5/12 mx-auto text-center rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999">
-                @if ($requests->status < 3)
-                  <p class="text-md md:text-lg font-bold">Gifted</p>
-                  <p class="text-xs md:text-sm">in progress</p>
-                @else
                 <p class="text-md md:text-lg font-bold">Gifted</p>
                 <p class="text-xs md:text-sm">Completed</p>
-              @endif
               </div>
             </div>
           @else
-            <div class="w-10/12 mx-auto grid grid-cols-2 gap-x-5">
-              <div class="col-span-1">
-                <div class="w-10/12 float-right rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999">
-                  <p class="text-sm md:text-lg font-bold">
-                    @if ($requests->status < 3)
-                      <span id="progress">{{ number_format($requests->amount, 2)}}</span>
-                    @else
-                      <span id="progress">0.00</span>
-                    @endif
-                    {{' ' . strtoupper($requests->unit) }}</p>
-                    <div>
-                      <span class="text-xs md:text-sm">in progress</span>
-                      <a class="float-right" style="font-size: 10px;padding-top:6px;"><li class="fas fa-chevron-right text-blue-500"></li></a>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-              </div>
-              <div class="col-span-1">
-                <div class="w-10/12 float-left rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999" >
+            <div class="w-10/12 mx-auto">
+              <div class="w-full">
+                <div class="w-5/12 mx-auto text-center rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999" >
                   <p class="text-sm md:text-lg font-bold">
                     @if ($requests->status < 3)
                       <span id="released">0.00</span>
