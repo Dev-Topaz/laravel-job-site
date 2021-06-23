@@ -431,16 +431,16 @@
       var e;
       switch (position) {
         case"top":
-          e = .8, width = 528, height = 660;
+          e = .8, width = 1056, height = 1320;
           break;
         case"round":
-          e = 1, width = 160, height = 160;
+          e = 1, width = 400, height = 400;
           break;
         case"portfolio":
           e = .8, width = 528, height = 660;
           break;
         case"partnership":
-          e = 2, width = 528, height = 264
+          e = 2, width = 528, height = 264;
       }
       cropper = new Cropper(image, {aspectRatio: e, viewMode: 3, preview: ".preview"})
     }).on("hidden.bs.modal", function () {
