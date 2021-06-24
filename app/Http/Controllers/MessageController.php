@@ -141,9 +141,6 @@ class MessageController extends Controller
         $requests = Requests::find($request_id);
         $requests->delete();
 
-        $requestInfo = RequestInfo::where('request_id', '=', $request_id)->first();
-        $requestInfo->delete();
-
         return response()->json([
             'data' => 'success'
         ]);
