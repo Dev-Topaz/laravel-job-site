@@ -3,9 +3,9 @@
 require '../vendor/autoload.php';
 
 $servername = env('DB_HOST', 'localhost');
-$username = env('DB_USERNAME', 'flueqdmm_fluenser');
-$password = env('DB_PASSWORD', 'o5BY9zL%V3ER');
-$dbname = env('DB_DATABASE', 'flueqdmm_fluenser');
+$username = env('DB_USERNAME', 'kei');
+$password = env('DB_PASSWORD', '123456789');
+$dbname = env('DB_DATABASE', 'fluensen');
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
