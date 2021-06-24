@@ -39,7 +39,11 @@
             <div class="w-full">
               <div class="w-5/12 mx-auto text-center rounded-xl px-3 py-3" style="box-shadow: 0 0 10px 0 #999">
                 <p class="text-md md:text-lg font-bold">Gifted</p>
+                @if($requests->status < 4)
+                <p class="text-xs md:text-sm">Accepted</p>
+                @else
                 <p class="text-xs md:text-sm">Completed</p>
+                @endif
               </div>
             </div>
           @else

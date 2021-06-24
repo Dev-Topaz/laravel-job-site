@@ -59,6 +59,8 @@ Route::middleware('auth:api')->group(function() {
 
     Route::get('/rejectRequest/{request_id}', [App\Http\Controllers\MessageController::class, 'rejectRequest']);
 
+    Route::get('/deleteRequest/{request_id}', [App\Http\Controllers\MessageController::class, 'deleteRequest']);
+
     Route::get('/completeRequest/{request_id}', [App\Http\Controllers\MessageController::class, 'completeRequest']);
 
     Route::get('/deleteInbox/{inbox_id}', [App\Http\Controllers\MessageController::class, 'deleteInbox']);

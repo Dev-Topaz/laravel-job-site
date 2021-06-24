@@ -149,6 +149,15 @@ class MessageController extends Controller
         ]);
     }
 
+    public function deleteRequest($request_id) {
+        $requests = Requests::find($request_id);
+        $requests->delete();
+
+        return response()->json([
+            'data' => 'success'
+        ]);
+    }
+
     public function completeRequest($request_id) {
         $requestInfo = RequestInfo::where('request_id', '=', $request_id)->get();
         $requestInfo = $requestInfo[0];

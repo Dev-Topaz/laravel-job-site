@@ -85,7 +85,7 @@
                 @endif
               </div>
               <div class="relative ml-2">
-                <div class="float-left w-9/12" style="font-family: 'Poppins', sans-serif;">
+                <div class="float-left w-8/12" style="font-family: 'Poppins', sans-serif;">
                   <p class="text-md md:text-lg font-bold" style="font-weight:600">{{ $accountInfo->name }}</p>
                   <p class="text-xs md:text-sm text-gray-700" style="font-weight: 400;">{{ '@'.$accountInfo->username }}</p>
                   <div class="text-sm md:text-md">
@@ -105,15 +105,15 @@
                   </div>
                   <p class="text-sm md:text-md text-gray-700 mt-1" style="font-weight: 400;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ ucfirst($accountInfo->state).', '.ucfirst($accountInfo->country) }}</p>
                 </div>
-                <div class="relative float-right w-3/12 pr-2 pt-3" style="font-family: 'Poppins', sans-serif;">
+                <div class="relative float-right w-4/12 pr-2 pt-3" style="font-family: 'Poppins', sans-serif;">
                   @if(count($categories) > 0)
                   <div class="mb-2 px-1 py-1 rounded-lg w-full" style="background:#{{ $categories[0]->back_color }}">
-                    <p class="text-sm text-center" style="color: {{ __('#') . $categories[0]->text_color }}; font-weight:500;">{{ $categories[0]->category_name }}</p>
+                    <p class="text-sm text-center" style="color: {{ __('#') . $categories[0]->text_color }}; font:11px monospace;">{{ $categories[0]->category_name }}</p>
                   </div>
                 @endif
                     @if(count($categories) > 1)
                   <div class="mb-2 px-1 py-1 rounded-lg w-full" style="background: {{__('#') . $categories[1]->back_color }}">
-                    <p class="text-sm text-center" style="color: {{__('#') . $categories[1]->text_color }}; font-weight:500;">{{ $categories[1]->category_name }}</p>
+                    <p class="text-sm text-center" style="color: {{__('#') . $categories[1]->text_color }}; font:11px monospace;">{{ $categories[1]->category_name }}</p>
                   </div>
                   @endif
                 </div>
@@ -121,7 +121,7 @@
               </div>
             </div>
             <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 43px;right: 10%; width:150px;">
-              @if($profile->instagram_check == 1)
+              @if($profile->tiktok_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
               </div>
@@ -131,7 +131,7 @@
                 <a href="{{ 'https://'.$profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
               </div>
               @endif
-              @if($profile->tiktok_check == 1)
+              @if($profile->instagram_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
               </div>
@@ -229,7 +229,7 @@
             <div id="reviews" class="w-11/12 mx-auto my-8">
               @if (count($reviews) == 0)
                 <p class="text-center text-md md:text-lg">
-                  No review.
+                  No reviews yet.
                 </p>
               @else
                 @foreach ($reviews as $review)

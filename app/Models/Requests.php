@@ -44,7 +44,7 @@ class Requests extends Model
             if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') > 0)
                 $task->interval = $interval->format('%i minutes');
 
-            if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") > 0)
+            if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") >= 0)
                 $task->interval = $interval->format('%s seconds');
 
             $userTask = UserTask::where('task_id', '=', $task->id)
@@ -82,7 +82,7 @@ class Requests extends Model
             if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') > 0)
                 $task->interval = $interval->format('%i minutes');
 
-            if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") > 0)
+            if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") >= 0)
                 $task->interval = $interval->format('%s seconds');
 
             $userTask = UserTask::where('task_id', '=', $task->id)

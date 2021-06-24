@@ -121,7 +121,7 @@
                     <div class="text-xs md:text-sm flex justify-center">
                       @if (count($account->category) > 0)
                           @foreach($account->category as $category)
-                              <div class="w-1/3 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
+                              <div class="px-1 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
                                 <p>{{ $category->category_name }}</p>
                               </div>
                             @endforeach
@@ -142,8 +142,23 @@
                               @case(60)
                                   10k-50k
                                   @break
+                              @case(150)
+                                  50k-100k
+                                  @break
                               @case(600)
                                   100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
                                   @break
                               @default
                                   unknown
@@ -154,15 +169,30 @@
                       <div class="w-1/3 text-center" style="border-right: 1px solid lightgray; border-left:1px solid lightgray">
                         <p><i class="fab fa-youtube text-red-400"></i></p>
                         <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                          @switch($account->profile->youtube_follows)
+                          @switch($account->profile->instagram_follows)
                               @case(11)
                                   1k-10k
                                   @break
                               @case(60)
                                   10k-50k
                                   @break
+                              @case(150)
+                                  50k-100k
+                                  @break
                               @case(600)
                                   100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
                                   @break
                               @default
                                   unknown
@@ -173,15 +203,30 @@
                       <div class="w-1/3 text-center">
                         <p><i class="fab fa-tiktok text-gray-700"></i></p>
                         <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                          @switch($account->profile->tiktok_follows)
+                          @switch($account->profile->instagram_follows)
                               @case(11)
                                   1k-10k
                                   @break
                               @case(60)
                                   10k-50k
                                   @break
+                              @case(150)
+                                  50k-100k
+                                  @break
                               @case(600)
                                   100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
                                   @break
                               @default
                                   unknown
@@ -236,7 +281,7 @@
                   <div class="text-xs md:text-sm flex justify-center">
                     @if (count($account->category) > 0)
                         @foreach($account->category as $category)
-                            <div class="w-1/3 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
+                            <div class="px-1 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
                               <p>{{ $category->category_name }}</p>
                             </div>
                           @endforeach
@@ -250,58 +295,103 @@
                     <div class="w-1/3 text-center">
                       <p><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->profile->instagram_follows)
-                            @case(11)
-                                1k-10k
-                                @break
-                            @case(60)
-                                10k-50k
-                                @break
-                            @case(600)
-                                100k-500k
-                                @break
-                            @default
-                                unknown
-                                @break
-                        @endswitch
+                          @switch($account->profile->instagram_follows)
+                              @case(11)
+                                  1k-10k
+                                  @break
+                              @case(60)
+                                  10k-50k
+                                  @break
+                              @case(150)
+                                  50k-100k
+                                  @break
+                              @case(600)
+                                  100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
+                                  @break
+                              @default
+                                  unknown
+                                  @break
+                          @endswitch
                       </p>
                     </div>
                     <div class="w-1/3 text-center" style="border-right: 1px solid lightgray; border-left:1px solid lightgray">
                       <p><i class="fab fa-youtube text-red-400"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->profile->youtube_follows)
-                            @case(11)
-                                1k-10k
-                                @break
-                            @case(60)
-                                10k-50k
-                                @break
-                            @case(600)
-                                100k-500k
-                                @break
-                            @default
-                                unknown
-                                @break
-                        @endswitch
+                          @switch($account->profile->instagram_follows)
+                              @case(11)
+                                  1k-10k
+                                  @break
+                              @case(60)
+                                  10k-50k
+                                  @break
+                              @case(150)
+                                  50k-100k
+                                  @break
+                              @case(600)
+                                  100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
+                                  @break
+                              @default
+                                  unknown
+                                  @break
+                          @endswitch
                       </p>
                     </div>
                     <div class="w-1/3 text-center">
                       <p><i class="fab fa-tiktok text-gray-700"></i></p>
                       <p class="text-xs md:text-sm mt-1 text-gray-700 tracking-tighter">
-                        @switch($account->profile->tiktok_follows)
-                            @case(11)
-                                1k-10k
-                                @break
-                            @case(60)
-                                10k-50k
-                                @break
-                            @case(600)
-                                100k-500k
-                                @break
-                            @default
-                                unknown
-                                @break
-                        @endswitch
+                          @switch($account->profile->instagram_follows)
+                              @case(11)
+                                  1k-10k
+                                  @break
+                              @case(60)
+                                  10k-50k
+                                  @break
+                              @case(150)
+                                  50k-100k
+                                  @break
+                              @case(600)
+                                  100k-500k
+                                  @break
+                              @case(501)
+                                  500k-1m
+                                  @break
+                              @case(6)
+                                  1m-5k
+                                  @break
+                              @case(15)
+                                  5m-10m
+                                  @break
+                              @case(10)
+                                  10m+
+                                  @break
+                              @default
+                                  unknown
+                                  @break
+                          @endswitch
                       </p>
                     </div>
                   </div>

@@ -23,7 +23,7 @@
               <a class="block absolute top-4 right-2 rounded-full h-8 w-8 bg-white text-center"
                  style="box-shadow: 0 0 15px #999" onclick="editImg('top')">
                 <p class="leading-8 text-lg" style="color: #4addc4">
-                  <i class="fas fa-pencil-alt"></i>
+                  <i class="fas fa-camera"></i>
                 </p>
               </a>
               <img src="{{ url('/') . '/storage/profile-image/'.$profile->top_img.'.jpg'}}"
@@ -234,11 +234,26 @@
                       <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->instagram_follows == 60) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
                         10k-50k
+                      </option>
+                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                        50k-100k
                       </option>
                       <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
+                      </option>
+                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                        500k-1m
+                      </option>
+                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                        1m-5m
+                      </option>
+                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                        5m-10m
+                      </option>
+                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                        10m+
                       </option>
                     </select>
                   </div>
@@ -262,14 +277,29 @@
                             class="text-gray-700 rounded-full w-full my-2 border-none text-sm md:text-md py-1 px-2"
                             style="box-shadow: 0 0 8px 0 #999">
                       <option>How many followers?</option>
-                      <option value="11" @if($profile->youtube_follows == 11) selected @endif>
+                      <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->youtube_follows == 60) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
                         10k-50k
                       </option>
-                      <option value="600" @if($profile->youtube_follows == 600) selected @endif>
+                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                        50k-100k
+                      </option>
+                      <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
+                      </option>
+                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                        500k-1m
+                      </option>
+                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                        1m-5m
+                      </option>
+                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                        5m-10m
+                      </option>
+                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                        10m+
                       </option>
                     </select>
                   </div>
@@ -293,14 +323,29 @@
                             class="text-gray-700 rounded-full w-full my-2 border-none text-sm md:text-md py-1 px-2"
                             style="box-shadow: 0 0 8px 0 #999">
                       <option>How many followers?</option>
-                      <option value="11" @if($profile->tiktok_follows == 11) selected @endif>
+                      <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->tiktok_follows == 60) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
                         10k-50k
                       </option>
-                      <option value="600" @if($profile->tiktok_follows == 600) selected @endif>
+                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                        50k-100k
+                      </option>
+                      <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
+                      </option>
+                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                        500k-1m
+                      </option>
+                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                        1m-5m
+                      </option>
+                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                        5m-10m
+                      </option>
+                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                        10m+
                       </option>
                     </select>
                   </div>

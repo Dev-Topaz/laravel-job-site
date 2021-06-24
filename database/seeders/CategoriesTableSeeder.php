@@ -59,5 +59,10 @@ class CategoriesTableSeeder extends Seeder
         'text_color' => '6aef24',
         'back_color' => '6aef2433',
       ]);
+      Category::create([
+        'category_name' => 'Home',
+        'text_color' => '3dfe24',
+        'back_color' => '3dfe2433',
+      ]);
     }
 }

@@ -234,31 +234,31 @@ class CollaborateController extends Controller
             // array_push($requestImages, $request_img);
         }
 
-        // $account = new User();
-        // $accountInfo = $account->getAccountInfoByUserID($input['brand_id']);
+        $account = new User();
+        $accountInfo = $account->getAccountInfoByUserID($input['brand_id']);
 
-        // $request->accountInfo = $accountInfo;
-        // $request->requestContent = $request_info;
-        // $request->requestContent->images = $requestImages;
+        $request->accountInfo = $accountInfo;
+        $request->requestContent = $request_info;
+        $request->requestContent->images = $requestImages;
 
-        // $pusher = new Pusher\Pusher('da7cd3b12e18c9e2e461', '566ee6622fcab95b7709', '1168466', array('cluster' => 'eu'));
+        $pusher = new Pusher\Pusher('da7cd3b12e18c9e2e461', '566ee6622fcab95b7709', '1168466', array('cluster' => 'eu'));
 
-        // $pusher->trigger('fluenser-channel', 'fluenser-event', [
-        //     'influencer_id' => $input['influencer_id'],
-        //     'request' => $request,
-        //     'trigger' => 'request',
-        // ]);
+        $pusher->trigger('fluenser-channel', 'fluenser-event', [
+            'influencer_id' => $input['influencer_id'],
+            'request' => $request,
+            'trigger' => 'request',
+        ]);
 
-        // $receiveUserRequest = new UserRequest;
-        // $receiveUserRequest->request_id = $request->id;
-        // $receiveUserRequest->user_id = $request->receive_id;
-        // $receiveUserRequest->isRead = 0;
-        // $receiveUserRequest->save();
+        $receiveUserRequest = new UserRequest;
+        $receiveUserRequest->request_id = $request->id;
+        $receiveUserRequest->user_id = $request->receive_id;
+        $receiveUserRequest->isRead = 0;
+        $receiveUserRequest->save();
 
-        // $pusher->trigger('fluenser-channel', 'fluenser-event', [
-        //     'trigger' => 'newRequest',
-        //     'request' => $request,
-        // ]);
+        $pusher->trigger('fluenser-channel', 'fluenser-event', [
+            'trigger' => 'newRequest',
+            'request' => $request,
+        ]);
 
         return redirect('request');
     }

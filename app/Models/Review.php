@@ -56,7 +56,7 @@ class Review extends Model
             }
             if($interval->format('%h') == 0 && $interval->format('%d') == 0 && $interval->format('%i') == 0 && $interval->format("%sa") > 0)
             {
-                ($interval->format("$sa") == 1) ?
+                ($interval->format("%sa") == 1) ?
                     $review->interval = $interval->format('%s second ago')
                 :
                     $review->interval = $interval->formant("%s seconds ago");
