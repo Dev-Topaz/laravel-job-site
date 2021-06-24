@@ -224,6 +224,7 @@ class CollaborateController extends Controller
         $profile = Profile::where('user_id', '=', Auth::user()->id)->first();
         $portfolios = Portfolio::where('profile_id', '=', $profile->id)->orderBy('created_at')->limit(3)->get();
 
+        $requestImages = [];
         foreach ($portfolios as $portfolio) {
             $filename = time() . "_" . uniqid();
             Storage::copy('profile-image/' . $portfolio->slide_img . '.jpg', 'task-image/' . $filename . '.jpg');
@@ -231,11 +232,11 @@ class CollaborateController extends Controller
             $request_img->request_id = $request->id;
             $request_img->image = $filename;
             $request_img->save();
-            // array_push($requestImages, $request_img);
+            array_push($requestImages, $request_img);
         }
 
         $account = new User();
-        $accountInfo = $account->getAccountInfoByUserID($input['brand_id']);
+        $accountInfo = $account->getAccountInfoByUserID($user_id);
 
         $request->accountInfo = $accountInfo;
         $request->requestContent = $request_info;
@@ -244,7 +245,7 @@ class CollaborateController extends Controller
         $pusher = new Pusher\Pusher('da7cd3b12e18c9e2e461', '566ee6622fcab95b7709', '1168466', array('cluster' => 'eu'));
 
         $pusher->trigger('fluenser-channel', 'fluenser-event', [
-            'influencer_id' => $input['influencer_id'],
+            'influencer_id' => Auth::user()->id,
             'request' => $request,
             'trigger' => 'request',
         ]);
