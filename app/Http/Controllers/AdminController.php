@@ -287,8 +287,8 @@ class AdminController extends Controller
         $input = $request->all();
         $user_id = $input['userId'];
 
-        $featured = Featured::where('user_id', '=', $user_id)->first();
-        if($featured) {
+        $featured = Featured::where('user_id', '=', $user_id)->get();
+        if(count($featured) > 0) {
             return redirect()->route('users')->with('msg', 'Already Featured');
         }
 
@@ -318,5 +318,14 @@ class AdminController extends Controller
         $input = $request->all();
         $user_id = $input['userId'];
         
+    }
+
+    function loginAsUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['login_user_id'];
+        $user = User::find($user_id);
+        Auth::login($user);
+        $url = env('APP_URL') . '/home';
+        return redirect(url($url));
     }
 }

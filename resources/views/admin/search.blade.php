@@ -307,7 +307,7 @@
                                         </div>
                                     </div>
                                     <div class="w-full mt-8">
-                                        <button class="block px-5 py-2 rounded-md text-white mx-auto text-xs md:text-md" style="background: #0bc2c8">Log in</button>
+                                            <a class="block px-5 py-2 text-center text-decoration-none rounded-md text-white mx-auto text-xs md:text-md" onclick="loginAsUser({{ $user->user->id }})" style="background: #0bc2c8">Log in</a>
                                     </div>
                                 </div>
                             </div>
@@ -399,6 +399,26 @@
             </div>
         </div>
     </div>
+    <div id="loginModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('loginAsUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="login_user_id" id="login_user_id">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to login as this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" type="button" onclick="$('#loginModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="fixed top-5 right-5 px-5 py-3 bg-red-600 text-white rounded-lg shadow-md hidden" id="alert">
         <h3></h3>
     </div>
@@ -438,6 +458,11 @@
         function blockUser(userId) {
             $("#blockModal input#userId").val(userId);
             $("#blockModal").fadeIn(200);
+        }
+
+        function loginAsUser(userId) {
+            $("#loginModal input#login_user_id").val(userId);
+            $("#loginModal").fadeIn(200);
         }
     </script>
 
