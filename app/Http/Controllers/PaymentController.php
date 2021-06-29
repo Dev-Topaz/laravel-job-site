@@ -142,9 +142,10 @@ class PaymentController extends Controller
     $wallet_action->save();
 
     //    check referral
-    $referral = Referral::where('user_id', $influencer->id)->get();
+    $referral = Referral::where('referral_user_id', $influencer->id)->get();
+    echo $referral;
     if(count($referral) > 0) {
-      $referral_user_id = $referral->referral_user_id;
+      $referral_user_id = $referral[0]->user_id;
       $referral_user = User::find($referral_user_id);
       $transfer_referral = \Stripe\Transfer::create([
         'amount' => $requestInfo->amount * 10,
@@ -236,6 +237,8 @@ class PaymentController extends Controller
       $wallet_action->status = 1;
       $wallet_action->trans_id = $transfer_referral->balance_transaction;
       $wallet_action->save();
+    } else {
+
     }
 
     $requestInfo->status = 3;
