@@ -90,7 +90,7 @@
           @else
           @foreach ($accounts as $account)
           <div>
-              <a href={{ route('profile', ['username' => $account->user->username]) }}>
+              <a href="{{ route('profile', ['username' => $account->user->username]) }}">
                 <div class="w-full float-left rounded-lg py-2" style="box-shadow: 0 0 3px 3px #eee">
                   <div class="w-11/12 mx-auto relative">
                     <div class="w-8/12 mx-auto rounded-full px-1 py-1 mt-3" style="background: linear-gradient(to right, #06ebbe, #1277d3)" >
@@ -100,7 +100,9 @@
                   <div class="mt-2">
                       <h3 class="text-center text-sm md:text-md font-bold text-gray-700">{{ $account->user->name }}</h3>
                       <p class="text-center text-xs md:text-sm text-gray-500">{{ '@'.$account->user->username }}</p>
-                      <p class="text-center text-xs md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->accountInfo->state.', '.$account->accountInfo->country }}</p>
+                      <div style="height: 30px; display: flex; align-items: center; justify-content: center;">
+                        <p class="text-center text-xs md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ ucwords($account->accountInfo->state).', '.ucwords($account->accountInfo->country) }}</p>                      
+                      </div>
                   </div>
                   <div class="mt-1 w-full">
                     <div class="text-xs md:text-sm flex justify-center">
@@ -121,7 +123,7 @@
                     <div class="text-xs md:text-sm flex justify-center">
                       @if (count($account->category) > 0)
                           @foreach($account->category as $category)
-                              <div class="px-1 text-center py-1 rounded mx-1" style="background: {{ '#' . $category->back_color }};color:{{ '#' . $category->text_color}};">
+                              <div class="px-1 text-center py-1 rounded mx-1" style="background:{{ '#' . $category->back_color }}; color:{{ '#' . $category->text_color}};">
                                 <p>{{ $category->category_name }}</p>
                               </div>
                             @endforeach
@@ -260,7 +262,9 @@
                 <div class="mt-2">
                     <h3 class="text-center text-md md:text-lg font-bold text-gray-700">{{ $account->user->name }}</h3>
                     <p class="text-center text-sm md:text-sm text-gray-500">{{ '@'.$account->user->username }}</p>
-                    <p class="text-center text-sm md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ $account->accountInfo->state.', '.$account->accountInfo->country }}</p>
+                    <div style="height: 30px; display: flex; align-items: center; justify-content: center;">
+                      <p class="text-center text-sm md:text-sm text-gray-700"><i class="fas fa-map-marker-alt" style="color: #119dab"></i> {{ ucwords($account->accountInfo->state).', '.ucwords($account->accountInfo->country) }}</p>
+                    </div>
                 </div>
                 <div class="mt-1 w-full">
                   <div class="text-xs md:text-sm flex justify-center">

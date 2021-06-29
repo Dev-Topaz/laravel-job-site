@@ -103,7 +103,7 @@
                     <span class="text-sm ml-1 text-gray-700 font-bold" style="line-height: 20px;"><span>(</span>{{ $accountInfo->reviews }}<span>)</span></span>
                   @endif
                   </div>
-                  <p class="text-sm md:text-md text-gray-700 mt-1" style="font-weight: 400;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ ucfirst($accountInfo->state).', '.ucfirst($accountInfo->country) }}</p>
+                  <p class="text-xs md:text-md text-gray-700 mt-1" style="font-weight: bold;width: 150%;"><i style="color: #119dab" class="fas fa-map-marker-alt"></i> {{ ucwords($accountInfo->state).', '.ucwords($accountInfo->country) }}</p>
                 </div>
                 <div class="relative float-right w-4/12 pr-2 pt-3" style="font-family: 'Poppins', sans-serif;">
                   @if(count($categories) > 0)
@@ -120,7 +120,7 @@
                 <div class="clearfix"></div>
               </div>
             </div>
-            <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 43px;right: 10%; width:150px;">
+            <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 40px;right: 10%; width:150px;">
               @if($profile->tiktok_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
                 <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>

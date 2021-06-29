@@ -18,7 +18,10 @@
             <button class="w-full h-full block mx-auto px-4 py-1 rounded-bl-lg text-gray-500  text-md md:text-lg bg-white" onclick="$('div#deleteConfirm').fadeOut(200)">Cancel</button>
           </div>
           <div class="col-span-1">
-            <a class="w-full h-full block mx-auto px-4 py-4 rounded-br-lg text-white font-bold text-md md:text-lg bg-red-400 text-center" onclick="{{route('deleteAccount')}}"><span style="padding-top:">Yes</span></a>
+            <form action="{{ route('deleteAccount') }}" method="get" class="h-full">
+                @csrf
+                <button class="w-full h-full block mx-auto px-4 py-1 rounded-br-lg text-white  text-md md:text-lg bg-red-400">Yes</button> 
+            </form>
           </div>
         </div>
       </div>
@@ -107,7 +110,6 @@
     </div>
     <div class="w-full bg-red-100 text-center mt-5 py-2">
       <a onclick="$('div#deleteConfirm').fadeIn(200);" class="text-red-700" style="cursor: pointer;">Delete Account</a>
-      {{-- <a href="{{route('deleteAccount')}}" class="text-red-700">Delete Account</a> --}}
     </div>
 </div>
 <script>

@@ -22,6 +22,10 @@ class CheckUnread
     public function handle(Request $request, Closure $next)
     {
         if(isset(Auth::user()->id)) {
+            $user = User::find(Auth::user()->id);
+            $user->loggedIn = 1;
+            $user->save();
+            
             $unread = UserInbox::where('user_id', '=', Auth::user()->id)
                     ->get();
             $unread->inbox = count($unread);

@@ -52,7 +52,7 @@ class HomeController extends Controller
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
-            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=ca_IWOj57wXzBfrEHQcrJT0kFQvTb0uF8fQ&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
+            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
         }
 
     if (isset($_GET['code'])) {
@@ -80,6 +80,7 @@ class HomeController extends Controller
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
+            // $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
             $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&redirect_uri=https://www.fluee123.host/home&client_id=ca_IWOj0kHypzBkNXO3NO0BunufwTTZRVmb&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
         }
       }
