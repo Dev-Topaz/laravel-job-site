@@ -19,8 +19,8 @@ class AdminSeeder extends Seeder
         $token = Str::random(60);
         User::create([
             'name' => "Admin",
-            'email' => "admin@gmail.com",
-            'password' => Hash::make('admin!@#123'),
+            'email' => "fluensercs@gmail.com",
+            'password' => Hash::make('Fisherpr!ceishome1917'),
             'api_token' => hash('sha256', $token),
             'username' => 'admin',
             'loggedIn' => true,
