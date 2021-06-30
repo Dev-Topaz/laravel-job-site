@@ -43,7 +43,7 @@ class HomeController extends Controller
         Auth::user()->stripe_id,
         []
       );
-//       echo $account_info;
+      echo $account_info;
     }
     $url = '';
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
-            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email . "&suggested_capabilities[]=card_payments";
+            $url = "https://connect.stripe.com/express/oauth/authorize?suggested_capabilities[]=card_payments&response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
         }
 
     if (isset($_GET['code'])) {
@@ -73,14 +73,14 @@ class HomeController extends Controller
           []
         );
 
-//        echo $account_info;
+       echo $account_info;
 
         if (isset($account_info->details_submitted) && $account_info->details_submitted
             && isset($account_info->charges_enabled) && $account_info->charges_enabled) {
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
-            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email . "&suggested_capabilities[]=card_payments";
+            $url = "https://connect.stripe.com/express/oauth/authorize?suggested_capabilities[]=card_payments&response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
         }
       }
     }
