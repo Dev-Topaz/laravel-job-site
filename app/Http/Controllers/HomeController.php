@@ -43,7 +43,7 @@ class HomeController extends Controller
         Auth::user()->stripe_id,
         []
       );
-      echo $account_info;
+      // echo $account_info;
     }
     $url = '';
 
@@ -73,7 +73,7 @@ class HomeController extends Controller
           []
         );
 
-       echo $account_info;
+       // echo $account_info;
 
         if (isset($account_info->details_submitted) && $account_info->details_submitted
             && isset($account_info->charges_enabled) && $account_info->charges_enabled) {
