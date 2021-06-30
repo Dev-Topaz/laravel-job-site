@@ -196,8 +196,15 @@ class AdminController extends Controller
 
     public function extras()
     {
+        $influencers = Influencers::query()
+            ->with(array('user' => function($query) {
+              $query->select('id', 'username', 'name');
+            }))
+            ->get();
+
         return view('admin.extras', [
-            'page' => 6
+            'page' => 6,
+            'influencers' => $influencers
         ]);
     }
 
@@ -294,7 +301,7 @@ class AdminController extends Controller
 
         $featured = new Featured;
         $featured->user_id = $user_id;
-        
+
         if($featured->save()) {
             return redirect()->route('users')->with('msg', 'Successful');
         } else {
@@ -305,7 +312,7 @@ class AdminController extends Controller
     function deleteUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
-        
+
         $user = User::find($user_id);
         if($user->delete()) {
             return redirect()->route('users')->with('msg', 'Successful');
@@ -317,7 +324,7 @@ class AdminController extends Controller
     function blockUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
-        
+
     }
 
     function loginAsUser(Request $request) {

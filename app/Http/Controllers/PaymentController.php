@@ -41,22 +41,20 @@ class PaymentController extends Controller
     }
     \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
-    $transfer_group = 'trans_group_'.time();
-
     $payment_intent = \Stripe\PaymentIntent::create([
       'payment_method' => $paymentMethod,
       'amount' => $requestInfo->amount * 100,
       'currency' => strtolower($requestInfo->unit),
       'confirm' => true,
-      'transfer_group' => $transfer_group,
     ]);
 
-    $transfer_influencer = \Stripe\Transfer::create([
-      'amount' => $requestInfo->amount * 85,
-      'currency' => strtolower($requestInfo->unit),
-      'destination' => $influencer->stripe_id,
-      'transfer_group' => $transfer_group,
-    ]);
+    $trans_id = $payment_intent->charges->data[0]->balance_transaction;
+
+    // $transfer_influencer = \Stripe\Transfer::create([
+    //   'amount' => $requestInfo->amount * 85,
+    //   'currency' => strtolower($requestInfo->unit),
+    //   'destination' => $influencer->stripe_id,
+    // ]);
     $wallet_id = WalletUser::where('user_id', $influencer->id)->first()->wallet_id;
     $wallet = Wallet::find($wallet_id);
     switch ($requestInfo->unit) {
@@ -137,8 +135,8 @@ class PaymentController extends Controller
     $wallet_action->currency = $requestInfo->unit;
     $wallet_action->action = "get paid";
     $wallet_action->aaa = "+";
-    $wallet_action->status = 1;
-    $wallet_action->trans_id = $transfer_influencer->balance_transaction;
+    $wallet_action->status = 0;
+    $wallet_action->trans_id = $trans_id;
     $wallet_action->save();
 
     //    check referral
@@ -147,12 +145,11 @@ class PaymentController extends Controller
     if(count($referral) > 0) {
       $referral_user_id = $referral[0]->user_id;
       $referral_user = User::find($referral_user_id);
-      $transfer_referral = \Stripe\Transfer::create([
-        'amount' => $requestInfo->amount * 10,
-        'currency' => strtolower($requestInfo->unit),
-        'destination' => $referral_user->stripe_id,
-        'transfer_group' => $transfer_group,
-      ]);
+      // $transfer_referral = \Stripe\Transfer::create([
+      //   'amount' => $requestInfo->amount * 10,
+      //   'currency' => strtolower($requestInfo->unit),
+      //   'destination' => $referral_user->stripe_id,
+      // ]);
 
       $wallet_id = WalletUser::where('user_id', $referral_user->id)->first()->wallet_id;
       $wallet = Wallet::find($wallet_id);
@@ -234,11 +231,9 @@ class PaymentController extends Controller
       $wallet_action->currency = $requestInfo->unit;
       $wallet_action->action = "get referral paid";
       $wallet_action->aaa = "+";
-      $wallet_action->status = 1;
-      $wallet_action->trans_id = $transfer_referral->balance_transaction;
+      $wallet_action->status = 0;
+      $wallet_action->trans_id = $trans_id;
       $wallet_action->save();
-    } else {
-
     }
 
     $requestInfo->status = 3;

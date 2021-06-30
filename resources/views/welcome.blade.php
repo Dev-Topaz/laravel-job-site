@@ -258,6 +258,7 @@
       }
       $("div#featured_img").css('right', parseInt(pos) + 1)
     }
-  }</script>
+  }
+</script>
 
 </html>
