@@ -52,7 +52,7 @@ class HomeController extends Controller
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
-            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
+            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email . "&suggested_capabilities[]=card_payments";
         }
 
     if (isset($_GET['code'])) {
@@ -80,7 +80,7 @@ class HomeController extends Controller
           $url = '';
         } else {
           if ($accountInfo[0]->accountType == 'influencer')
-            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email;
+            $url = "https://connect.stripe.com/express/oauth/authorize?response_type=code&client_id=". env('CUSTOMER_ID') ."&stripe_user[business_type]=individual&stripe_user[email]=" . Auth::user()->email . "&suggested_capabilities[]=card_payments";
         }
       }
     }
