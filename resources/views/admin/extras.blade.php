@@ -10,7 +10,7 @@
             outline: none;
         }
 
-        a:hover {
+        #rating a:hover {
             color: gold !important;
         }
     </style>
@@ -33,18 +33,26 @@
                        id="extras">Extras</a>
                 </div>
                 <div class="w-full pt-3">
-                    <div class="relative w-full md:w-72">
-                        <label for="username" class="mb-0 w-full">
+                    <div class="w-full md:w-72 relative">
+                        <label for="username" class="mb-0 w-full relative">
                             <input type="text" name="username" id="username"
                                    class="rounded-full bg-gray-200 border-none px-3 py-2 w-full focus:outline-none @error('username') is-invalid @enderror"
-                                   placeholder="Influencer name" value="{{ old('username') }}">
+                                   placeholder="Influencer name" value="{{ old('username') }}" onkeyup="search()" autocomplete="off">
                             @error('username')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
+                            <div class="absolute w-64 max-h-64 overflow-auto bg-gray-100 px-2 py-2 hidden" style="right:50%; transform: translateX(50%); top: 100%; border:1px solid lightgray" id="searchResult">
+                              <ul>
+                                @foreach($influencers as $influencer)
+                                  <li><a class="block px-1 py-1 text-decoration-none hover:text-black" onclick="selectInfluencer('{{ $influencer->user->username }}')">{{ $influencer->user->username }}</a></li>
+                                  <li><a class="block px-1 py-1 text-decoration-none hover:text-black" onclick="selectInfluencer('{{ $influencer->user->name }}')">{{ $influencer->user->name }}</a></li>
+                                @endforeach
+                              </ul>
+                            </div>
                         </label>
-                        <buttton class="absolute right-2" style="top: 50%; transform: translateY(-50%);">
+                        <buttton class="absolute right-2" style="top: 50%; transform: translateY(-50%);" type="button">
                             <li class="fas fa-search"></li>
                         </buttton>
                     </div>
@@ -225,6 +233,28 @@
                 total += parseInt($(inputs).eq(i).val());
             }
             $('input#totalRating').val((total / 5.0).toFixed(1));
+        }
+        function selectInfluencer(name) {
+          console.log(name);
+          $("input#username").val(name);
+          $("#searchResult").fadeOut(100);
+        }
+        function search() {
+          const index = $("input#username").val().toLowerCase();
+          console.log(index);
+          if(index == "") $("#searchResult").fadeOut(100);
+          else {
+            let contents = $("#searchResult a");
+            const length = contents.length;
+            for(let i = 0; i< length; i++) {
+              $(contents).eq(i).css('display', 'block');
+              const content = $(contents).eq(i).text().toLowerCase();
+              console.log(content);
+              if(content.indexOf(index) == -1)
+                $(contents).eq(i).css('display', 'none');
+            }
+            $("#searchResult").fadeIn(100);
+          }
         }
     </script>
     @if(session('msg'))

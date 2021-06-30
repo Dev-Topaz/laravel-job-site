@@ -160,15 +160,7 @@
       </div>
 
       <div class="w-full rounded-lg px-2 py-3 relative mt-3" style="box-shadow: 0 0 3px 3px #eee;" id="how-it-works">
-        <div class="text-gray-500" style="margin-left: 45px;font-size:13px;">Your money is held securely by us until you
-          approve the influencers work.
-        </div>
-        <div class="absolute rounded-full" id="gradient-icon"><i class="fas fa-dollar-sign"></i></div>
-      </div>
-
-      <div class="w-full rounded-lg px-2 py-3 relative mt-3" style="box-shadow: 0 0 3px 3px #eee;" id="how-it-works">
-        <div class="text-gray-500" style="margin-left: 45px;font-size:13px;">Collaboration completed, time to leave a
-          review!
+        <div class="text-gray-500" style="margin-left: 45px;font-size:13px;">Collaboration completed, time to leave a review!
         </div>
         <div class="absolute rounded-full" id="gradient-icon"><i class="fas fa-star"></i></div>
       </div>
@@ -266,6 +258,7 @@
       }
       $("div#featured_img").css('right', parseInt(pos) + 1)
     }
-  }</script>
+  }
+</script>
 
 </html>
