@@ -77,5 +77,7 @@ Route::middleware('auth:api')->group(function() {
 
     Route::get('/influencerRequest/{user_id}',[App\Http\Controllers\CollaborateController::class, 'influencerRequest'])->name('influencerRequest');
 
-    Route::get('/makePayment/{paymentMethod}/{request_id}',[App\Http\Controllers\PaymentController::class, 'makePayment'])->name('makePayment');
+    Route::get('/makePayment/{request_id}', [App\Http\Controllers\PaymentController::class, 'makePayment'])->name('makePayment');
+
+    Route::get('/paymentSuccess/{request_id}', [App\Http\Controllers\PaymentController::class, 'paymentSuccess']);
 });
