@@ -224,7 +224,7 @@
                                                                id="instagram-link"
                                                                class="text-gray-700 rounded w-full my-2 border-none text-sm md:text-md py-1 px-2"
                                                                style="box-shadow: 0 0 8px 0 #999"
-                                                               placeholder="Instagram.com/username"
+                                                               placeholder="Add your Instagram URL link"
                                                                value="{{$profile->instagram}}">
                     <label for="instagram-follow"></label><select name="instagram-follow"
                                                                   id="instagram-follow"
@@ -271,7 +271,7 @@
                   <div class="col-span-12 md:col-span-11">
                     <input type="text" name="youtube-link" id="youtube-link"
                            class="text-gray-700 rounded w-full my-2 border-none text-sm md:text-md py-1 px-2"
-                           style="box-shadow: 0 0 8px 0 #999" placeholder="Youtube.com/username"
+                           style="box-shadow: 0 0 8px 0 #999" placeholder="Add your Youtube URL link"
                            value="{{$profile->youtube}}">
                     <select name="youtube-follow" id="youtube-follow"
                             class="text-gray-700 rounded-full w-full my-2 border-none text-sm md:text-md py-1 px-2"
@@ -317,7 +317,7 @@
                   <div class="col-span-12 md:col-span-11">
                     <input type="text" name="tiktok-link" id="tiktok-link"
                            class="text-gray-700 rounded w-full my-2 border-none text-sm md:text-md py-1 px-2"
-                           style="box-shadow: 0 0 8px 0 #999" placeholder="TikTok.com/username"
+                           style="box-shadow: 0 0 8px 0 #999" placeholder="Add your Tiktok URL link"
                            value="{{$profile->tiktok}}">
                     <select name="tiktok-follow" id="tiktok-follow"
                             class="text-gray-700 rounded-full w-full my-2 border-none text-sm md:text-md py-1 px-2"
@@ -364,7 +364,7 @@
                     <input type="text" name="website-link" id="website-link"
                            class="text-gray-700 rounded w-full my-2 border-none text-sm md:text-md py-1 px-2"
                            style="box-shadow: 0 0 8px 0 #999"
-                           placeholder="{{($accountInfo->accountType == 'influencer') ? __('Your portfolio website') : __('Your company website') }}"
+                           placeholder="{{($accountInfo->accountType == 'influencer') ? __('Add your website URL link') : __('Add your company website URL link') }}"
                            value=@if($profile->website !== 'none') {{ $profile->website }} @endif >
                   </div>
                 </div>

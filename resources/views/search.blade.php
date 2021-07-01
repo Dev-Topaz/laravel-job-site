@@ -154,7 +154,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m
@@ -188,7 +188,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m
@@ -222,7 +222,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m
@@ -316,7 +316,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m
@@ -350,7 +350,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m
@@ -384,7 +384,7 @@
                                   500k-1m
                                   @break
                               @case(6)
-                                  1m-5k
+                                  1m-5m
                                   @break
                               @case(15)
                                   5m-10m

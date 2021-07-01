@@ -106,6 +106,8 @@ Route::middleware(['auth', 'checkAdmin'])->group(function () {
 
         Route::get('/featureUser', [App\Http\Controllers\AdminController::class, 'featureUser'])->name('featureUser');
 
+        Route::get('/unFeatureUser', [App\Http\Controllers\AdminController::class, 'unFeatureUser'])->name('unFeatureUser');
+
         Route::get('/deleteUser', [App\Http\Controllers\AdminController::class, 'deleteUser'])->name('deleteUser');
 
         Route::get('/blockUser', [App\Http\Controllers\AdminController::class, 'blockUser'])->name('blockUser');
