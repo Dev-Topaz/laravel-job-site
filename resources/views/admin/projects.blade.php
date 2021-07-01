@@ -40,6 +40,7 @@
       </thead>
       <tbody>
       @foreach($projects as $project)
+        @if($project->status != 0)
         <tr>
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $project->title }}</td>
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $project->influencer_name }}</td>
@@ -61,6 +62,7 @@
           @endswitch
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm"><a href="#" class="block border border-gray-400 rounded-md px-3 py-2">View Details</a></td>
         </tr>
+        @endif
       @endforeach
       </tbody>
     </table>
