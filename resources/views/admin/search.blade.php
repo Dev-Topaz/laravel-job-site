@@ -250,7 +250,7 @@
                                             <div style="border-right: 1px solid darkgrey">
                                                 <p><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighte" style="font-size: 10px; line-height:10px;">
-                                                  @switch($account->profile->instagram_follows)
+                                                  @switch($user->profile->instagram_follows)
                                                       @case(11)
                                                           1k-10k
                                                           @break
@@ -284,7 +284,7 @@
                                             <div>
                                                 <p><i class="fab fa-youtube text-red-400"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                  @switch($account->profile->youtube_follows)
+                                                  @switch($user->profile->youtube_follows)
                                                       @case(11)
                                                           1k-10k
                                                           @break
@@ -318,7 +318,7 @@
                                             <div style="border-left: 1px solid darkgrey">
                                                 <p><i class="fab fa-tiktok text-gray-700"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                  @switch($account->profile->tiktok_follows)
+                                                  @switch($user->profile->tiktok_follows)
                                                       @case(11)
                                                           1k-10k
                                                           @break
