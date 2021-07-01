@@ -234,25 +234,25 @@
                       <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 60) selected @endif>
                         10k-50k
                       </option>
-                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="150" @if($profile->instagram_follows == 150) selected @endif>
                         50k-100k
                       </option>
                       <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
                       </option>
-                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="501" @if($profile->instagram_follows == 501) selected @endif>
                         500k-1m
                       </option>
-                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="6" @if($profile->instagram_follows == 6) selected @endif>
                         1m-5m
                       </option>
-                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                      <option value="15" @if($profile->instagram_follows == 15) selected @endif>
                         5m-10m
                       </option>
-                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="10" @if($profile->instagram_follows == 10) selected @endif>
                         10m+
                       </option>
                     </select>
@@ -280,25 +280,25 @@
                       <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 60) selected @endif>
                         10k-50k
                       </option>
-                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="150" @if($profile->instagram_follows == 150) selected @endif>
                         50k-100k
                       </option>
                       <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
                       </option>
-                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="501" @if($profile->instagram_follows == 501) selected @endif>
                         500k-1m
                       </option>
-                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="6" @if($profile->instagram_follows == 6) selected @endif>
                         1m-5m
                       </option>
-                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                      <option value="15" @if($profile->instagram_follows == 15) selected @endif>
                         5m-10m
                       </option>
-                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="10" @if($profile->instagram_follows == 10) selected @endif>
                         10m+
                       </option>
                     </select>
@@ -326,25 +326,25 @@
                       <option value="11" @if($profile->instagram_follows == 11) selected @endif>
                         1k-10k
                       </option>
-                      <option value="60" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="60" @if($profile->instagram_follows == 60) selected @endif>
                         10k-50k
                       </option>
-                      <option value="150" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="150" @if($profile->instagram_follows == 150) selected @endif>
                         50k-100k
                       </option>
                       <option value="600" @if($profile->instagram_follows == 600) selected @endif>
                         100k-500k
                       </option>
-                      <option value="501" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="501" @if($profile->instagram_follows == 501) selected @endif>
                         500k-1m
                       </option>
-                      <option value="6" @if($profile->instagram_follows == 11) selected @endif>
+                      <option value="6" @if($profile->instagram_follows == 6) selected @endif>
                         1m-5m
                       </option>
-                      <option value="15" @if($profile->instagram_follows == 60) selected @endif>
+                      <option value="15" @if($profile->instagram_follows == 15) selected @endif>
                         5m-10m
                       </option>
-                      <option value="10" @if($profile->instagram_follows == 600) selected @endif>
+                      <option value="10" @if($profile->instagram_follows == 10) selected @endif>
                         10m+
                       </option>
                     </select>
@@ -383,7 +383,7 @@
     </div>
     {{-- upload modal --}}
     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg w-10/12 mx-auto" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
