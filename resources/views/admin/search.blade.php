@@ -127,7 +127,7 @@
                                     class="w-full rounded-sm border-gray-300 bg-transparent text-xs">
                                 <option value="">Location</option>
                                 @foreach($countries as $country)
-                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    <option value="{{ $country->name }}">{{ $country->name }}</option>
                                 @endforeach
                             </select>
                         </div>
