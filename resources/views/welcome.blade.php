@@ -203,9 +203,9 @@
                     </p>
                   </div>
                 </div>
-                <div style="display: flex; align-items:center; justify-content: space-between; height: 28px;">
+                <div style="display: flex; align-items:center; justify-content: space-between; height: 33px;">
                   <div><i class="fas fa-map-marker-alt" style="color: #0ac2c8"></i></div>
-                  <p class="text-sm my-1 text-center">{{ ucwords($influencer->user->influencersInfo->state).', '.ucwords($influencer->user->influencersInfo->country) }}</span></p>
+                  <p class="text-xs my-1 text-center">{{ ucwords($influencer->user->influencersInfo->state).', '.ucwords($influencer->user->influencersInfo->country) }}</span></p>
                 </div>
               </div>
             </a>
