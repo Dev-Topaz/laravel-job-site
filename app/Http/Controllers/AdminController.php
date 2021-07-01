@@ -235,13 +235,13 @@ class AdminController extends Controller
                 ->withInput($input);
         }
 
-        $influencer = User::where('username', '=', $input['username'])->get();
+        $influencer = User::where('username', '=', $input['username'])->orWhere('name', $input['username'])->get();
         if(count($influencer) > 0)
             $influencer = $influencer[0]->id;
         else
             return redirect()->route('extras')->with('msg', "Influencer not exists.");
 
-        $brand = User::where('username', '=', $input['brand_name'])->get();
+        $brand = User::where('username', '=', $input['brand_name'])->orWhere('name', $input['brand_name'])->get();
         if(count($brand) > 0)
             $brand = $brand[0]->id;
         else
