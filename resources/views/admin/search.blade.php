@@ -284,7 +284,7 @@
                                             <div>
                                                 <p><i class="fab fa-youtube text-red-400"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                  @switch($account->profile->youtube_follows)
+                                                  @switch($user->profile->youtube_follows)
                                                       @case(11)
                                                           1k-10k
                                                           @break
@@ -318,7 +318,7 @@
                                             <div style="border-left: 1px solid darkgrey">
                                                 <p><i class="fab fa-tiktok text-gray-700"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                  @switch($account->profile->tiktok_follows)
+                                                  @switch($user->profile->tiktok_follows)
                                                       @case(11)
                                                           1k-10k
                                                           @break
