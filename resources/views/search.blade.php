@@ -34,9 +34,9 @@
                 <option value=""><label class="text-xs md:text-sm" for="location">Location</label></option>
                 @foreach ($countries as $country)
                   @if ($country->name == $selectedLocation)
-                    <option value={{ $country->name }} selected> <label class="text-xs md:text-sm" for='location'>{{ $country->name }}</label> </option>
+                    <option value="{{ $country->name }}" selected> <label class="text-xs md:text-sm" for='location'>{{ $country->name }}</label> </option>
                   @else
-                    <option value={{ $country->name }}> <label class="text-xs md:text-sm" for='location'>{{ $country->name }}</label> </option>
+                    <option value="{{ $country->name }}"> <label class="text-xs md:text-sm" for='location'>{{ $country->name }}</label> </option>
                   @endif
                 @endforeach
               </select>
