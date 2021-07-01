@@ -482,7 +482,7 @@
           e = 1, width = 400, height = 400;
           break;
         case"portfolio":
-          e = .8, width = 528, height = 660;
+          e = .88, width = 580, height = 660;
           break;
         case"partnership":
           e = 2, width = 528, height = 264;
