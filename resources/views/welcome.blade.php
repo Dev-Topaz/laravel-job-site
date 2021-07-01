@@ -203,8 +203,9 @@
                     </p>
                   </div>
                 </div>
-                <div style="display: flex; align-items:center; justify-content: center; height: 28px;">
-                  <p class="text-sm my-1 text-center"><i class="fas fa-map-marker-alt" style="color: #0ac2c8"></i><span
+                <div style="display: flex; align-items:center; justify-content: space-between; height: 28px;">
+                  <div><i class="fas fa-map-marker-alt" style="color: #0ac2c8"></i></div>
+                  <p class="text-sm my-1 text-center"><span
                       style="font-size: 11px"> {{ $influencer->user->influencersInfo->state.', '.$influencer->user->influencersInfo->country }}</span></p>
                 </div>
               </div>
