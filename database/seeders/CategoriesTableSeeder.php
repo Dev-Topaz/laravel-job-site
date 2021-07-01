@@ -41,8 +41,8 @@ class CategoriesTableSeeder extends Seeder
       ]);
       Category::create([
         'category_name' => 'Travel',
-        'text_color' => '67fedb',
-        'back_color' => '67fedb33',
+        'text_color' => 'd0b811',
+        'back_color' => 'f2ff2933',
       ]);
       Category::create([
         'category_name' => 'Tech',

@@ -250,58 +250,103 @@
                                             <div style="border-right: 1px solid darkgrey">
                                                 <p><i class="fab fa-instagram" style="background:-webkit-linear-gradient(#792ec5, #c62e71, #da8a40);-webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighte" style="font-size: 10px; line-height:10px;">
-                                                    @switch($user->profile->instagram_follows)
-                                                        @case(11)
-                                                        1k-10k
-                                                        @break
-                                                        @case(60)
-                                                        10k-50k
-                                                        @break
-                                                        @case(600)
-                                                        100k-500k
-                                                        @break
-                                                        @default
-                                                        unknown
-                                                        @break
-                                                    @endswitch
+                                                  @switch($account->profile->instagram_follows)
+                                                      @case(11)
+                                                          1k-10k
+                                                          @break
+                                                      @case(60)
+                                                          10k-50k
+                                                          @break
+                                                      @case(150)
+                                                          50k-100k
+                                                          @break
+                                                      @case(600)
+                                                          100k-500k
+                                                          @break
+                                                      @case(501)
+                                                          500k-1m
+                                                          @break
+                                                      @case(6)
+                                                          1m-5k
+                                                          @break
+                                                      @case(15)
+                                                          5m-10m
+                                                          @break
+                                                      @case(10)
+                                                          10m+
+                                                          @break
+                                                      @default
+                                                          unknown
+                                                          @break
+                                                  @endswitch
                                                 </p>
                                             </div>
                                             <div>
                                                 <p><i class="fab fa-youtube text-red-400"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                    @switch($user->profile->youtube_follows)
-                                                        @case(11)
-                                                        1k-10k
-                                                        @break
-                                                        @case(60)
-                                                        10k-50k
-                                                        @break
-                                                        @case(600)
-                                                        100k-500k
-                                                        @break
-                                                        @default
-                                                        unknown
-                                                        @break
-                                                    @endswitch
+                                                  @switch($account->profile->youtube_follows)
+                                                      @case(11)
+                                                          1k-10k
+                                                          @break
+                                                      @case(60)
+                                                          10k-50k
+                                                          @break
+                                                      @case(150)
+                                                          50k-100k
+                                                          @break
+                                                      @case(600)
+                                                          100k-500k
+                                                          @break
+                                                      @case(501)
+                                                          500k-1m
+                                                          @break
+                                                      @case(6)
+                                                          1m-5k
+                                                          @break
+                                                      @case(15)
+                                                          5m-10m
+                                                          @break
+                                                      @case(10)
+                                                          10m+
+                                                          @break
+                                                      @default
+                                                          unknown
+                                                          @break
+                                                  @endswitch
                                                 </p>
                                             </div>
                                             <div style="border-left: 1px solid darkgrey">
                                                 <p><i class="fab fa-tiktok text-gray-700"></i></p>
                                                 <p class="mt-1 text-gray-700 tracking-tighter" style="font-size: 10px; line-height:10px;">
-                                                    @switch($user->profile->tiktok_follows)
-                                                        @case(11)
-                                                            1k-10k
-                                                        @break
-                                                        @case(60)
-                                                            10k-50k
-                                                        @break
-                                                        @case(600)
-                                                            100k-500k
-                                                        @break
-                                                        @default
-                                                            unknown
-                                                        @break
-                                                    @endswitch
+                                                  @switch($account->profile->tiktok_follows)
+                                                      @case(11)
+                                                          1k-10k
+                                                          @break
+                                                      @case(60)
+                                                          10k-50k
+                                                          @break
+                                                      @case(150)
+                                                          50k-100k
+                                                          @break
+                                                      @case(600)
+                                                          100k-500k
+                                                          @break
+                                                      @case(501)
+                                                          500k-1m
+                                                          @break
+                                                      @case(6)
+                                                          1m-5k
+                                                          @break
+                                                      @case(15)
+                                                          5m-10m
+                                                          @break
+                                                      @case(10)
+                                                          10m+
+                                                          @break
+                                                      @default
+                                                          unknown
+                                                          @break
+                                                  @endswitch
                                                 </p>
                                             </div>
                                         </div>
