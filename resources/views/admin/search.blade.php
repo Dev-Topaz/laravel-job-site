@@ -203,7 +203,11 @@
                                     <div id="edit-modal" class="absolute top-10 right-5 hidden bg-white rounded-md px-2 py-2 text-xs">
                                         <ul>
                                             <li><a onclick="verifyUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Verify</a></li>
+                                            @if($user->user->featured == null)
                                             <li><a onclick="featureUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Feature</a></li>
+                                            @else
+                                            <li><a onclick="unFeatureUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Unfeature</a></li>
+                                            @endif
                                             <li><a onclick="blockUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Block</a></li>
                                             <li><a onclick="deleteUser({{ $user->user->id }})" class="block py-1 border-bottom text-decoration-none pr-7">Delete</a></li>
                                         </ul>
@@ -267,7 +271,7 @@
                                                           500k-1m
                                                           @break
                                                       @case(6)
-                                                          1m-5k
+                                                          1m-5m
                                                           @break
                                                       @case(15)
                                                           5m-10m
@@ -301,7 +305,7 @@
                                                           500k-1m
                                                           @break
                                                       @case(6)
-                                                          1m-5k
+                                                          1m-5m
                                                           @break
                                                       @case(15)
                                                           5m-10m
@@ -335,7 +339,7 @@
                                                           500k-1m
                                                           @break
                                                       @case(6)
-                                                          1m-5k
+                                                          1m-5m
                                                           @break
                                                       @case(15)
                                                           5m-10m
@@ -398,6 +402,26 @@
                         </div>
                         <div class="col-span-1">
                             <button class="block w-full py-3" style="button" onclick="$('#featureModal').fadeOut(200);">Cancel</button>
+                        </div>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="unFeatureModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="w-9/12 flex flex-col items-justify bg-white rounded-md shadow-md">
+                <form action="{{ route('unFeatureUser') }}" method="get">
+                    <div>
+                        <input type="hidden" name="userId" id="userId">
+                        <p class="text-sm text-center px-3 py-4">Are you sure you want to unfeature this user?</p>
+                    </div>
+                    <div class="w-full grid grid-cols-2 text-sm">
+                        <div class="col-span-1">
+                            <button class="block w-full py-3 rounded-bl-md text-white" type="submit" style="background:#0bc2c8">Yes</button>
+                        </div>
+                        <div class="col-span-1">
+                            <button class="block w-full py-3" style="button" onclick="$('#unFeatureModal').fadeOut(200);">Cancel</button>
                         </div>
                     </div>                    
                 </form>
@@ -508,6 +532,11 @@
         function loginAsUser(userId) {
             $("#loginModal input#login_user_id").val(userId);
             $("#loginModal").fadeIn(200);
+        }
+
+        function unFeatureUser(userId) {
+            $("#unFeatureModal input#userId").val(userId);
+            $("#unFeatureModal").fadeIn(200);
         }
     </script>
 

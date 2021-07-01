@@ -23,7 +23,7 @@ class Review extends Model
         $reviews = DB::table('reviews')
                 ->join('request_info', 'reviews.request_id', '=', 'request_info.request_id')
                 ->join('requests', 'request_info.request_id', '=', 'requests.id')
-                ->select('reviews.review', 'reviews.star', 'reviews.created_at', 'request_info.title', 'requests.send_id', 'requests.receive_id')
+                ->select('reviews.review', 'reviews.star', 'reviews.created_at', 'request_info.title', 'request_info.brand', 'request_info.status', 'requests.send_id', 'requests.receive_id')
                 ->where('reviews.user_id', '=', $user_id)
                 ->orderBy('reviews.created_at', 'desc')
                 ->get();
@@ -59,7 +59,7 @@ class Review extends Model
                 ($interval->format("%sa") == 1) ?
                     $review->interval = $interval->format('%s second ago')
                 :
-                    $review->interval = $interval->formant("%s seconds ago");
+                    $review->interval = $interval->format("%s seconds ago");
             }
         }
         return $reviews;

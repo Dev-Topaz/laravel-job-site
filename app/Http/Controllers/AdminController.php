@@ -89,7 +89,7 @@ class AdminController extends Controller
 
         $validator = Validator::make($input, $rule, $message);
         if ($validator->fails()) {
-            return redirect()->route('news')
+            return redirect()->back()
                 ->withErrors($validator)
                 ->withInput($input);
         }
@@ -110,9 +110,9 @@ class AdminController extends Controller
         $newsFeed->logo_img = $filename;
 
         if ($newsFeed->save())
-            return redirect()->route('news')->with('msg', "News feed is published successfully");
+            return redirect()->back()->with('msg', "News feed is published successfully");
         else
-            return redirect()->route('news')->with('msg', "DB error! Please try again.");
+            return redirect()->back()->with('msg', "DB error! Please try again.");
     }
 
     public function users(Request $request)
@@ -215,7 +215,7 @@ class AdminController extends Controller
             'username' => 'required|string|regex:/(^([a-zA-Z ]+)?$)/',
             'project_title' => 'required|string|regex:/(^([a-zA-Z0-9 ]+)?$)/',
             'review' => 'required|string',
-            'brand_name' => 'required|string|regex:/(^([a-zA-Z ]+)?$)/',
+            'brand_name' => 'required|string|regex:/(^([a-z*A-Z ]+)?$)/',
             'date' => 'required'
         ];
         $message = [
@@ -239,25 +239,34 @@ class AdminController extends Controller
         if(count($influencer) > 0)
             $influencer = $influencer[0]->id;
         else
-            return redirect()->route('extras')->with('msg', "Influencer not exists.");
-
-        $brand = User::where('username', '=', $input['brand_name'])->orWhere('name', $input['brand_name'])->get();
-        if(count($brand) > 0)
-            $brand = $brand[0]->id;
-        else
-            return redirect()->route('extras')->with('msg', "Brand not exists.");
+            return redirect()->back()->with('msg', "Influencer not exists.");
 
         $requests = new Requests;
-        $requests->send_id = $brand;
+        $requests->send_id = Auth::user()->id;
         $requests->receive_id = $influencer;
         $requests->created_at = $input['date'];
         $requests->save();
+
+        $request_info = new RequestInfo;
+        $request_info->request_id = $requests->id;
+        $request_info->title = $input['project_title'];
+        $request_info->content = '';
+        $request_info->amount = 0;
+        $request_info->unit = '';
+        $request_info->gift = 0;
+        $request_info->status = 0;
+        $request_info->accepted = 0;
+        $request_info->sr_review = 0;
+        $request_info->rs_review = 0;
+        $request_info->brand = $input['brand_name'];
+        $request_info->save();
 
         $review = new Review;
         $review->request_id = $requests->id;
         $review->user_id = $influencer;
         $review->review = $input['review'];
         $review->star = $input['totalRating'];
+        $review->created_at = $input['date'];
         $review->save();
 
         $reviews = Review::where('user_id', '=', $influencer)->get();
@@ -277,10 +286,10 @@ class AdminController extends Controller
         if (
             $influencerInfo->save()
         ) {
-            return redirect()->route('extras')->with('msg', "New review saved successfully!");
+            return redirect()->back()->with('msg', "New review saved successfully!");
         }
         else
-            return redirect()->route('extras')->with('msg', "DB error, please try again");
+            return redirect()->back()->with('msg', "DB error, please try again");
     }
 
     function verifyUser(Request $request) {
@@ -296,16 +305,28 @@ class AdminController extends Controller
 
         $featured = Featured::where('user_id', '=', $user_id)->get();
         if(count($featured) > 0) {
-            return redirect()->route('users')->with('msg', 'Already Featured');
+            return redirect()->back()->with('msg', 'Already Featured');
         }
 
         $featured = new Featured;
         $featured->user_id = $user_id;
 
         if($featured->save()) {
-            return redirect()->route('users')->with('msg', 'Successful');
+            return redirect()->back()->with('msg', 'Successful');
         } else {
-            return redirect()->route('users')->with('msg', 'DB error');
+            return redirect()->back()->with('msg', 'DB error');
+        }
+    }
+
+    function unFeatureUser(Request $request) {
+        $input = $request->all();
+        $user_id = $input['userId'];
+
+        $featured = Featured::where('user_id', $user_id)->first();
+        if($featured->delete()) {
+            return redirect()->back()->with('msg', "Successful");
+        } else {
+            return redirect()->back()->with('msg', "DB error");
         }
     }
 
@@ -315,9 +336,9 @@ class AdminController extends Controller
 
         $user = User::find($user_id);
         if($user->delete()) {
-            return redirect()->route('users')->with('msg', 'Successful');
+            return redirect()->back()->with('msg', 'Successful');
         } else {
-            return redirect()->route('users')->with('msg', 'DB error');
+            return redirect()->back()->with('msg', 'DB error');
         }
     }
 

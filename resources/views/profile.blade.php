@@ -123,22 +123,22 @@
             <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 40px;right: 10%; width:150px;">
               @if($profile->tiktok_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
+                <a href="{{ $profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->youtube_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
+                <a href="{{ $profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->instagram_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
+                <a href="{{ $profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->website_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ 'https://'.$profile->website }}" class="text-center leading-10"><i class="fas fa-globe" style="color: #333;"></i></a>
+                <a href="{{ $profile->website }}" class="text-center leading-10"><i class="fas fa-globe" style="color: #333;"></i></a>
               </div>
               @endif
             </div>
@@ -253,9 +253,9 @@
                   </div>
                   <div class="com my-2">
                     @if (count(explode('-', $review->interval)) > 0)
-                    <p class="text-xs md:text-sm text-gray-500">by {{ $review->name }} - {{ $review->interval }}</p>
+                    <p class="text-xs md:text-sm text-gray-500">by {{ ($review->status == 0) ? $review->brand : $review->name }} - {{ $review->interval }}</p>
                     @else
-                    <p class="text-xs md:text-sm text-gray-500">by {{ $review->name }} - {{ $review->interval }} ago</p>
+                    <p class="text-xs md:text-sm text-gray-500">by {{ ($review->status == 0) ? $review->brand : $review->name }} - {{ $review->interval }} ago</p>
                     @endif
                   </div>
                   <hr class="mt-3">
