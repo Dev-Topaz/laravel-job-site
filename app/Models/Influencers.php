@@ -107,6 +107,6 @@ class Influencers extends Model
             })->whereHas('category', function($q) use($category) {
                 if($category != '')
                     $q->where('id', '=', (int)$category);
-            })->paginate(1);
+            })->paginate($perPage);
     }
 }
