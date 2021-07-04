@@ -17,6 +17,27 @@
         a.active {
             border-bottom: 3px solid #0bc2c8 !important;
         }
+      .page-item.active .page-link {
+        background-color: #4ad7c4;
+        border-color: #4ad7c4;
+      }
+      .pagination {
+        justify-content: flex-end;
+      }
+      li.page-item {
+
+            display: none;
+        }
+
+        .page-item:first-child,
+        .page-item:nth-child( 2 ),
+        .page-item:nth-last-child( 2 ),
+        .page-item:last-child,
+        .page-item.active,
+        .page-item.disabled {
+
+            display: block;
+        }
     </style>
     <div class="w-full text-white md:hidden" style="background-color: #1f2f46">
         <p class="italic text-lg text-white font-bold leading-8 pr-2"
@@ -362,7 +383,9 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $users->links() }}
+                      <div class="w-11/12 my-2 mx-auto">
+                        {{ $users->appends($data)->links('pagination::bootstrap-4') }}   
+                      </div>
                 @endif
             </div>
             <div class="clearfix"></div>
