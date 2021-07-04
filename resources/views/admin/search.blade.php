@@ -118,9 +118,9 @@
                                 <label for="perpage"></label>
                                 <select name="perpage" id="perpage"
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
-                                    <option value="8">8 per page</option>
+                                    <option value="10">8 per page</option>
                                     <option value="20">20 per page</option>
-                                    <option value="40">40 per page</option>
+                                    <option value="50">40 per page</option>
                                     <option value="100">100 per page</option>
                                 </select>
                             </div>
