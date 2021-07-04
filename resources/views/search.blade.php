@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<style type="text/css">
+  .page-item.active .page-link {
+    background-color: #4ad7c4;
+    border-color: #4ad7c4;
+  }
+  .pagination {
+    justify-content: flex-end;
+  }
+</style>
 <header class="bg-white">
   <div class="w-full md:max-w-7xl mx-auto py-1 px-3 sm:px-6 lg:px-8 bg-gray-800 h-10">
     <p class="italic text-lg md:text-xl text-white font-bold leading-8" style="font-family: 'Josefin Sans', sans-serif;">
@@ -243,7 +252,9 @@
           </div>
             @endforeach
             <div class="clearfix"></div>
-            {{ $accounts->links() }}
+          </div>
+          <div class="w-11/12 my-2 mx-auto">
+            {{ $accounts->appends($data)->links('pagination::bootstrap-4') }}            
           </div>
           @endif
         </div>
@@ -405,7 +416,9 @@
             </a>
               @endforeach
               <div class="clearfix"></div>
-            {{ $accounts->links() }}
+            </div>
+            <div class="w-11/12 mx-auto">
+            {{ $accounts->appends($data)->links('pagination::bootstrap-4') }}            
             </div>
             @endif
         </div>
