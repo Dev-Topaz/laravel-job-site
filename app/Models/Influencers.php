@@ -95,7 +95,7 @@ class Influencers extends Model
             $foundInfluencers = [];
         return $foundInfluencers;
     }
-    public function getUsers($name='', $category='', $location='', $keyword='', $perPage=8) {
+    public function getUsers($name='', $category='', $location='', $keyword='', $perPage=10) {
         return Influencers::with('user', 'accountInfo', 'category', 'profile', 'user.featured')
             ->whereHas('user', function($q) use($name) {
                 if($name != '')
