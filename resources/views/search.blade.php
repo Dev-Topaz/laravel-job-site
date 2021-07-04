@@ -243,6 +243,7 @@
           </div>
             @endforeach
             <div class="clearfix"></div>
+            {{ $accounts->link() }}
           </div>
           @endif
         </div>
@@ -404,6 +405,7 @@
             </a>
               @endforeach
               <div class="clearfix"></div>
+            {{ $accounts->link() }}
             </div>
             @endif
         </div>
