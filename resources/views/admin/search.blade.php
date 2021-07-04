@@ -116,7 +116,7 @@
                         <div class="col-span-1">
                             <div class="w-full px-2">
                                 <label for="perpage"></label>
-                                <select name="perpage" id="perpage"
+                                <select name="perPage" id="perpage"
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
                                     <option value="10">8 per page</option>
                                     <option value="20">20 per page</option>

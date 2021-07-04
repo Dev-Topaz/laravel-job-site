@@ -32,7 +32,7 @@ class Brands extends Model
         return $this->hasOne(BrandInfo::class, "brand_id", "id");
     }
 
-    public function getUsers($name='', $category='', $location='', $keyword='', $perPage=8) {
+    public function getUsers($name='', $category='', $location='', $keyword='', $perPage=10) {
         return Brands::with('user', 'accountInfo', 'category', 'profile')
             ->whereHas('user', function($q) use($name) {
             if($name != '')
