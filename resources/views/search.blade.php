@@ -95,7 +95,7 @@
                   </button>
                 </a>
                 <div class="col-span-6 w-full h-10">
-                  <select name="perPage" id="perPage" class="w-10/12 float-right rounded-md text-xs md:text-sm h-8 my-1 py-1" style="border: solid 1px lightgray">
+                  <select name="perPage" id="perPage" form="nameForm" class="w-10/12 float-right rounded-md text-xs md:text-sm h-8 my-1 py-1" style="border: solid 1px lightgray">
                     <option value="10" @if($selectedPerpage == 10) selected @endif>10 per page</option>
                     <option value="20" @if($selectedPerpage == 20) selected @endif>20 per page</option>
                     <option value="50" @if($selectedPerpage == 50) selected @endif>50 per page</option>

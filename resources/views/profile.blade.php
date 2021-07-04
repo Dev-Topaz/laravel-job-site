@@ -123,22 +123,22 @@
             <div id="social_links" class="flex justify-content-between align-items-center" style="position: absolute; bottom: 40px;right: 10%; width:150px;">
               @if($profile->tiktok_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ $profile->tiktok }}" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
+                <a href="@if(substr($profile->tiktok, 0, 4) == 'http'){{ $profile->tiktok }}@else//{{ $profile->tiktok }}@endif" class="text-center leading-10"><i class="fab fa-tiktok" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->youtube_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ $profile->youtube }}" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
+                <a href="@if(substr($profile->youtube, 0, 4) == 'http'){{ $profile->youtube }}@else//{{ $profile->youtube }}@endif" class="text-center leading-10 text-red-700"><i class="fab fa-youtube" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->instagram_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ $profile->instagram }}" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
+                <a href="@if(substr($profile->instagram, 0, 4) == 'http'){{ $profile->instagram }}@else//{{ $profile->instagram }}@endif" class="text-center leading-10"><i class="fab fa-instagram" style="color: #333;"></i></a>
               </div>
               @endif
               @if($profile->website_check == 1)
               <div class="w-10 h-10 rounded-full mx-1 bg-white text-center" style="box-shadow: 0 0  8px 0 #999">
-                <a href="{{ $profile->website }}" class="text-center leading-10"><i class="fas fa-globe" style="color: #333;"></i></a>
+                <a href="@if(substr($profile->website, 0, 4) == 'http'){{ $profile->website }}@else//{{ $profile->website }}@endif" class="text-center leading-10"><i class="fas fa-globe" style="color: #333;"></i></a>
               </div>
               @endif
             </div>
