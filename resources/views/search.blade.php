@@ -243,7 +243,7 @@
           </div>
             @endforeach
             <div class="clearfix"></div>
-            {{ $accounts->link() }}
+            {{ $accounts->links() }}
           </div>
           @endif
         </div>
@@ -405,7 +405,7 @@
             </a>
               @endforeach
               <div class="clearfix"></div>
-            {{ $accounts->link() }}
+            {{ $accounts->links() }}
             </div>
             @endif
         </div>
