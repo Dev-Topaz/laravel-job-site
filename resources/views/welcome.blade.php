@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="{{ asset('css/css/all.css') }}">
 
   <style>
-    .active,.dot:hover{background-color:#717171}#wel_btn{width:200px;position:absolute;bottom:150px;left:50vw;margin-left:-100px}#hire_btn{border:none;border-radius:10px;background:linear-gradient(to right,#05ebbd,#1378d4)}#join_btn{border:solid 1px #fff;background:0 0}#back_img{position:relative}#avatar_img{position:absolute}.clearfix{display:table;content:'';clear:both}div#main_btn a:active,div#main_btn a:hover,div#main_btn a:visited{background:0 0}#how-it-works #gradient-icon i{background:-moz-linear-gradient(to right,#05ebbd,#1378d4);background:-webkit-linear-gradient(to right,#05ebbd,#1378d4);background:linear-gradient(to right,#05ebbd,#1378d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}#how-it-works #gradient-icon{text-align:center;width:40px;height:40px;padding:7px;top:50%;transform:translateY(-50%);left:5px;border:1px solid gray}.clearfix{display:table;content:'';clear:both}#featured_img{position:absolute;top:0;right:-50%}.carousel-indicators li{width:5px!important;height:5px!important;opacity:1!important;border-radius:50%;border:none;margin-bottom:5px;background:#119dab}.carousel-indicators{margin-bottom:0;line-height:1}.carousel-indicators li.active{box-shadow:0 0 0 2px #95c3c7}
+    .active,.dot:hover{background-color:#717171}#wel_btn{width:200px;position:absolute;bottom:150px;left:50vw;margin-left:-100px}#hire_btn{border:none;border-radius:10px;background:linear-gradient(to right,#05ebbd,#1378d4)}#join_btn{border:solid 1px #fff;background:0 0}#back_img{position:relative}#avatar_img{position:absolute}.clearfix{display:table;content:'';clear:both}div#main_btn a:active,div#main_btn a:hover,div#main_btn a:visited{background:0 0}#how-it-works #gradient-icon i{background:-moz-linear-gradient(to right,#05ebbd,#1378d4);background:-webkit-linear-gradient(to right,#05ebbd,#1378d4);background:linear-gradient(to right,#05ebbd,#1378d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}#how-it-works #gradient-icon{text-align:center;width:40px;height:40px;padding:7px;top:50%;transform:translateY(-50%);left:5px;border:1px solid gray}.clearfix{display:table;content:'';clear:both}#featured_img{position:absolute;top:0;right:-50%}.carousel-indicators li{width:5px!important;height:5px!important;opacity:1!important;border-radius:50%;border:none;margin-bottom:5px;background:#119dab}.carousel-indicators{margin-bottom:0;line-height:1}.carousel-indicators li.active{box-shadow:0 0 0 2px #95c3c7}#modalBody input{border: 1px solid lightgray; border-radius: 5px;}
   </style>
 </head>
 
@@ -183,7 +183,7 @@
         @endif
         <div id="featured_img" style="width: 200%;" class="px-1 py-1">
           @foreach ($featuredInfluencers as $influencer)
-            <a class="w-3/12 float-left px-2" href="{{ route('profile', ['username' => $influencer->user->username]) }}">
+            <a class="w-3/12 float-left px-2 text-black text-decoration-none" href="{{ route('profile', ['username' => $influencer->user->username]) }}">
               <div class="rounded-2xl px-1 py-1 " style="box-shadow: 0 0 3px 3px #ccc">
                 <div class="relative">
                   <img src="{{url('/storage/profile-image/'.$influencer->user->profile->top_img.'.jpg')}}" alt="hidden_image"
@@ -192,14 +192,14 @@
                     <p class="mb-0 text-xs text-white font-semibold">{{ strtoupper($influencer->user->name) }}</p>
                     <p class="mb-0" style="font-size: 9px; color:#0ac2c8">{{ '@'.$influencer->user->username }}
                       <span class="float-right">
-                                                    @for ($i = 0; $i < 5; $i++)
+                        @for ($i = 0; $i < 5; $i++)
                           @if ($i < $influencer->user->influencersInfo->rating)
                             <i class="fas fa-star" style="color: #ffcd33"></i>
                           @else
                             <i class="fas fa-star" style="color:white"></i>
                           @endif
                         @endfor
-                                                </span>
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -219,13 +219,13 @@
         <p class="text-white text-sm">
           <a href="" class="text-white">Terms & Agreement</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
           <a href="" class="text-white">Privacy</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-          <a href="" class="text-white">Contact Us</a>
+          <a href="{{ route('contactUs') }}" class="text-white">Contact Us</a>
         </p>
         <div class="flex justify-center">
           <a href="" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
             <i class="fab fa-twitter text-white"></i>
           </a>
-          <a href="" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
+          <a href="http://instagram.com/fluenserofficial" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
             <i class="fab fa-instagram text-white"></i>
           </a>
           <a href="" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">

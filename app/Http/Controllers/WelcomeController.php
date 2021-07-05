@@ -21,4 +21,18 @@ class WelcomeController extends Controller
             ]);
         }
     }
+
+    public function contactUs() {
+        return view('contactUs');
+    }
+
+    public function submitContactUs(Request $request) {
+        $input = $request->all();
+
+        $details = [
+            'data' => $input
+        ];
+
+        \Mail::to('bolesalavb@gmail.com')->send(new \App\Mail\ContactUs($details));
+    }
 }

@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
 
+Route::get('/contactUs', [App\Http\Controllers\WelcomeController::class, 'contactUs'])->name('contactUs');
+
+Route::post('/submitContactUs', [App\Http\Controllers\WelcomeController::class, 'submitContactUs'])->name('submitContactUs');
+
 Route::get('message', function () {
     $message['user'] = "John Doe";
     $message['message'] = "Prueba measdlkfjals";
