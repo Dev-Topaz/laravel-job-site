@@ -8,8 +8,24 @@
   input, select {
     border: 1px solid lightgray;
   }
+  @keyframes loading {
+      from {width: 50%}
+      to {width: 40%}
+  }
+  #loading-fav {
+    animation-name: loading;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-timing-function: ease-in-out;
+  }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<div id="loading" class="h-screen w-screen bg-white fixed top-0 left-0" style="z-index: 1000;">
+  <div class="w-full h-full flex align-items-center justify-content-center">
+    <img src="{{ asset('img/favicon.png') }}" id="loading-fav">
+  </div>
+</div>
 <main>
   <div id="modal" class="h-screen w-screen bg-black bg-opacity-70 fixed top-0 z-50 hidden">
     <div class="w-11/12 h-48 bg-white absolute rounded-xl" style="top:50%; margin-top:-6rem; left:50%; margin-left:-45.83333%;" id="modalBody">
@@ -62,7 +78,7 @@
                 @endif
               </div>
             </a>
-            <img src={{ url('/storage/profile-image/'.$profile->top_img.'.jpg') }} alt={{ $profile->top_img }} class="w-full">
+            <img src="{{ url('/storage/profile-image/'.$profile->top_img.'.jpg') }}" alt="{{ $profile->top_img }}" onload="$('#loading').css('display', 'none');">
             <div class="w-10/12 absolute px-2 pb-2 bottom-5 bg-white h-36 md:h-40" style="left: 50%; margin-left: -41%; bottom:60px">
               <div class="relative ml-2 h-8">
                 <div class="absolute" style="width: 33%;bottom:0;">
