@@ -138,7 +138,7 @@
                                     class="w-full rounded-sm border-gray-300 bg-transparent text-xs">
                                 <option value="">Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                    <option value="{{ $category->id }}" @if($category->id == $selectedCategory) selected @endif>{{ $category->category_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -148,19 +148,19 @@
                                     class="w-full rounded-sm border-gray-300 bg-transparent text-xs">
                                 <option value="">Location</option>
                                 @foreach($countries as $country)
-                                    <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                    <option value="{{ $country->name }}" @if($country->name == $selectedLocation) selected @endif>{{ $country->name }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="w-full px-2 pb-2">
                             <label for="name"></label>
                             <input type="text" name="name" id="name" placeholder="Name"
-                                   class="w-full rounded-sm border-gray-300 bg-transparent text-xs">
+                                   class="w-full rounded-sm border-gray-300 bg-transparent text-xs" value="{{ old('name') }}">
                         </div>
                         <div class="w-full px-2 pb-2">
                             <label for="keyword"></label>
                             <input type="text" name="keyword" id="keyword" placeholder="Keyword"
-                                   class="w-full rounded-sm border-gray-300 bg-transparent text-xs">
+                                   class="w-full rounded-sm border-gray-300 bg-transparent text-xs" value="{{ old('keyword') }}">
                         </div>
                         <div class="w-full px-2 pb-2">
                             <button
@@ -178,12 +178,12 @@
                                 </div>
                                 <div class="col-span-1 w-full flex flex-wrap items-center justify-content-center">
                                     <label for="perpage"></label>
-                                    <select name="perpage" id="perpage"
+                                    <select name="perPage" id="perpage"
                                             class="w-full rounded-sm border-gray-300 bg-transparent my-1.5 py-0.5 px-1 text-xs">
-                                        <option value="8">8 per page</option>
-                                        <option value="20">20 per page</option>
-                                        <option value="40">40 per page</option>
-                                        <option value="100">100 per page</option>
+                                        <option value="10" @if($selectedPerpage == 10) selected @endif>10 per page</option>
+                                        <option value="20" @if($selectedPerpage == 20) selected @endif>20 per page</option>
+                                        <option value="50" @if($selectedPerpage == 50) selected @endif>50 per page</option>
+                                        <option value="100" @if($selectedPerpage == 100) selected @endif>100 per page</option>
                                     </select>
                                 </div>
                             </div>
