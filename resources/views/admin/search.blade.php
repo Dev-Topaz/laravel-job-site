@@ -74,7 +74,7 @@
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
                                     <option value="">Category</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                        <option value="{{ $category->id }}" @if($category->id == $selectedCagegory) selected @endif>{{ $category->category_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -86,7 +86,7 @@
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
                                     <option value="">Location</option>
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->name }}">{{ $country->name }}</option>
+                                        <option value="{{ $country->name }}" @if($selectedLocation == $country->name) selected $endif {{ $country->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -95,14 +95,14 @@
                             <div class="w-full px-2">
                                 <label for="name"></label>
                                 <input type="text" name="name" id="name" placeholder="Name"
-                                       class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
+                                       class="w-full rounded-sm border-gray-300 bg-transparent text-sm" value="{{ old('name') }}">
                             </div>
                         </div>
                         <div class="col-span-1">
                             <div class="w-full px-2">
                                 <label for="keyword"></label>
                                 <input type="text" name="keyword" id="keyword" placeholder="Keyword"
-                                       class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
+                                       class="w-full rounded-sm border-gray-300 bg-transparent text-sm" value="{{ old('keyword') }}">
                             </div>
                         </div>
                         <div class="col-span-1">
@@ -118,10 +118,10 @@
                                 <label for="perpage"></label>
                                 <select name="perPage" id="perpage"
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
-                                    <option value="10">8 per page</option>
-                                    <option value="20">20 per page</option>
-                                    <option value="50">40 per page</option>
-                                    <option value="100">100 per page</option>
+                                    <option value="10" @if($selectedPerpage == 10) selected @endif>10 per page</option>
+                                    <option value="20" @if($selectedPerpage == 20) selected @endif>20 per page</option>
+                                    <option value="50" @if($selectedPerpage == 50) selected @endif>50 per page</option>
+                                    <option value="100" @if($selectedPerpage == 100) selected @endif>100 per page</option>
                                 </select>
                             </div>
                         </div>

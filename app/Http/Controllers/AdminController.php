@@ -126,11 +126,16 @@ class AdminController extends Controller
         $location = (isset($input['location'])) ? $input['location'] : '';
         $accountType = (isset($input['accountType'])) ? $input['accountType'] : 'influencer';
         $keyword = (isset($input['keyword'])) ? $input['keyword'] : '';
-        $perPage = (isset($input['perPage'])) ? $input['perPage'] : 8;
+        $perPage = (isset($input['perPage'])) ? $input['perPage'] : 10;
 
         if ($name == '' && $category == '' && $location == '' && $keyword == '') {
             $results = [];
             return view('admin.search', [
+                'selectedCategory' => $category,
+                'selectedLocation' => $location,
+                'selectedName' => $name,
+                'selectedKeyword' => $keyword,
+                'selectedPerpage' => $perPage,
                 'accountType' => $accountType,
                 'users' => $results,
                 'data' => $input,
@@ -149,6 +154,11 @@ class AdminController extends Controller
         }
 
         return view('admin.search', [
+            'selectedCategory' => $category,
+            'selectedLocation' => $location,
+            'selectedName' => $name,
+            'selectedKeyword' => $keyword,
+            'selectedPerpage' => $perPage,
             'accountType' => $accountType,
             'users' => $results,
             'data' => $input,
