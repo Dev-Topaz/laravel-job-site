@@ -31,5 +31,6 @@ class ContactUs extends Mailable
         return $this->from($this->details['email'])
                 ->subject("Contact Us")
                 ->view('emails.contactUs');
+
     }
 }

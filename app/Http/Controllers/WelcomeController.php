@@ -36,6 +36,8 @@ class WelcomeController extends Controller
             'content' => $input['content']
         ];
 
-        \Mail::to('djordjedevelopment@gmail.com')->send(new \App\Mail\ContactUs($details));
+        \Mail::to('nikitazukov1997@gmail.com')->send(new \App\Mail\ContactUs($details));
+
+        return redirect()->to('/');
     }
 }
