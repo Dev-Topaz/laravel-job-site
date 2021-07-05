@@ -96,7 +96,7 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto mt-5 relative" style="margin-bottom: 15vw;">
-      <img src="{{ asset('img/homeTop.webp') }}" alt="home top image" class="w-full" onload="$('#loading').css('display', 'none');">
+      <img src="{{ asset('img/homeTop.webp') }}" alt="home top image" class="w-full">
       <div class="absolute text-white w-full text-center"
            style="font-family: 'Josefin Sans', sans serif; transform:translateY(-75%);">
         <p class="text-2xl" style="font-weight: 300; margin-bottom:0;">Influencer</p>
@@ -292,10 +292,11 @@
   function incrementCounter() {
       counter++;
       if ( counter === len ) {
-          console.log( 'All images loaded!' );
+          // console.log( 'All images loaded!' );
+          $('#loading').css('display', 'none');
       }
   }
-  
+
 </script>
 
 </html>

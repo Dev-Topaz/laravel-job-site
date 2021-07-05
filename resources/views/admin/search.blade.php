@@ -516,7 +516,7 @@
     </div>
     <script>
         function showAlert(text) {
-            console.log(text);
+            // console.log(text);
             $("div#alert h3").text(text);
             $("div#alert").fadeIn(200).delay(3000).fadeOut(200);
         }

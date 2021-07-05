@@ -204,7 +204,7 @@
 
     <script>
         function showAlert(text) {
-            console.log(text);
+            // console.log(text);
             $("div#alert h3").text(text);
             $("div#alert").fadeIn(200).delay(3000).fadeOut(200);
         }
@@ -215,9 +215,9 @@
 
         $("div#rating a").on('click', function () {
             let elem = $(this).parent().parent().children();
-            console.log($(this).parent().parent().siblings('input'));
+            // console.log($(this).parent().parent().siblings('input'));
             $(this).parent().parent().siblings('input').val($(this).attr('id'));
-            // console.log($(this).attr('id'));
+            // // console.log($(this).attr('id'));
             for (let i = 0; i < 5; i++) {
                 if (i < $(this).attr('id'))
                     $(elem).eq(i).css('color', 'gold');
@@ -235,13 +235,13 @@
             $('input#totalRating').val((total / 5.0).toFixed(1));
         }
         function selectInfluencer(name) {
-          console.log(name);
+          // console.log(name);
           $("input#username").val(name);
           $("#searchResult").fadeOut(100);
         }
         function search() {
           const index = $("input#username").val().toLowerCase();
-          console.log(index);
+          // console.log(index);
           if(index == "") $("#searchResult").fadeOut(100);
           else {
             let contents = $("#searchResult a");
@@ -249,7 +249,7 @@
             for(let i = 0; i< length; i++) {
               $(contents).eq(i).css('display', 'block');
               const content = $(contents).eq(i).text().toLowerCase();
-              console.log(content);
+              // console.log(content);
               if(content.indexOf(index) == -1)
                 $(contents).eq(i).css('display', 'none');
             }
