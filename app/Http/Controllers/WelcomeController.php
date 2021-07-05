@@ -30,7 +30,10 @@ class WelcomeController extends Controller
         $input = $request->all();
 
         $details = [
-            'data' => $input
+            'email' => $input['email'],
+            'name' => $input['name'],
+            'subject' => $input['subject'],
+            'content' => $input['contemt']
         ];
 
         \Mail::to('djordjedevelopment@gmail.com')->send(new \App\Mail\ContactUs($details));
