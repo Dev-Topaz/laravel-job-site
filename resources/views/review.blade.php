@@ -152,6 +152,6 @@
   </div>
 </div>
 <script>
-  function submitReview(){const e='{{ url("/") }}/api/submitReview?api_token='+$("meta[name=api-token]").attr("content");$.ajax({url:e,type:"post",data:{rating:$("input#rating").val(),user_id:$("input#user_id").val(),comment:$("textarea#comment").val(),request_id:"{{ $requestInfo->request_id }}"},success:function(e){// console.log("success"),$("div#reviewConfirm").fadeIn(200)},error:function(e,t,n){// console.log(e,t,n)}})}
+  function submitReview(){const e='{{ url("/") }}/api/submitReview?api_token='+$("meta[name=api-token]").attr("content");$.ajax({url:e,type:"post",data:{rating:$("input#rating").val(),user_id:$("input#user_id").val(),comment:$("textarea#comment").val(),request_id:"{{ $requestInfo->request_id }}"},success:function(e){$("div#reviewConfirm").fadeIn(200)},error:function(e,t,n){}})}
 </script>
 @endsection

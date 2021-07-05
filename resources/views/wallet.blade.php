@@ -195,9 +195,7 @@
 <script>
 
   function showBalance() {
-    // console.log("changed");
     const currency = $("select#balance_currency").val();
-    // console.log(currency);
     switch (currency) {
       case 'usd':
         $("span#balance").text("{{ number_format($wallet->usd_balance, 2) }}");
