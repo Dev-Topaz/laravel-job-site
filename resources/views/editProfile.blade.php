@@ -420,7 +420,7 @@
         if($("#social-media-links input:checkbox").eq(i).is(':checked'))
           count ++;
       }
-      console.log(count);
+      // console.log(count);
       if(count > 3) {
         $(elem).prop('checked', false);
       }

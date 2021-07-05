@@ -146,7 +146,7 @@
         const api_token = $("meta[name=api-token]").attr('content');
 
         function showAlert(text) {
-            console.log(text);
+            // console.log(text);
             $("div#alert h3").text(text);
             $("div#alert").fadeIn(200).delay(3000).fadeOut(200);
         }
@@ -160,7 +160,7 @@
             hidden.onchange = (e) => {
                 const files = e.target.files;
                 const done = function (url) {
-                    console.log(url);
+                    // console.log(url);
                     image.src = url;
                     $modal.modal('show');
                 };
