@@ -9,8 +9,8 @@
     border: 1px solid lightgray;
   }
   @keyframes loading {
-      from {width: 50%}
-      to {width: 40%}
+      from {width: 80%}
+      to {width: 70%}
   }
   #loading-fav {
     animation-name: loading;
