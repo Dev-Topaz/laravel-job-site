@@ -5,11 +5,11 @@
 	<title>Contact Us</title>
 </head>
 <body>
-	<h3>{{$details['name']}}</h3>
-	<h4>{{$details['email']}}</h4>
-	<h2>{{$details['subject']}}</h2>
+	<h3>{{$data['name']}}</h3>
+	<h4>{{$data['email']}}</h4>
+	<h2>{{$data['subject']}}</h2>
 	<div style="padding: 20px 30px;">
-		<p>{{$details['content']}}</p>		
+		<p>{{$data['content']}}</p>
 	</div>
 </body>
 </html>
