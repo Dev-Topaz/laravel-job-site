@@ -133,6 +133,7 @@ class AdminController extends Controller
             return view('admin.search', [
                 'accountType' => $accountType,
                 'users' => $results,
+                'data' => $input,
                 'countries' => $countries,
                 'categories' => $allCategories,
                 'page' => 2,
@@ -150,6 +151,7 @@ class AdminController extends Controller
         return view('admin.search', [
             'accountType' => $accountType,
             'users' => $results,
+            'data' => $input,
             'countries' => $countries,
             'categories' => $allCategories,
             'page' => 2,
