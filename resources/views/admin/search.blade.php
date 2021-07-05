@@ -86,7 +86,7 @@
                                         class="w-full rounded-sm border-gray-300 bg-transparent text-sm">
                                     <option value="">Location</option>
                                     @foreach($countries as $country)
-                                        <option value="{{ $country->name }}" @if($selectedLocation == $country->name) selected $endif {{ $country->name }}</option>
+                                        <option value="{{ $country->name }}" @if($selectedLocation == $country->name) selected @endif {{ $country->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
