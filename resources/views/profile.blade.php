@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 <div id="loading" class="h-screen w-screen bg-white fixed top-0 left-0" style="z-index: 1000;">
   <div class="w-full h-full flex align-items-center justify-content-center">
-    <img src="{{ asset('img/favicon.png') }}" id="loading-fav">
+    <img src="{{ asset('img/loading.jpg') }}" id="loading-fav">
   </div>
 </div>
 <main>

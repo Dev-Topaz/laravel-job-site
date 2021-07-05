@@ -62,7 +62,7 @@
                           @enderror
                       </label>
                       <label class="block mb-6">
-                          <textarea id="content" class="form-input mt-2 block w-full @error('content') is-invalid @enderror" name="content" required placeholder="content" rows="5" style="border:1px solid #999; padding: 15px 15px; resize: none;"></textarea>
+                          <textarea id="content" class="form-input mt-2 block w-full @error('content') is-invalid @enderror" name="content" required placeholder="How can we help?" rows="5" style="border:1px solid #999; padding: 15px 15px; resize: none;"></textarea>
                           @error('content')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
