@@ -98,9 +98,8 @@
     </div>
 </main>
 <script>
-    function registerToggle(item){// console.log('clicked');$("#togglebar a").removeClass('selected');$("#togglebar a#"+item).addClass('selected');$("input#accountType").val(item);if(item=='influencer'){$("div#accountAlert p").text('You are registering as an Influencer');$("input#full_name").attr('placeholder','Full name')}else{$("div#accountAlert p").text('You are registering as a Brand');$("input#full_name").attr('placeholder','Company name')}}
-function checkSession(){// console.log('checkSession');if(sessionStorage.getItem('type')){const type=sessionStorage.getItem('type');// console.log(type);if(type=='brand')
-// console.log("trigger");registerToggle('brand')}
+    function registerToggle(item){$("#togglebar a").removeClass('selected');$("#togglebar a#"+item).addClass('selected');$("input#accountType").val(item);if(item=='influencer'){$("div#accountAlert p").text('You are registering as an Influencer');$("input#full_name").attr('placeholder','Full name')}else{$("div#accountAlert p").text('You are registering as a Brand');$("input#full_name").attr('placeholder','Company name')}}
+function checkSession(){if(sessionStorage.getItem('type')){const type=sessionStorage.getItem('type');if(type=='brand')registerToggle('brand')}
 sessionStorage.clear()}
 </script>
 @if(old('accountType'))
