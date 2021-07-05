@@ -225,7 +225,7 @@
           <a href="" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
             <i class="fab fa-twitter text-white"></i>
           </a>
-          <a href="http://instagram.com/fluenserofficial" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
+          <a href="https://instagram.com/fluenserofficial" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">
             <i class="fab fa-instagram text-white"></i>
           </a>
           <a href="" class="block px-2 py-1 mx-2 w-8 h-8 rounded-full bg-gray-500">

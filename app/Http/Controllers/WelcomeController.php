@@ -33,6 +33,6 @@ class WelcomeController extends Controller
             'data' => $input
         ];
 
-        \Mail::to('bolesalavb@gmail.com')->send(new \App\Mail\ContactUs($details));
+        \Mail::to('djordjedevelopment@gmail.com')->send(new \App\Mail\ContactUs($details));
     }
 }
