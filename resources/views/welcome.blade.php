@@ -28,8 +28,8 @@
   <style>
     .active,.dot:hover{background-color:#717171}#wel_btn{width:200px;position:absolute;bottom:150px;left:50vw;margin-left:-100px}#hire_btn{border:none;border-radius:10px;background:linear-gradient(to right,#05ebbd,#1378d4)}#join_btn{border:solid 1px #fff;background:0 0}#back_img{position:relative}#avatar_img{position:absolute}.clearfix{display:table;content:'';clear:both}div#main_btn a:active,div#main_btn a:hover,div#main_btn a:visited{background:0 0}#how-it-works #gradient-icon i{background:-moz-linear-gradient(to right,#05ebbd,#1378d4);background:-webkit-linear-gradient(to right,#05ebbd,#1378d4);background:linear-gradient(to right,#05ebbd,#1378d4);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}#how-it-works #gradient-icon{text-align:center;width:40px;height:40px;padding:7px;top:50%;transform:translateY(-50%);left:5px;border:1px solid gray}.clearfix{display:table;content:'';clear:both}#featured_img{position:absolute;top:0;right:-50%}.carousel-indicators li{width:5px!important;height:5px!important;opacity:1!important;border-radius:50%;border:none;margin-bottom:5px;background:#119dab}.carousel-indicators{margin-bottom:0;line-height:1}.carousel-indicators li.active{box-shadow:0 0 0 2px #95c3c7}#modalBody input{border: 1px solid lightgray; border-radius: 5px;}
     @keyframes loading {
-      from {width: 50%}
-      to {width: 40%}
+      from {width: 80%}
+      to {width: 70%}
     }
     #loading-fav {
       animation-name: loading;
