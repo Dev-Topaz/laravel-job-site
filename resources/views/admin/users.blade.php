@@ -18,15 +18,6 @@
   </div>
   <div class="w-full px-3 py-3 md:float-left md:w-3/4 lg:w-4/5 xl:w-5/6">
   <div id="projects">
-<!--     <form action="{{ route('projects') }}" method="get">
-    <div class="flex justify-end">
-      <div class="relative mb-3">
-        <label for="keyword" class="hidden"></label>
-        <input type="text" name="keyword" value="{{ ($keyword !== '') ? $keyword : '' }}" class="w-96 rounded-full border-none bg-gray-100 text-gray-500 focus:outline-none focus:border-gray-300" id="keyword" placeholder="Search here" />
-        <button type="submit" class="absolute right-2.5 text-gray-500 focus:outline-none focus:text-black" style="top: 50%; transform: translateY(-50%);"><i class="fas fa-search"></i></button>
-      </div>
-    </div>
-    </form>-->    
     <table class="w-full">
       <thead class="w-full bg-gray-300 text-gray-500">
       <tr class="w-full">
