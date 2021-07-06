@@ -41,9 +41,11 @@
                                     <span class="text-3xl font-bold text-gray-500">{{ $influencer_count }}</span><br/>
                                     <span class="text-sm tracking-widest text-gray-500">INFLUENCERS</span>
                                 </div>
-                                <div>
-                                    <img src="{{ asset('img/influencers.png') }}" alt="total users" width="64">
-                                </div>
+                                <a href="{{ route('allUsers', ['accountType' => 'influencer']) }}">
+                                    <div>
+                                        <img src="{{ asset('img/influencers.png') }}" alt="total users" width="64">
+                                    </div>                                    
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -54,9 +56,11 @@
                                     <span class="text-3xl font-bold text-gray-500">{{ $brand_count }}</span><br/>
                                     <span class="text-sm tracking-widest text-gray-500">BRANDS</span>
                                 </div>
-                                <div>
-                                    <img src="{{ asset('img/brands.png') }}" alt="total users" width="64">
-                                </div>
+                                <a href="{{ route('allUsers', ['accountType' => 'brand']) }}">
+                                    <div>
+                                        <img src="{{ asset('img/brands.png') }}" alt="total users" width="64">
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

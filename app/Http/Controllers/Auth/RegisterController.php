@@ -124,7 +124,7 @@ class RegisterController extends Controller
             }
             $profile = new Profile;
             $profile->user_id = $user->id;
-            $profile->introduction = "Hi, please complete your profile!";
+            $profile->introduction = "";
             $profile->top_img = "default_top";
             $profile->round_img = "default_round";
             $profile->instagram = "";
@@ -163,7 +163,6 @@ class RegisterController extends Controller
                     }
                 }
             }
-
             return $user;
         }
     }
