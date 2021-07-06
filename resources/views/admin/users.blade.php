@@ -40,7 +40,9 @@
       @endforeach
       </tbody>
     </table>
-    {{ $users->links() }}
+  </div>
+  <div class="w-full">
+    {{ $users->links('pagination::bootstrap-4') }}  
   </div>
   <div id="loginModal" class="h-screen w-screen bg-gray-700 bg-opacity-75 fixed top-0 left-0 hidden">
       <div class="w-full h-full flex justify-center items-center">
