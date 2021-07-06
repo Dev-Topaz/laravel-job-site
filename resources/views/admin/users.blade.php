@@ -17,7 +17,7 @@
     <h2 class="text-4xl font-semibold" style="color: #0bc2c8;">@if($accountType == 'brand'){{ __('Brands') }}@else{{ __('Influencers') }}@endif</h2>
   </div>
   <div class="w-full px-3 py-3 md:float-left md:w-3/4 lg:w-4/5 xl:w-5/6">
-  <div id="projects">
+  <div id="projects" style="overflow-x: scroll;">
     <table class="w-full">
       <thead class="w-full bg-gray-300 text-gray-500">
       <tr class="w-full">
