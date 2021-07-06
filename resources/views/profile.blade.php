@@ -196,7 +196,6 @@
               </div>
               @else
               <div class="w-full my-2 text-center">
-                Please complete your profile.
               </div>
               @endif
             </div>
@@ -229,7 +228,7 @@
                       @endfor
                       @else
                       <div class="text-center w-full">
-                        <p class="text-sm md:text-md">Please complete you profile</p>
+                        <p class="text-sm md:text-md"></p>
                       </div>
                       @endif
 
