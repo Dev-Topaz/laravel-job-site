@@ -374,7 +374,9 @@ class AdminController extends Controller
             $users = Brands::with('user')->paginate(10);
         if($accountType == 'influencer')
             $users = Influencers::with("user")->paginate(10);
+        $rank = $users->firstItem();
         return view('admin.users', [
+            'rank' => $rank,
             'users' => $users,
             'accountType' => $accountType
         ]);
