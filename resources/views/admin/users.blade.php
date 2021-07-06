@@ -31,7 +31,7 @@
       <tbody>
       @foreach($users as $user)
         <tr>
-          <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $loop->index }}</td>
+          <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $rank ++ }}</td>
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $user->user->name }}</td>
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $user->user->username }}</td>
           <td class="py-3 pl-2 border-bottom border-gray-200 text-gray-500 text-sm">{{ $user->user->email}}</td>
