@@ -117,5 +117,7 @@ Route::middleware(['auth', 'checkAdmin'])->group(function () {
         Route::get('/blockUser', [App\Http\Controllers\AdminController::class, 'blockUser'])->name('blockUser');
 
         Route::get('/loginAsUser', [App\Http\Controllers\AdminController::class, 'loginAsUser'])->name('loginAsUser');
+
+        Route::get('/allUsers/{accountType}', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('allUsers');
     });
 });

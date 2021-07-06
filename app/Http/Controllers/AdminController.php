@@ -304,14 +304,14 @@ class AdminController extends Controller
             return redirect()->back()->with('msg', "DB error, please try again");
     }
 
-    function verifyUser(Request $request) {
+    public function verifyUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
 
         return redirect()->route('users')->with('msg', 'now in DEV');
     }
 
-    function featureUser(Request $request) {
+    public function featureUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
 
@@ -330,7 +330,7 @@ class AdminController extends Controller
         }
     }
 
-    function unFeatureUser(Request $request) {
+    public function unFeatureUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
 
@@ -342,7 +342,7 @@ class AdminController extends Controller
         }
     }
 
-    function deleteUser(Request $request) {
+    public function deleteUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
 
@@ -354,18 +354,29 @@ class AdminController extends Controller
         }
     }
 
-    function blockUser(Request $request) {
+    public function blockUser(Request $request) {
         $input = $request->all();
         $user_id = $input['userId'];
 
     }
 
-    function loginAsUser(Request $request) {
+    public function loginAsUser(Request $request) {
         $input = $request->all();
         $user_id = $input['login_user_id'];
         $user = User::find($user_id);
         Auth::login($user);
         $url = env('APP_URL') . '/home';
         return redirect(url($url));
+    }
+
+    public function allUsers($accountType) {
+        if($accountType == 'brand')
+            $users = Brands::with('user')->paginate(10);
+        if($accountType == 'influencer')
+            $users = Influencers::with("user")->paginate(10);
+        return view('admin.users', [
+            'users' => $users,
+            'accountType' => $accountType
+        ]);
     }
 }
