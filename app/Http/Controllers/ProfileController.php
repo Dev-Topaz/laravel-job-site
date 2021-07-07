@@ -309,7 +309,7 @@ class ProfileController extends Controller
       'name' => 'required|regex:/(^([a-zA-Z 0-9]+)?$)/',
       'username' => 'required|regex:/(^([a-zA-Z]+)(\d+)?$)/',
       'state' => 'required|regex:/(^([a-zA-Z ]+)?$)/',
-      'introduction' => 'required|max:140',
+      'introduction' => 'max:140',
     ];
 
     $messages = [
