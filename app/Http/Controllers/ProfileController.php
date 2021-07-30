@@ -307,7 +307,7 @@ class ProfileController extends Controller
 
     $rule = [
       'name' => 'required|regex:/(^([a-zA-Z 0-9]+)?$)/',
-      'username' => 'required|regex:/(^([a-zA-Z]+)(\d+)?$)/',
+      'username' => 'required|regex:/(^([a-zA-Z0-9_.]+)?$)/',
       'state' => 'required|regex:/(^([a-zA-Z ]+)?$)/',
       'introduction' => 'max:140',
     ];
