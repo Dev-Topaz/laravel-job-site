@@ -184,8 +184,8 @@
                                 @endif
                             </i>
                         </a>
-
-                        <a href="{{ route('search') }}"
+  
+                        <a href="{{ route('search') }}" @if(Auth::user()->accountType == 'influencer')style="pointer-events:none"@endif
                            class="text-gray-400 text-xl md:text-2xl hover:text-black block py-2 text-center">
                             <i class="fas fa-search"></i>
                         </a>
